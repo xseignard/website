@@ -1,0 +1,21 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Made by [Anaïs Appéré](http://anaisag.fr/)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xseignard/website.git"
+  },
+  "author": "Anaïs Appéré",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xseignard/website/issues"
+  },
+  "homepage": "https://github.com/xseignard/website#readme",
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
+}
