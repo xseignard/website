@@ -1,61 +1,86 @@
 <template>
 	<div id="app">
 		<NavStyle />
-		<router-view/>
+		<transition
+			v-on:leave="leave"
+			v-on:before-enter="beforeEnter"
+			v-on:enter="enter"
+			v-on:after-enter="afterEnter"
+		>
+			<router-view/>
+		</transition>
 		<FooterStyle />
+		<PageTransition
+			:height="height"
+			:y="y"
+			:visible="visible"
+		/>
 	</div>
 </template>
 
 <script>
-// @ is an alias to /src
+import anime from 'animejs';
 import FooterStyle from './components/FooterStyle.vue';
 import NavStyle from './components/NavStyle.vue';
+import PageTransition from './components/PageTransition.vue';
 
 export default {
-	name: 'app',
 	components: {
 		FooterStyle,
 		NavStyle,
+		PageTransition,
+	},
+	data: () => ({
+		height: 0,
+		y: 0,
+		visible: false,
+	}),
+	methods: {
+		beforeEnter: function(el, done) {
+			this.$data.height = 0;
+			this.$data.y = 0;
+			this.$data.visible = true;
+			el.style.opacity = 0;
+		},
+		enter: function(el, done) {
+			anime({
+				targets: this,
+				height: '100%',
+				round: 1,
+				easing: 'linear',
+				duration: 500,
+				complete: () => {
+					done();
+				},
+			});
+		},
+		afterEnter: function(el, done) {
+			const tl = anime.timeline();
+			tl.add({
+				targets: el,
+				opacity: 1,
+				duration: 500,
+			}).add({
+				targets: this,
+				y: '100vh',
+				round: 1,
+				easing: 'linear',
+				duration: 500,
+				complete: () => {
+					this.$data.visible = false;
+				},
+			});
+		},
+		leave: function(el, done) {
+			anime({
+				targets: el,
+				opacity: 0,
+				duration: 1000,
+				complete: () => {
+					done();
+				},
+			});
+		},
 	},
 };
 </script>
-
-<style>
-
-@font-face{
-	font-family:'Qontra';
-	src:url(./assets/Qontra.otf);
-}
-@font-face {
-	font-family: 'Open Sans Light';
-	src: url(./assets/OpenSans-Light.ttf);
-}
-@font-face {
-	font-family: 'Open Sans';
-	src: url(./assets/OpenSans-Regular.ttf);
-}
-
-body{
-	margin:0;
-	background-color :#24003B;
-}
-
-h1{
-	font-family: 'Qontra', sans-serif;
-	letter-spacing: 4px;
-	font-size:2.5rem;
-	margin-left: 15%;
-	position: absolute;
-	top:15%;
-}
-#app {
-	font-family: 'Open Sans', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	display: flex;
-	flex-direction: column;
-	color: white;
-	min-height: 100vh;
-}
-
-</style>

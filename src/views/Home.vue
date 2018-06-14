@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<img src="@/assets/logo.png">
+		<img src="@/assets/images/logo.png">
 		<h1> STRIKING HEADLINES </h1>
 	</div>
 </template>
@@ -10,7 +10,11 @@
 
 export default {
 	name: 'home',
-	components: {
-	},
+	components: {},
 };
 </script>
+
+<style scoped>
+.home {
+}
+</style>

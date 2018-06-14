@@ -26,8 +26,8 @@
 				</div>
 				<div class="about--content--right--img">
 					<svg width="100%" height="100%">
-    				<polygon id="polymorph" points="0 0, 0 0, 0 15, 0 15" fill="#F88429" />
-  				</svg>
+						<polygon id="polymorph" points="0 0, 0 0, 0 15, 0 15" fill="#F88429" />
+					</svg>
 				</div>
 			</div>
 		</div>
@@ -35,53 +35,52 @@
 </template>
 
 <style scoped>
-	.about{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		flex-grow: 1;
-	}
-	.about--content{
-		width:100%;
-		display:flex;
-		justify-content: space-around;
-		padding:0 15% 0 15%;
-		box-sizing: border-box;
-	}
-	.about--content--left{
-		max-width: 40%;
-		flex-grow: 1;
-	}
-	.about--content--right{
-		display:flex;
-		justify-content: space-between;
-		flex-grow: 2;
-		align-items:center;
-
-	}
-	.about--content--right--domains{
-		position:relative;
-		display:flex;
-		flex-direction: column;
-		align-items: flex-end;
-		justify-content: space-between;
-		text-align: right;
-		font-family: 'Qontra';
-		font-size:1.25rem;
-		padding-right: 5%;
-	}
-	.about--content--right--domains svg{
-		fill:none;
-		stroke-linecap:round;
-		stroke-width:2px;
-		transform:rotate(180deg);
-	}
-	.about--content--right--img{
-		background-image: url(../assets/ImgTemplate.jpg);
-		background-size: cover;
-		background-position: center;
-		min-width: 250px;
-		width:22vw;
-		height: 25vh;
-	}
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-grow: 1;
+}
+.about--content {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	padding: 0 15% 0 15%;
+	box-sizing: border-box;
+}
+.about--content--left {
+	max-width: 40%;
+	flex-grow: 1;
+}
+.about--content--right {
+	display: flex;
+	justify-content: space-between;
+	flex-grow: 2;
+	align-items: center;
+}
+.about--content--right--domains {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-between;
+	text-align: right;
+	font-family: 'Qontra';
+	font-size: 1.25rem;
+	padding-right: 5%;
+}
+.about--content--right--domains svg {
+	fill: none;
+	stroke-linecap: round;
+	stroke-width: 2px;
+	transform: rotate(180deg);
+}
+.about--content--right--img {
+	background-image: url(../assets/images/ImgTemplate.jpg);
+	background-size: cover;
+	background-position: center;
+	min-width: 250px;
+	width: 22vw;
+	height: 25vh;
+}
 </style>
