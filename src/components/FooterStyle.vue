@@ -9,8 +9,8 @@
         <p>06.00.00.00.00</p>
       </div>
       <div id="contacts--social">
-        <a href="#"><img src="@/assets/github.svg" alt=""></a>
-        <a href="#"><img src="@/assets/twitter.svg" alt=""></a>
+        <a href="https://github.com/xseignard" target="_blank"><img src="@/assets/github.svg" alt=""></a>
+        <a href="https://twitter.com/xavier_seignard?lang=fr" target="_blank"><img src="@/assets/twitter.svg" alt=""></a>
         <a href="#"><img src="@/assets/linkedin.svg" alt=""></a>
       </div>
     </div>
