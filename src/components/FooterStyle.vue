@@ -1,6 +1,5 @@
 <template>
 	<div class="footer">
-<<<<<<< HEAD
     <svg width="300px" height="1px">
       <line x1="0" y1="0" x2="300" y2="0"/>
     </svg>
@@ -18,25 +17,6 @@
     <div id="mentions">
       <p>2018 | <a href="#">mentions légales</a></p>
     </div>
-=======
-		<svg width="300px" height="1px">
-			<line x1="0" y1="0" x2="300" y2="0"/>
-		</svg>
-		<div id="contacts">
-			<div id="contacts--contact">
-				<p>xavier.seignard+drangies@gmail.com</p>
-				<p>06.00.00.00.00</p>
-			</div>
-			<div id="contacts--social">
-				<a href="#"><img src="@/assets/images/github.svg" alt=""></a>
-				<a href="#"><img src="@/assets/images/twitter.svg" alt=""></a>
-				<a href="#"><img src="@/assets/images/linkedin.svg" alt=""></a>
-			</div>
-		</div>
-		<div id="mentions">
-			<p>2018 | <a href="#">mentions légales</a></p>
-		</div>
->>>>>>> 0f13b64cb5de456cce1bee54f200c6dc35cd519c
 	</div>
 </template>
 
