@@ -32,7 +32,7 @@ export default {
 		},
 		fill: {
 			type: String,
-			default: '#ff0000',
+			default: '#F88429',
 		},
 		visible: {
 			type: Boolean,

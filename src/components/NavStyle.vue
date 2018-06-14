@@ -48,7 +48,7 @@ export default {
 svg {
 	position: absolute;
 	stroke: white;
-	stroke-width: 2px;
+	stroke-width: 1.5px;
 	stroke-dasharray: 100 100;
 	stroke-dashoffset: 100;
 	transition: 0.25s ease-out;

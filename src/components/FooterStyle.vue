@@ -5,7 +5,7 @@
     </svg>
     <div id="contacts">
       <div id="contacts--contact">
-        <p>xavier.seignard+drangies@gmail.com</p>
+        <a href="mailto:xavier.seignard+drangies@gmail.com"><p>xavier.seignard+drangies@gmail.com</p></a>
         <p>06.00.00.00.00</p>
       </div>
       <div id="contacts--social">
@@ -62,7 +62,7 @@ svg {
 	width: 30px;
 	padding: 5px;
 }
-#mentions a {
+a {
 	text-decoration: none;
 	color: white;
 }
