@@ -20,6 +20,7 @@
 
 <style scoped>
 #nav {
+	z-index:1;
 	position: fixed;
 	top: 0;
 	padding: 50px;
