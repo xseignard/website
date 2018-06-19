@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
 export default {
 	name: 'FooterStyle',
 };
@@ -40,8 +41,8 @@ export default {
 svg {
 	stroke-linecap: round;
 	stroke-width: 0.5px;
-	stroke: aquamarine;
 	margin-bottom: 3%;
+	stroke:#8B73CF;
 }
 #contacts {
 	display: flex;
