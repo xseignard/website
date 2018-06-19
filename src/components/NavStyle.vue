@@ -21,7 +21,7 @@
 <style scoped>
 #nav {
 	z-index:1;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	padding: 50px;
 	display: flex;

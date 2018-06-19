@@ -5,36 +5,44 @@
 		<div class="home--top">
 			<div class="home--top--content">
 				<h1> STRIKING <br>HEADLINES </h1>
+				<router-link to="/projects">
 					<button type="button" class="main-button" >
 						<p>SEE WHAT I MAKE</p>
 					</button>
+				</router-link>
 			</div>
 		</div>
 		<div class="home--content">
 			<div class="home--content--about">
 				<h2> &#151; Hello, I'm Xavier</h2>
 				<p>Martinus agens illas provincias pro praefectis aerumnas tium graviter gemens saepeque obsecrans, ut ab omni culpa inmunibus parceretur, cum non inpetraret, minabatur se discessurum: ut saltem id metuens perquisitor malivolus tandem desineret quieti coalitos.</p>
-				<button type="button" class="secondary-button">
-					<p>MORE ABOUT ME</p>
-				</button>
+				<router-link to="/about">
+					<button type="button" class="secondary-button">
+						<p>MORE ABOUT ME</p>
+					</button>
+				</router-link>
 			</div>
 			<div class="home--content--projects">
 				<h2> &#151; Newest projects</h2>
 					<div class="home--content--projects--list">
 						<div class="project home--content--projects--first">
-							<div class="img"></div>
-							<div class="color"></div>
-							<p>NAME OF THE PROJECT</p>
+							<div :style="backgroundStyleOne" class="img">
+								<div class="color"></div>
+							</div>
+							<p>{{project1}}</p>
 						</div>
 						<div class="project home--content--projects--second">
-							<div class="img"></div>
-							<div class="color"></div>
-							<p>NAME OF THE PROJECT</p>
+							<div class="img">
+								<div class="color"></div>
+							</div>
+							<p>{{project2}}</p>
 						</div>
 					</div>
-				<button type="button" class="secondary-button">
-					<p>SEE ALL MY WORKS</p>
-				</button>
+				<router-link to="/projects">
+					<button type="button" class="secondary-button">
+						<p>SEE ALL MY WORKS</p>
+					</button>
+				</router-link>
 			</div>
 		</div>
 		<FooterStyle ref="footer" />
@@ -50,6 +58,15 @@ export default {
 		FooterStyle,
 		NavStyle,
 	},
+	data(){
+		return{
+			project1:'THE LATEST PROJECT',
+			project2:'THE SECOND TO LAST PROJECT',
+			backgroundStyleOne:{
+				backgroundImage:'url(/img/ImgTemplate.7278a586.jpg)'
+			}
+		}
+	}
 };
 </script>
 
@@ -76,21 +93,24 @@ export default {
 }
 .home--top--content{
 	width:100vw;
-	height:35vh;
+	height:30vh;
 	box-sizing: border-box;
-	padding: 0 15% 0 15%;
+	padding: 0 20% 0 20%;
 	margin-bottom: 10%;
 	display: flex;
 	justify-content: space-between;
 }
 h1{
 	margin-left:0;
-	font-size:3.5rem;
+	font-size:4rem;
 	letter-spacing: 6px;
 	position: relative;
 }
-.main-button{
+a{
 	align-self: flex-end;
+	height:50px;
+}
+.main-button{
 	padding:0 40px 0 40px;
 	border: 2px solid #8B73CF;
 	border-radius: 3px;
@@ -109,14 +129,17 @@ h1{
 	letter-spacing: 2px;
 	font-weight: bolder;
 }
-
+button:hover{
+	cursor:pointer;
+}
 /* NOTE: CONTENT LAYOUT  ********************/
-H2{
+h2{
 	font-family: 'Qontra', sans-serif;
-	font-size: 1.75rem;
+	font-size: 2rem;
+	margin-bottom: 37px;
 }
 .home--content{
-	margin-top: 3%;
+	margin-top: 2%;
 	display: inline-grid;
 	grid-template-columns:1fr 2fr;
 	grid-template-areas: "about projects";
@@ -126,9 +149,16 @@ H2{
 }
 .home--content--about{
 	grid-area: about;
+	display:flex;
+	flex-direction: column;
+}
+.home--content--about p{
+	margin-top:0;
 }
 .home--content--projects{
 	grid-area: projects;
+	display: flex;
+	flex-direction: column;
 	position:relative;
 }
 .home--content--projects--list{
@@ -144,15 +174,26 @@ H2{
 	position:relative;
 	width:45%;
 }
-.project div {
-	height:80%;
+.project p{
+	margin-bottom: 0;
+}
+.img {
+	height:25vh;
 	width:100%;
-	top:0;
+	position:relative;
+	background-size: cover;
+	/* background-image:url(../assets/images/ImgTemplate.jpg); */
+
+}
+.color{
+	width:100%;
+	height:100%;
+	position: absolute;
 	background-color: #4FDAB1;
-	position:absolute;
+	opacity:0.5;
 }
 .secondary-button{
-	margin-top:30px;
+	margin-top:50px;
 	border:2px solid white;
 	border-radius: 3px;
 	padding: 5px 25px 5px 25px;
