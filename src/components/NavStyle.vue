@@ -18,14 +18,10 @@
 	</div>
 </template>
 
-<script>
-export default {
-	name: 'NavStyle',
-};
-</script>
-
 <style scoped>
 #nav {
+	position: fixed;
+	top: 0;
 	padding: 50px;
 	display: flex;
 	justify-content: flex-end;

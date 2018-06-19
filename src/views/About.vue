@@ -1,5 +1,6 @@
 <template>
-	<div class="about">
+	<div class="page about">
+		<NavStyle />
 		<h1>XAVIER SEIGNARD</h1>
 		<div class="about--content">
 			<div class="about--content--left">
@@ -15,11 +16,11 @@
 			<div class="about--content--right">
 				<div class="about--content--right--domains">
 					<p>Web<br>development</p>
-					<svg width="100%" height="5px">
+					<svg width="14px" height="2px">
 						<line x1="1" y1="1" x2="13" y2="1" stroke="#4FDAB1"/>
 					</svg>
 					<p>Interactive<br>installations</p>
-					<svg width="100%" height="5px">
+					<svg width="14px" height="2px">
 						<line x1="1" y1="1" x2="13" y2="1" stroke="#8B73CF"/>
 					</svg>
 					<p>Live<br>performances</p>
@@ -31,8 +32,21 @@
 				</div>
 			</div>
 		</div>
+		<FooterStyle ref="footer" />
 	</div>
 </template>
+
+<script>
+import FooterStyle from '@/components/FooterStyle.vue';
+import NavStyle from '@/components/NavStyle.vue';
+
+export default {
+	components: {
+		FooterStyle,
+		NavStyle,
+	},
+};
+</script>
 
 <style scoped>
 .about {
@@ -54,7 +68,7 @@
 }
 .about--content--right {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	flex-grow: 2;
 	align-items: center;
 }
@@ -73,7 +87,6 @@
 	fill: none;
 	stroke-linecap: round;
 	stroke-width: 2px;
-	transform: rotate(180deg);
 }
 .about--content--right--img {
 	background-image: url(../assets/images/ImgTemplate.jpg);
