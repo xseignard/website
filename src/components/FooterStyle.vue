@@ -29,6 +29,8 @@ export default {
 
 <style scoped>
 .footer {
+	position: absolute;
+	bottom: 0;
 	padding: 0 15% 2% 15%;
 	box-sizing: border-box;
 	margin-top: 20px;

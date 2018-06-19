@@ -1,20 +1,25 @@
 <template>
-	<div class="home">
-		<img src="@/assets/images/logo.png">
+	<div class="page home">
+		<NavStyle />
 		<h1> STRIKING HEADLINES </h1>
+		<FooterStyle ref="footer" />
 	</div>
 </template>
 
 <script>
-// @ is an alias to /src
+import FooterStyle from '@/components/FooterStyle.vue';
+import NavStyle from '@/components/NavStyle.vue';
 
 export default {
-	name: 'home',
-	components: {},
+	components: {
+		FooterStyle,
+		NavStyle,
+	},
 };
 </script>
 
 <style scoped>
 .home {
+	height: 120vh;
 }
 </style>
