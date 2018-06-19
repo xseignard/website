@@ -1,7 +1,15 @@
 <template>
 	<div class="home">
-		<img src="@/assets/images/logo.png">
-		<h1> STRIKING HEADLINES </h1>
+		<div class="home--background"></div>
+		<div class="home--top">
+			<h1> STRIKING HEADLINES </h1>
+			<button type="button" name="main-button">
+				<p>SEE WHAT I MAKE</p>
+			</button>
+		</div>
+		<div class="home--content">
+			
+		</div>
 	</div>
 </template>
 
