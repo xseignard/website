@@ -4,14 +4,8 @@
 		<h1>XAVIER SEIGNARD</h1>
 		<div class="about--content">
 			<div class="about--content--left">
-				<p>Utque aegrum corpus quassari etiam levibus solet offensis,
-					ita animus eius <strong>angustus</strong> et tener, quicquid increpuisset, ad
-					salutis suae dispendium existimans factum aut cogitatum, insontium
-					caedibus fecit victoriam luctuosam.</p>
-				<p>Utque aegrum corpus quassari etiam levibus solet offensis,
-					ita animus eius <strong>angustus</strong> et tener, quicquid increpuisset, ad
-					salutis suae dispendium existimans factum aut <strong>cogitatum</strong>, insontium
-					caedibus fecit victoriam luctuosam.</p>
+				<p>{{aboutMeFirst}}</p>
+				<p>{{aboutMeSecond}}</p>
 			</div>
 			<div class="about--content--right">
 				<div class="about--content--right--domains">
@@ -39,11 +33,18 @@
 <script>
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
+import VueScrollReveal from 'vue-scroll-reveal';
 
 export default {
 	components: {
 		FooterStyle,
 		NavStyle,
+	},
+	data(){
+		return{
+			aboutMeFirst :'Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener, quicquid increpuisset, adsalutis suae dispendium existimans factum aut cogitatum, insontiumcaedibus fecit victoriam luctuosam.',
+			aboutMeSecond :'Has autem provincias, quas Orontes ambiens amnis imosque pedes Cassii montis illius celsi praetermeans funditur in Parthenium mare, Gnaeus Pompeius superato Tigrane regnis Armeniorum abstractas dicioni Romanae coniunxit.'
+		}
 	},
 };
 </script>

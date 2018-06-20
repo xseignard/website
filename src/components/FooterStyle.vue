@@ -6,7 +6,7 @@
     <div id="contacts">
       <div id="contacts--contact">
         <a href="mailto:xavier.seignard+drangies@gmail.com"><p>xavier.seignard+drangies@gmail.com</p></a>
-        <p>06.00.00.00.00</p>
+        <a href="tel:+33600000000"><p>06.00.00.00.00</p></a>
       </div>
       <div id="contacts--social">
         <a href="https://github.com/xseignard" target="_blank"><img src="@/assets/images/github.svg" alt=""></a>
@@ -68,6 +68,14 @@ svg {
 a {
 	text-decoration: none;
 	color: white;
+	transition:0.25s ease-out;
+}
+a:hover{
+	color:#4FDAB1;
+}
+#contacts--social a:hover{
+	transform:scale(1.1);
+	filter:invert(.5) sepia(1) saturate(4) hue-rotate(340deg);
 }
 #mentions p {
 	font-size: 0.5em;

@@ -20,5 +20,8 @@
 		"> 1%",
 		"last 2 versions",
 		"not ie <= 8"
-	]
+	],
+	"dependencies": {
+		"vue-scroll-reveal": "^1.0.8"
+	}
 }

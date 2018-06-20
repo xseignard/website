@@ -1,7 +1,7 @@
 <template>
 	<div class="page home">
 		<NavStyle />
-		<div class="home--background"></div>
+		<div :style ="{backgroundImage : activeBackground}"class="home--background"></div>
 		<div class="home--top">
 			<div class="home--top--content">
 				<h1> STRIKING <br>HEADLINES </h1>
@@ -15,7 +15,7 @@
 		<div class="home--content">
 			<div class="home--content--about">
 				<h2> &#151; Hello, I'm Xavier</h2>
-				<p>Martinus agens illas provincias pro praefectis aerumnas tium graviter gemens saepeque obsecrans, ut ab omni culpa inmunibus parceretur, cum non inpetraret, minabatur se discessurum: ut saltem id metuens perquisitor malivolus tandem desineret quieti coalitos.</p>
+				<p>{{aboutText}}</p>
 				<router-link to="/about">
 					<button type="button" class="secondary-button">
 						<p>MORE ABOUT ME</p>
@@ -52,6 +52,8 @@
 <script>
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
+import activeBackground from '@/assets/images/BackgroundTemplate.jpg';
+import imageTemplate from '@/assets/images/ImgTemplate.jpg';
 
 export default {
 	components: {
@@ -60,13 +62,15 @@ export default {
 	},
 	data(){
 		return{
+			activeBackground:`url(${activeBackground})`,
+			aboutText:'Martinus agens illas provincias pro praefectis aerumnas tium graviter gemens saepeque obsecrans, ut ab omni culpa inmunibus parceretur, cum non inpetraret, minabatur se discessurum: ut saltem id metuens perquisitor malivolus tandem desineret quieti coalitos.',
 			project1:'THE LATEST PROJECT',
 			project2:'THE SECOND TO LAST PROJECT',
 			backgroundStyleOne:{
-				backgroundImage:'url(/img/ImgTemplate.7278a586.jpg)'
+				backgroundImage:`url(${imageTemplate})`
 			},
 			backgroundStyleTwo:{
-				backgroundImage:'url(/img/ImgTemplate.7278a586.jpg)'
+				backgroundImage:`url(${activeBackground})`
 			}
 		}
 	}
@@ -83,7 +87,6 @@ export default {
 	width:100vw;
 }
 .home--background{
-	background-image: url(../assets/images/BackgroundTemplate.jpg);
 	background-size: cover;
 	background-position: center;
 	z-index:-1;
@@ -193,7 +196,11 @@ h2{
 	height:100%;
 	position: absolute;
 	background-color: #4FDAB1;
-	opacity:0.5;
+	bottom:0;
+	opacity:.4;
+}
+.home--content--projects--second .color{
+	background-color: #F88429;
 }
 .secondary-button{
 	margin-top:50px;

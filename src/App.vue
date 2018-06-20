@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import anime from 'animejs';
 import PageTransition from './components/PageTransition.vue';
 
 export default {
