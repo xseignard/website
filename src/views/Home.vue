@@ -32,7 +32,7 @@
 							<p>{{project1}}</p>
 						</div>
 						<div class="project home--content--projects--second">
-							<div class="img">
+							<div :style="backgroundStyleTwo" class="img">
 								<div class="color"></div>
 							</div>
 							<p>{{project2}}</p>
@@ -63,6 +63,9 @@ export default {
 			project1:'THE LATEST PROJECT',
 			project2:'THE SECOND TO LAST PROJECT',
 			backgroundStyleOne:{
+				backgroundImage:'url(/img/ImgTemplate.7278a586.jpg)'
+			},
+			backgroundStyleTwo:{
 				backgroundImage:'url(/img/ImgTemplate.7278a586.jpg)'
 			}
 		}
