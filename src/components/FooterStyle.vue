@@ -1,27 +1,26 @@
 <template>
 	<div class="footer">
-    <svg width="300px" height="1px">
-      <line x1="0" y1="0" x2="300" y2="0"/>
-    </svg>
-    <div id="contacts">
-      <div id="contacts--contact">
-        <a href="mailto:xavier.seignard+drangies@gmail.com"><p>xavier.seignard+drangies@gmail.com</p></a>
-        <a href="tel:+33600000000"><p>06.00.00.00.00</p></a>
-      </div>
-      <div id="contacts--social">
-        <a href="https://github.com/xseignard" target="_blank"><img src="@/assets/images/github.svg" alt=""></a>
-        <a href="https://twitter.com/xavier_seignard?lang=fr" target="_blank"><img src="@/assets/images/twitter.svg" alt=""></a>
-        <a href="#"><img src="@/assets/images/linkedin.svg" alt=""></a>
-      </div>
-    </div>
-    <div id="mentions">
-      <p>2018 | <a href="#">mentions légales</a></p>
-    </div>
+		<svg width="300px" height="1px">
+			<line x1="0" y1="0" x2="300" y2="0"/>
+		</svg>
+		<div id="contacts">
+			<div id="contacts--contact">
+				<p><a href="mailto:xavier.seignard+drangies@gmail.com">xavier.seignard@gmail.com</a></p>
+				<a href="tel:+33683037374">+33 (0)6 83 03 73 74</a>
+			</div>
+			<div id="contacts--social">
+				<a href="https://github.com/xseignard" target="_blank"><img src="@/assets/images/github.svg" alt=""></a>
+				<a href="https://twitter.com/xavier_seignard?lang=fr" target="_blank"><img src="@/assets/images/twitter.svg" alt=""></a>
+				<a href="#"><img src="@/assets/images/linkedin.svg" alt=""></a>
+			</div>
+		</div>
+		<div id="mentions">
+			<p>2018 | <a href="#">mentions légales</a></p>
+		</div>
 	</div>
 </template>
 
 <script>
-
 export default {
 	name: 'FooterStyle',
 };
@@ -44,7 +43,7 @@ svg {
 	stroke-linecap: round;
 	stroke-width: 0.5px;
 	margin-bottom: 3%;
-	stroke:#8B73CF;
+	stroke: #8b73cf;
 }
 #contacts {
 	display: flex;
@@ -68,16 +67,16 @@ svg {
 a {
 	text-decoration: none;
 	color: white;
-	transition:0.25s ease-out;
+	transition: 0.25s ease-out;
 }
-a:hover{
-	color:#4FDAB1;
+a:hover {
+	color: #4fdab1;
 }
-#contacts--social a:hover{
-	transform:scale(1.1);
-	filter:invert(.5) sepia(1) saturate(4) hue-rotate(340deg);
+#contacts--social a:hover {
+	transform: scale(1.1);
+	filter: invert(0.5) sepia(1) saturate(4) hue-rotate(340deg);
 }
 #mentions p {
-	font-size: 0.5em;
+	font-size: 0.55em;
 }
 </style>

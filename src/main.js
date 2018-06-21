@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import store from './store';
 import router from './router';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
@@ -7,14 +8,17 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import 'normalize.css';
 import '@/assets/base.css';
 
-Vue.config.productionTip = false;
 new Vue({
 	router,
+	store,
 	render: h => h(App),
 	data: {
 		ps: null,
 	},
-	mounted: function() {
+	async created() {
+		await this.$store.dispatch('getProjects');
+	},
+	mounted() {
 		this.ps = new PerfectScrollbar('#app', {
 			wheelSpeed: 2,
 			wheelPropagation: true,
@@ -22,7 +26,7 @@ new Vue({
 		});
 	},
 	watch: {
-		$route: function() {
+		$route() {
 			setTimeout(() => {
 				this.ps.update();
 			}, 1000);

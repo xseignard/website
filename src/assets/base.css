@@ -39,13 +39,3 @@ h1 {
 	display: flex;
 	flex-direction: column;
 }
-/*
- * class added by vue on a leaving page during a transition
- * we pass the leaving page in absolute to avoid the scrolling bar to appear
- * when the entering and leaving page are within the app container
- */
-.v-leave-active {
-	position: absolute;
-	z-index: -1;
-	width: 100%;
-}

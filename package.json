@@ -4,17 +4,21 @@
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build"
+		"build": "vue-cli-service build",
+		"deploy": "node misc/deploy"
 	},
 	"devDependencies": {
 		"@vue/cli-plugin-babel": "^3.0.0-beta.15",
 		"@vue/cli-service": "^3.0.0-beta.15",
 		"animejs": "^2.2.0",
+		"dotenv": "^6.0.0",
+		"ftp-deploy": "^1.2.2",
 		"normalize.css": "^8.0.0",
 		"perfect-scrollbar": "^1.4.0",
 		"vue": "^2.5.16",
 		"vue-router": "^3.0.1",
-		"vue-template-compiler": "^2.5.16"
+		"vue-template-compiler": "^2.5.16",
+		"vuex": "^3.0.1"
 	},
 	"browserslist": [
 		"> 1%",

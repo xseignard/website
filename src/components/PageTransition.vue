@@ -43,7 +43,8 @@ export default {
 			this.fill = getRandomColor();
 		},
 		enter: function(cb) {
-			anime({
+			const tl = anime.timeline();
+			tl.add({
 				targets: this,
 				height: '100vh',
 				round: 1,
@@ -52,8 +53,13 @@ export default {
 				complete: () => {
 					cb();
 				},
+			}).add({
+				targets: '#app',
+				scrollTop: 0,
+				easing: 'linear',
+				duration: duration / 5,
+				offset: `-=${duration}`,
 			});
-			document.querySelector('#app').scrollTop = 0;
 		},
 		afterEnter: function(el) {
 			const tl = anime.timeline();
