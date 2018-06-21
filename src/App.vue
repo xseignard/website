@@ -29,17 +29,17 @@ export default {
 		},
 	},
 	methods: {
-		beforeEnter: function(el) {
+		beforeEnter(el) {
 			this.$refs.transition.beforeEnter();
 			el.style.opacity = 0;
 		},
-		enter: function(el, done) {
+		enter(el, done) {
 			this.$refs.transition.enter(done);
 		},
-		afterEnter: function(el) {
+		afterEnter(el) {
 			this.$refs.transition.afterEnter(el);
 		},
-		leave: function(el, done) {
+		leave(el, done) {
 			this.$refs.transition.leave(el, done);
 		},
 	},

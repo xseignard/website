@@ -16,7 +16,7 @@ new Vue({
 		ps: null,
 	},
 	async created() {
-		await this.$store.dispatch('getProjects');
+		await this.$store.dispatch('getData');
 	},
 	mounted() {
 		this.ps = new PerfectScrollbar('#app', {

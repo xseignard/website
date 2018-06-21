@@ -4,7 +4,7 @@
 		<div :style ="{backgroundImage : activeBackground}"class="home--background"></div>
 		<div class="home--top">
 			<div class="home--top--content">
-				<h1> STRIKING <br>HEADLINES </h1>
+				<h1 v-html="about.home_headline" />
 				<router-link to="/projects">
 					<button type="button" class="main-button" >
 						<p>SEE WHAT I MAKE</p>
@@ -15,7 +15,7 @@
 		<div class="home--content">
 			<div class="home--content--about">
 				<h2> &#151; Hello, I'm Xavier</h2>
-				<p>{{aboutText}}</p>
+				<p v-html="about.home_intro" />
 				<router-link to="/about">
 					<button type="button" class="secondary-button">
 						<p>MORE ABOUT ME</p>
@@ -29,7 +29,7 @@
 							<div :style="project1.style" class="img">
 								<div class="color"></div>
 							</div>
-							<p v-html="project1.title" />
+							<p class="intro" v-html="project1.title" />
 						</router-link>
 						<div class="project home--content--projects--second">
 							<div :style="backgroundStyleTwo" class="img">
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
 import activeBackground from '@/assets/images/BackgroundTemplate.jpg';
@@ -71,17 +72,16 @@ export default {
 			},
 		};
 	},
-	computed: {
-		project1() {
-			return {
-				title: this.$store.state.projects[0].title,
-				id: this.$store.state.projects[0].id,
-				style: {
-					backgroundImage: `url(${this.$store.state.projects[0].featured_image.url})`,
-				},
-			};
-		},
-	},
+	computed: mapState({
+		project1: state => ({
+			title: state.projects[0].title,
+			id: state.projects[0].id,
+			style: {
+				backgroundImage: `url(${state.projects[0].featured_image.url})`,
+			},
+		}),
+		about: state => state.about,
+	}),
 };
 </script>
 
@@ -168,7 +168,7 @@ h2 {
 	flex-direction: column;
 }
 .home--content--about p {
-	margin-top: 0;
+	margin-top: -1em;
 }
 .home--content--projects {
 	grid-area: projects;

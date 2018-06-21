@@ -6,6 +6,7 @@ export default new Vuex.Store({
 	state: {
 		projects: [],
 		loading: true,
+		about: {},
 	},
 	getters: {
 		getProjectById: state => id => {
@@ -16,13 +17,15 @@ export default new Vuex.Store({
 		GET_PROJECTS(state, projects) {
 			state.projects = projects;
 		},
+		GET_ABOUT(state, about) {
+			state.about = about;
+		},
 		SET_LOADING(state, loading) {
 			state.loading = loading;
 		},
 	},
 	actions: {
 		async getProjects({ commit }) {
-			commit('SET_LOADING', true);
 			const projectUrl = 'https://wp.drangies.fr/wp-json/wp/v2/project';
 			const res = await fetch(projectUrl + '?per_page=100');
 			const projects = await res.json();
@@ -37,6 +40,19 @@ export default new Vuex.Store({
 					};
 				})
 			);
+		},
+		async getAbout({ commit }) {
+			const aboutUrl = 'https://wp.drangies.fr/wp-json/wp/v2/about';
+			const res = await fetch(aboutUrl);
+			const about = await res.json();
+			commit('GET_ABOUT', {
+				name: about[0].title.rendered,
+				...about[0].acf,
+			});
+		},
+		async getData({ commit }) {
+			commit('SET_LOADING', true);
+			await Promise.all([this.dispatch('getProjects'), this.dispatch('getAbout')]);
 			setTimeout(() => commit('SET_LOADING', false), 1000);
 		},
 	},

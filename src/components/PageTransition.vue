@@ -30,19 +30,19 @@ export default {
 		fill: '#F88429',
 	}),
 	computed: {
-		style: function() {
+		style() {
 			return this.visible ? 'visibility: visible' : 'visibility: hidden';
 		},
 	},
 	methods: {
-		beforeEnter: function(cb) {
+		beforeEnter(cb) {
 			// reset values before enter animation
 			this.height = 0;
 			this.y = 0;
 			this.visible = true;
 			this.fill = getRandomColor();
 		},
-		enter: function(cb) {
+		enter(cb) {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
@@ -61,7 +61,7 @@ export default {
 				offset: `-=${duration}`,
 			});
 		},
-		afterEnter: function(el) {
+		afterEnter(el) {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
@@ -80,7 +80,7 @@ export default {
 				offset: `-=${duration * 1.2}`,
 			});
 		},
-		leave: function(el, done) {
+		leave(el, done) {
 			anime({
 				targets: el,
 				opacity: 0,

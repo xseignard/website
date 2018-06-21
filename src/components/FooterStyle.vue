@@ -5,13 +5,13 @@
 		</svg>
 		<div id="contacts">
 			<div id="contacts--contact">
-				<p><a href="mailto:xavier.seignard+drangies@gmail.com">xavier.seignard@gmail.com</a></p>
-				<a href="tel:+33683037374">+33 (0)6 83 03 73 74</a>
+				<p><a :href="about.email.value">{{about.email.displayed}}</a></p>
+				<a :href="about.phone.value">{{about.phone.displayed}}</a>
 			</div>
 			<div id="contacts--social">
-				<a href="https://github.com/xseignard" target="_blank"><img src="@/assets/images/github.svg" alt=""></a>
-				<a href="https://twitter.com/xavier_seignard?lang=fr" target="_blank"><img src="@/assets/images/twitter.svg" alt=""></a>
-				<a href="#"><img src="@/assets/images/linkedin.svg" alt=""></a>
+				<a :href="about.github" target="_blank"><img src="@/assets/images/github.svg" alt=""></a>
+				<a :href="about.twitter" target="_blank"><img src="@/assets/images/twitter.svg" alt=""></a>
+				<a :href="about.linkedin" target="_blank"><img src="@/assets/images/linkedin.svg" alt=""></a>
 			</div>
 		</div>
 		<div id="mentions">
@@ -21,8 +21,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
 	name: 'FooterStyle',
+	computed: mapState({
+		about: state => state.about,
+	}),
 };
 </script>
 

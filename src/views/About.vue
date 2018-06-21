@@ -1,12 +1,9 @@
 <template>
 	<div class="page about">
 		<NavStyle />
-		<h1>XAVIER SEIGNARD</h1>
+		<h1>{{about.name}}</h1>
 		<div class="about--content">
-			<div class="about--content--left">
-				<p>{{aboutMeFirst}}</p>
-				<p>{{aboutMeSecond}}</p>
-			</div>
+			<div class="about--content--left" v-html="about.about_intro" />
 			<div class="about--content--right">
 				<div class="about--content--right--domains">
 					<p>Web<br>development</p>
@@ -31,6 +28,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
 import VueScrollReveal from 'vue-scroll-reveal';
@@ -40,12 +38,9 @@ export default {
 		FooterStyle,
 		NavStyle,
 	},
-	data(){
-		return{
-			aboutMeFirst :'Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener, quicquid increpuisset, adsalutis suae dispendium existimans factum aut cogitatum, insontiumcaedibus fecit victoriam luctuosam.',
-			aboutMeSecond :'Has autem provincias, quas Orontes ambiens amnis imosque pedes Cassii montis illius celsi praetermeans funditur in Parthenium mare, Gnaeus Pompeius superato Tigrane regnis Armeniorum abstractas dicioni Romanae coniunxit.'
-		}
-	},
+	computed: mapState({
+		about: state => state.about,
+	}),
 };
 </script>
 
@@ -55,6 +50,9 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	flex-grow: 1;
+}
+.about h1 {
+	text-transform: uppercase;
 }
 .about--content {
 	width: 100%;
