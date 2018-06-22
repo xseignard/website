@@ -25,18 +25,18 @@
 			<div class="home--content--projects">
 				<h2> &#151; Newest projects</h2>
 					<div class="home--content--projects--list">
-						<router-link to="/project/11" class="project home--content--projects--first">
+						<router-link :to="`/project/${project1.id}`" class="project">
 							<div :style="project1.style" class="img">
-								<div class="color"></div>
+								<div class="color" :style="`background-color: ${getProjectColor(project1)}`"></div>
 							</div>
 							<p class="intro" v-html="project1.title" />
 						</router-link>
-						<div class="project home--content--projects--second">
-							<div :style="backgroundStyleTwo" class="img">
-								<div class="color"></div>
+						<router-link :to="`/project/${project2.id}`" class="project">
+							<div :style="project2.style" class="img">
+								<div class="color" :style="`background-color: ${getProjectColor(project2)}`"></div>
 							</div>
-							<p>{{project2}}</p>
-						</div>
+							<p class="intro" v-html="project2.title" />
+						</router-link>
 					</div>
 				<router-link to="/projects">
 					<button type="button" class="secondary-button">
@@ -50,11 +50,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
 import activeBackground from '@/assets/images/BackgroundTemplate.jpg';
-import imageTemplate from '@/assets/images/ImgTemplate.jpg';
 
 export default {
 	components: {
@@ -64,24 +63,30 @@ export default {
 	data() {
 		return {
 			activeBackground: `url(${activeBackground})`,
-			aboutText:
-				'Martinus agens illas provincias pro praefectis aerumnas tium graviter gemens saepeque obsecrans, ut ab omni culpa inmunibus parceretur, cum non inpetraret, minabatur se discessurum: ut saltem id metuens perquisitor malivolus tandem desineret quieti coalitos.',
-			project2: 'THE SECOND TO LAST PROJECT',
-			backgroundStyleTwo: {
-				backgroundImage: `url(${activeBackground})`,
-			},
 		};
 	},
-	computed: mapState({
-		project1: state => ({
-			title: state.projects[0].title,
-			id: state.projects[0].id,
-			style: {
-				backgroundImage: `url(${state.projects[0].featured_image.url})`,
-			},
+	computed: {
+		...mapState({
+			project1: state => ({
+				title: state.projects[0].title,
+				id: state.projects[0].id,
+				style: {
+					backgroundImage: `url(${state.projects[0].featured_image.url})`,
+				},
+				type: state.projects[0].type[0],
+			}),
+			project2: state => ({
+				title: state.projects[1].title,
+				id: state.projects[1].id,
+				style: {
+					backgroundImage: `url(${state.projects[1].featured_image.url})`,
+				},
+				type: state.projects[1].type[0],
+			}),
+			about: state => state.about,
 		}),
-		about: state => state.about,
-	}),
+		...mapGetters(['getProjectColor']),
+	},
 };
 </script>
 
@@ -208,12 +213,8 @@ h2 {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #4fdab1;
 	bottom: 0;
 	opacity: 0.4;
-}
-.home--content--projects--second .color {
-	background-color: #f88429;
 }
 .secondary-button {
 	margin-top: 50px;

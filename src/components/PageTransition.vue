@@ -12,14 +12,9 @@
 
 <script>
 import anime from 'animejs';
+import { getRandomColor } from '@/utils';
 
 const duration = 500;
-
-const getRandomColor = () => {
-	const colors = ['#F88429', '#4FDAB1', '#8B73CF'];
-	let c = Math.floor(Math.random() * colors.length);
-	return colors[c];
-};
 
 export default {
 	name: 'transition',

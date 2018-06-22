@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import { colors } from '@/utils';
+
 Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
@@ -11,6 +13,17 @@ export default new Vuex.Store({
 	getters: {
 		getProjectById: state => id => {
 			return state.projects.find(project => project.id === parseInt(id, 10));
+		},
+		getProjectColor: state => project => {
+			console.log(project);
+			switch (project.type) {
+				case 'web':
+					return colors[1];
+				case 'installation':
+					return colors[0];
+				default:
+					return colors[3];
+			}
 		},
 	},
 	mutations: {
