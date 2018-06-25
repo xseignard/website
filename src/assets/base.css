@@ -23,7 +23,7 @@ h1 {
 	text-transform: uppercase;
 	margin-left: 15%;
 	position: absolute;
-	top: 15%;
+	top: 15vh;
 }
 #app {
 	font-family: 'Open Sans', sans-serif;

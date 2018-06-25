@@ -128,7 +128,7 @@ h1 {
 }
 a {
 	align-self: flex-end;
-	height: 50px;
+	margin-top: 50px;
 }
 .main-button {
 	padding: 0 40px 0 40px;
@@ -191,6 +191,7 @@ h2 {
 	height: 100%;
 	text-decoration: none;
 	color: #fff;
+	margin:0;
 }
 .project {
 	display: flex;
@@ -217,7 +218,6 @@ h2 {
 	opacity: 0.6;
 }
 .secondary-button {
-	margin-top: 50px;
 	border: 2px solid white;
 	border-radius: 3px;
 	padding: 5px 25px 5px 25px;

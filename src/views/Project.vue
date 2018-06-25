@@ -7,7 +7,7 @@
 		<h1 v-html="project.title" />
 		<div class="project--top">
 			<div class="project--presentation">
-				<div class="featuredimage" :style="project0.style"></div>
+				<div class="img heroimage" :style="`${getBgImage(project.featured_image)}`"></div>
 				<div class="details">
 					<p class="type" v-for="type in project.type"> {{type}}</p>
 					<p v-html ="project.date"></p>
@@ -20,12 +20,19 @@
 			</div>
 		</div>
 		<div class="project--content">
-			<div class="introduction">
-				<div class="introduction--description">
-					<p v-html="project.description"></p>
-				</div>
-				<div class="introduction--image1"></div>
-				<div class="introduction--image1"></div>
+			<div class="content--description">
+				<p v-html="project.description"></p>
+			</div>
+			<div v-for="image in project.gallery" class="content--img img">
+				<img :src="image.url" :alt="image.title">
+			</div>
+			<div class="content--focus focus1">
+				<h2 v-html="project.focus_1.title"></h2>
+				<p v-html="project.focus_1.content"></p>
+			</div>
+			<div class="content--focus focus2">
+				<h2 v-html="project.focus_2.title"></h2>
+				<p v-html="project.focus_2.content"></p>
 			</div>
 		</div>
 		<FooterStyle ref="footer" />
@@ -46,23 +53,31 @@ export default {
 	},
 	computed: {
 		...mapState({
-			project0: state => ({
-				style: {
-					backgroundImage: `url(${state.projects[0].featured_image.url})`,
-				},
-			}),
+			project() {
+				return this.$store.getters.getProjectById(this.$route.params.id);
+			},
 		}),
-		project() {
-			return this.$store.getters.getProjectById(this.$route.params.id);
-		},
 		...mapGetters(['getProjectColor']),
 	},
+	methods:{
+		getBgImage(img) {
+			return `background-image: url(${img.url})`;
+		}
+	}
 };
 </script>
 
 <style scoped>
+
+	h2{
+		text-transform: uppercase;
+		font-family: 'Qontra';
+	}
+	h2::before{
+		content:'– ';
+	}
 	.project--top{
-		height:75vh;
+		height:80vh;
 		width: 100%;
 		display: flex;
 		justify-content: center;
@@ -71,7 +86,7 @@ export default {
 	.project--presentation{
 		display:flex;
 		box-sizing: border-box;
-		padding: 0 15% 0 15%;
+		padding: 0 15% 0 30%;
 	}
 	.color{
 		position:absolute;
@@ -93,23 +108,47 @@ export default {
 	.details .type{
 		text-transform: uppercase;
 	}
-	.featuredimage{
+	.heroimage{
 		width:40vw;
 		height:45vh;
+	}
+	/* NOTE: PROJECT CONTENT **********************************/
+	.img{
 		background-size: cover;
 		background-position: center;
 		filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.3));
 	}
-	/* NOTE: PROJECT CONTENT **********************************/
 	.project--content{
+		margin-top: 9%;
 		padding: 0 15% 0 15%;
 		box-sizing: border-box;
 		position:relative;
+		display: grid;
+		justify-content: center;
+		grid-gap : 2vh 2vh;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: auto;
+		grid-template-areas:
+		"description description image_1";
 	}
-	.introduction{
-		display: inline-grid;
-		grid-template-areas: 1fr 1fr 1fr;
-		grid-template-rows: 'text img1 img2';
-		justify-content: space-between;
+	.content--description{
+		grid-area: description;
+		margin-top: -4%;
+		width:70%;
+	}
+	.focus1{
+		grid-area: 2 / 1 / 3 / 3;
+	}
+	.focus2{
+		grid-area: 3 / 3 / 4 / 4;
+		text-align: right;
+	}
+	img{
+		height:25vh;
+		object-fit: cover;
+		transition: 0.15s ease-out;
+	}
+	img:hover{
+		transform:scale(1.02);
 	}
 </style>
