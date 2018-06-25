@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div id="mentions">
-			<p>2018 | <a href="#">mentions légales</a></p>
+			<p>{{new Date().getFullYear()}}| <a href="#">mentions légales</a></p>
 		</div>
 	</div>
 </template>

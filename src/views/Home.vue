@@ -214,7 +214,7 @@ h2 {
 	height: 100%;
 	position: absolute;
 	bottom: 0;
-	opacity: 0.4;
+	opacity: 0.6;
 }
 .secondary-button {
 	margin-top: 50px;
