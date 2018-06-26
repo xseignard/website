@@ -207,7 +207,7 @@ h2 {
 	height: 100%;
 	text-decoration: none;
 	color: #fff;
-	margin:0;
+	margin: 0;
 }
 .project {
 	display: flex;

@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Project from './views/Project.vue';
 import Projects from './views/Projects.vue';
+import Test from './views/Test.vue';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
 			path: '/project/:id',
 			name: 'project',
 			component: Project,
+		},
+		{
+			path: '/test',
+			name: 'test',
+			component: Test,
 		},
 	],
 });

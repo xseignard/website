@@ -4,11 +4,14 @@ import store from './store';
 import router from './router';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import 'intersection-observer';
 
+import '@/directives/scroll';
 import 'normalize.css';
 import '@/assets/base.css';
 
 new Vue({
+	el: '#app',
 	router,
 	store,
 	render: h => h(App),
@@ -20,9 +23,7 @@ new Vue({
 	},
 	mounted() {
 		this.ps = new PerfectScrollbar('#app', {
-			wheelSpeed: 2,
-			wheelPropagation: true,
-			minScrollbarLength: 20,
+			suppressScrollX: true,
 		});
 	},
 	watch: {
@@ -32,4 +33,4 @@ new Vue({
 			}, 1000);
 		},
 	},
-}).$mount('#app');
+});

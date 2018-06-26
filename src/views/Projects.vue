@@ -19,7 +19,6 @@ export default {
 		FooterStyle,
 		ProjectListItem,
 		NavStyle,
-
 	},
 };
 </script>

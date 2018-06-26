@@ -3,18 +3,24 @@
 		<NavStyle />
 		<h1>{{about.name}}</h1>
 		<div class="about--content">
-			<div class="about--content--left" v-html="about.about_intro" />
+			<div class="about--content--left">
+				<div v-html="about.home_intro" />
+				<div v-html="about.about_intro" />
+			</div>
 			<div class="about--content--right">
 				<div class="about--content--right--domains">
 					<p>Web<br>development</p>
 					<svg width="14px" height="2px">
-						<line x1="1" y1="1" x2="13" y2="1" stroke="#4FDAB1"/>
+						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[0]}`"/>
 					</svg>
 					<p>Interactive<br>installations</p>
 					<svg width="14px" height="2px">
-						<line x1="1" y1="1" x2="13" y2="1" stroke="#8B73CF"/>
+						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[1]}`"/>
 					</svg>
-					<p>Live<br>performances</p>
+					<p>Other</p>
+					<svg width="14px" height="2px">
+						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[2]}`"/>
+					</svg>
 				</div>
 				<div class="about--content--right--img">
 					<svg width="100%" height="100%">
@@ -31,12 +37,15 @@
 import { mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
-import VueScrollReveal from 'vue-scroll-reveal';
+import { colors } from '@/utils';
 
 export default {
 	components: {
 		FooterStyle,
 		NavStyle,
+	},
+	data() {
+		return { colors };
 	},
 	computed: mapState({
 		about: state => state.about,
@@ -81,6 +90,9 @@ export default {
 	font-family: 'Qontra';
 	font-size: 1.25rem;
 	padding-right: 5%;
+}
+.about--content--right--domains p:first-of-type {
+	margin-top: 0;
 }
 .about--content--right--domains svg {
 	fill: none;
