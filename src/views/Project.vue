@@ -2,7 +2,7 @@
 	<div class="page project">
 		<NavStyle />
 		<svg class="color" width="100%" height="55vh">
-			<rect width="100%" height="100%" :style="`fill:#4FDAB1`"/>
+			<rect width="100%" height="100%" :style="`fill:${getProjectColor(project)}`"/>
 		</svg>
 		<h1 v-html="project.title" />
 		<div class="project--top">
@@ -10,12 +10,15 @@
 				<div class="img heroimage" :style="`${getBgImage(project.featured_image)}`"></div>
 				<div class="details">
 					<p class="type" v-for="type in project.type"> {{type}}</p>
+					<p v-html="'– ' + project.type_of_client"></p>
 					<p v-html ="project.date"></p>
-					<ul>
-						<li v-for="t in project.technologies">
-							<p>{{ t.name + ','}}</p>
-						</li>
-					</ul>
+					<p>
+						<ul>
+							<li v-for="t in project.technologies">
+								{{ t.name}}
+							</li>
+						</ul>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -86,7 +89,7 @@ export default {
 	.project--presentation{
 		display:flex;
 		box-sizing: border-box;
-		padding: 0 15% 0 30%;
+		padding: 0 15% 0 27%;
 	}
 	.color{
 		position:absolute;
@@ -94,12 +97,15 @@ export default {
 	}
 	.details{
 		margin-left:4%;
+		min-width : 300px;
 	}
 	.details ul{
 		padding:0;
 		list-style-type: none;
-		display:flex;
 		margin:0;
+	}
+	li:not(:last-of-type)::after{
+		content:',';
 	}
 	.details p{
 		letter-spacing: 1px;
@@ -107,6 +113,7 @@ export default {
 	}
 	.details .type{
 		text-transform: uppercase;
+		font-weight: bold;
 	}
 	.heroimage{
 		width:40vw;
@@ -119,13 +126,16 @@ export default {
 		filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.3));
 	}
 	.project--content{
-		margin-top: 9%;
+		max-width:100%;
+		margin-top: 17vh;
+		margin-bottom: 25vh;
 		padding: 0 15% 0 15%;
 		box-sizing: border-box;
 		position:relative;
 		display: grid;
-		justify-content: center;
-		grid-gap : 2vh 2vh;
+		justify-content: space-between;
+		justify-items:start;
+		grid-gap : 17vh 2vh;
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-rows: auto;
 		grid-template-areas:
@@ -134,21 +144,35 @@ export default {
 	.content--description{
 		grid-area: description;
 		margin-top: -4%;
-		width:70%;
+		max-width: 40vw;
+	}
+	.content--focus{
+		max-width:37vw;
+		align-self: center;
 	}
 	.focus1{
 		grid-area: 2 / 1 / 3 / 3;
+		justify-self:start;
 	}
 	.focus2{
-		grid-area: 3 / 3 / 4 / 4;
+		grid-area: 3 / 2 / 4 / 4;
 		text-align: right;
 	}
-	img{
-		height:25vh;
-		object-fit: cover;
-		transition: 0.15s ease-out;
+	.content--img:nth-child(2){
+		justify-self:end;
 	}
-	img:hover{
-		transform:scale(1.02);
+	.content--img:nth-of-type(3){
+		margin-right: 4vw;
+	}
+	.content--img:nth-of-type(4){
+			margin-left:4vw;
+	}
+	.content--img:nth-of-type(5){
+		grid-area: 4 / 3 / 5 / 4 ;
+	}
+	img{
+		max-width: 450px;
+		max-height: 500px;
+		object-fit: cover;
 	}
 </style>

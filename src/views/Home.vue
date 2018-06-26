@@ -4,7 +4,10 @@
 		<div :style ="{backgroundImage : activeBackground}"class="home--background"></div>
 		<div class="home--top">
 			<div class="home--top--content">
-				<h1 v-html="about.home_headline" />
+				<div class="top--content--title">
+					<h1 v-html="about.home_headline" />
+					<p v-html ="'– ' + about.home_tagline"></p>
+				</div>
 				<router-link to="/projects">
 					<button type="button" class="main-button" >
 						<p>SEE WHAT I MAKE</p>
@@ -112,19 +115,32 @@ export default {
 	align-items: flex-end;
 }
 .home--top--content {
+	position: relative;
 	width: 100vw;
-	height: 30vh;
+	height: 27vh;
 	box-sizing: border-box;
 	padding: 0 20% 0 20%;
 	margin-bottom: 10%;
 	display: flex;
 	justify-content: space-between;
 }
+.top--content--title{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.top--content--title p{
+	font-family: 'Qontra';
+	font-weight:lighter;
+	text-transform: lowercase;
+	font-size:1.35rem;
+}
 h1 {
 	margin-left: 0;
+	margin-bottom:0;
 	font-size: 4rem;
 	letter-spacing: 6px;
-	position: relative;
+	position: static;
 }
 a {
 	align-self: flex-end;

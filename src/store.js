@@ -22,7 +22,7 @@ export default new Vuex.Store({
 				case 'installation':
 					return colors[0];
 				default:
-					return colors[3];
+					return colors[2];
 			}
 		},
 	},
