@@ -15,14 +15,13 @@ export default new Vuex.Store({
 			return state.projects.find(project => project.id === parseInt(id, 10));
 		},
 		getProjectColor: state => project => {
-			console.log(project);
 			switch (project.type) {
 				case 'web':
-					return colors[1];
-				case 'installation':
 					return colors[0];
+				case 'installation':
+					return colors[1];
 				default:
-					return colors[3];
+					return colors[2];
 			}
 		},
 	},

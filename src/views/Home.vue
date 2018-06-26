@@ -4,7 +4,10 @@
 		<div :style ="{backgroundImage : activeBackground}"class="home--background"></div>
 		<div class="home--top">
 			<div class="home--top--content">
-				<h1 v-html="about.home_headline" />
+				<div>
+					<h1 v-html="about.home_headline" />
+					<h2 v-html="about.home_tagline" />
+				</div>
 				<router-link to="/projects">
 					<button type="button" class="main-button" >
 						<p>SEE WHAT I MAKE</p>
@@ -191,7 +194,7 @@ h2 {
 	height: 100%;
 	text-decoration: none;
 	color: #fff;
-	margin:0;
+	margin: 0;
 }
 .project {
 	display: flex;
