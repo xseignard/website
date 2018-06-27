@@ -1,22 +1,38 @@
 <template>
 	<div id="nav">
-		<router-link to="/">HOME
-			<svg width="100%" height="100%">
+		<router-link to="/" :style="style">HOME
+			<svg width="100%" height="100%" :style="style">
 				<line x1="15%" y1="50%" x2="85%" y2="50%"/>
 			</svg>
 		</router-link>
-		<router-link to="/about">ABOUT
-			<svg width="100%" height="100%">
+		<router-link to="/about" :style="style">ABOUT
+			<svg width="100%" height="100%" :style="style">
 				<line x1="15%" y1="50%" x2="85%" y2="50%"/>
 			</svg>
 		</router-link>
-		<router-link to="/projects">PROJECTS
-			<svg width="100%" height="100%">
+		<router-link to="/projects" :style="style">PROJECTS
+			<svg width="100%" height="100%" :style="style">
 				<line x1="15%" y1="50%" x2="85%" y2="50%"/>
 			</svg>
 		</router-link>
 	</div>
 </template>
+
+<script>
+export default {
+	props: {
+	  color: {
+      type: String,
+      default: 'white'
+    },
+	},
+	computed: {
+		style() {
+			return `color: ${this.color}; stroke: ${this.color}`;
+		},
+	}
+}
+</script>
 
 <style scoped>
 #nav {
@@ -35,7 +51,6 @@
 	font-family: 'Qontra';
 	letter-spacing: 2px;
 	font-weight: bold;
-	color: white;
 	text-decoration: none;
 	position: relative;
 	display: flex;
@@ -44,7 +59,6 @@
 }
 svg {
 	position: absolute;
-	stroke: white;
 	stroke-width: 1.5px;
 	stroke-dasharray: 100 100;
 	stroke-dashoffset: 100;

@@ -4,11 +4,11 @@ Vue.directive('scroll', (el, binding) => {
 	const root = document.querySelector('#app');
 	const options = {
 		root,
-		threshold: 1,
+		threshold: binding.value.threshold,
 	};
 	const observer = new IntersectionObserver(entries => {
 		entries.forEach(entry => {
-			if (entry.intersectionRatio === 1) entry.target.classList.add(binding.value);
+			if (entry.intersectionRatio >= binding.value.threshold) entry.target.classList.add(binding.value.class);
 		});
 	}, options);
 	observer.observe(el);

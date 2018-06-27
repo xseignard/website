@@ -175,7 +175,7 @@ h2 {
 	margin-bottom: 37px;
 }
 .home--content {
-	margin-top: 2%;
+	margin-top: 1vh;
 	display: inline-grid;
 	grid-template-columns: 1fr 2fr;
 	grid-template-areas: 'about projects';
@@ -196,6 +196,7 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	align-self: start;
 }
 .home--content--projects--list {
 	display: flex;
@@ -224,7 +225,7 @@ h2 {
 	height: 25vh;
 	width: 100%;
 	position: relative;
-	background-size: cover;
+	transition:1s ease-out;
 }
 .color {
 	width: 100%;
@@ -232,6 +233,7 @@ h2 {
 	position: absolute;
 	bottom: 0;
 	opacity: 0.6;
+
 }
 .secondary-button {
 	border: 2px solid white;

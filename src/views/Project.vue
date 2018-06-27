@@ -4,8 +4,10 @@
 		<svg class="color" width="100%" height="55vh">
 			<rect width="100%" height="100%" :style="`fill:${getProjectColor(project)}`"/>
 		</svg>
-		<h1 v-html="project.title" />
-		<p v-html="project.baseline" />
+		<div class="project--title">
+			<h1 v-html="project.title" />
+			<p class="baseline" v-html="'– ' + project.baseline" />
+		</div>
 		<div class="project--top">
 			<div class="project--presentation">
 				<div class="img heroimage" :style="`${getBgImage(project.featured_image)}`"></div>
@@ -78,8 +80,20 @@ export default {
 	h2::before{
 		content:'– ';
 	}
+	h1{
+		position:static;
+		margin:0;
+	}
+	.project--title{
+		margin-left: 15%;
+		position: absolute;
+		top: 15vh;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
 	.project--top{
-		height:75vh;
+		height:80vh;
 		width: 100%;
 		display: flex;
 		justify-content: center;
@@ -88,7 +102,7 @@ export default {
 	.project--presentation{
 		display:flex;
 		box-sizing: border-box;
-		padding: 0 15% 0 27%;
+		padding: 0 15% 2% 27%;
 	}
 	.color{
 		position:absolute;
@@ -119,11 +133,6 @@ export default {
 		height:45vh;
 	}
 	/* NOTE: PROJECT CONTENT **********************************/
-	.img{
-		background-size: cover;
-		background-position: center;
-		filter: drop-shadow(5px 7px 10px rgba(0, 0, 0, 0.3));
-	}
 	.project--content{
 		max-width:100%;
 		margin-top: 17vh;

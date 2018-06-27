@@ -2,13 +2,13 @@
 	<div id="app">
 		<Loader v-if="loading" />
 		<transition
-			v-on:leave="leave"
-			v-on:before-enter="beforeEnter"
-			v-on:enter="enter"
-			v-on:after-enter="afterEnter"
+			@leave="leave"
+			@before-enter="beforeEnter"
+			@enter="enter"
+			@after-enter="afterEnter"
 			v-else
 		>
-			<router-view/>
+			<router-view ref="page"/>
 		</transition>
 		<PageTransition ref="transition" />
 	</div>
@@ -30,8 +30,11 @@ export default {
 	},
 	methods: {
 		beforeEnter(el) {
-			this.$refs.transition.beforeEnter();
-			el.style.opacity = 0;
+			if (this.$refs.page.beforeEnter) this.$refs.page.beforeEnter();
+			else {
+				this.$refs.transition.beforeEnter();
+				el.style.opacity = 0;
+			}
 		},
 		enter(el, done) {
 			this.$refs.transition.enter(done);
