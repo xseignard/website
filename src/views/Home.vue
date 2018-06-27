@@ -76,7 +76,7 @@ export default {
 				style: {
 					backgroundImage: `url(${state.projects[0].featured_image.url})`,
 				},
-				type: state.projects[0].type[0],
+				type: state.projects[0].type,
 			}),
 			project2: state => ({
 				title: state.projects[1].title,
@@ -84,7 +84,7 @@ export default {
 				style: {
 					backgroundImage: `url(${state.projects[1].featured_image.url})`,
 				},
-				type: state.projects[1].type[0],
+				type: state.projects[1].type,
 			}),
 			about: state => state.about,
 		}),

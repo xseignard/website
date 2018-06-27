@@ -15,7 +15,7 @@ export default new Vuex.Store({
 			return state.projects.find(project => project.id === parseInt(id, 10));
 		},
 		getProjectColor: state => project => {
-			switch (project.type) {
+			switch (project.type[0]) {
 				case 'web':
 					return colors[0];
 				case 'installation':

@@ -5,7 +5,7 @@
 			<rect width="100%" height="100%" :style="`fill:${getProjectColor(project)}`"/>
 		</svg>
 		<h1 v-html="project.title" />
-		<h2 v-html="project.baseline" />
+		<p v-html="project.baseline" />
 		<div class="project--top">
 			<div class="project--presentation">
 				<div class="img heroimage" :style="`${getBgImage(project.featured_image)}`"></div>
@@ -31,7 +31,7 @@
 				<img :src="image.url" :alt="image.title">
 			</div>
 			<div class="content--focus focus1">
-				<h2 v-html="`Focus 1 – ${project.focus_1.title}`"></h2>
+				<h2 v-html="`${project.focus_1.title}`"></h2>
 				<p v-html="project.focus_1.content"></p>
 			</div>
 			<div class="content--focus focus2">
@@ -79,7 +79,7 @@ export default {
 		content:'– ';
 	}
 	.project--top{
-		height:80vh;
+		height:75vh;
 		width: 100%;
 		display: flex;
 		justify-content: center;
