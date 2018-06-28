@@ -21,22 +21,22 @@
 <script>
 export default {
 	props: {
-	  color: {
-      type: String,
-      default: 'white'
-    },
+		color: {
+			type: String,
+			default: 'white',
+		},
 	},
 	computed: {
 		style() {
 			return `color: ${this.color}; stroke: ${this.color}`;
 		},
-	}
-}
+	},
+};
 </script>
 
 <style scoped>
 #nav {
-	z-index:1;
+	z-index: 1;
 	position: absolute;
 	top: 0;
 	padding: 50px;
