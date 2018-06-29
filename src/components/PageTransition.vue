@@ -53,7 +53,7 @@ export default {
 				scrollTop: 0,
 				easing: 'linear',
 				duration: duration / 5,
-				offset: `-=${duration}`,
+				offset: 400,
 			});
 		},
 		afterEnter(el) {
@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 svg {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1;

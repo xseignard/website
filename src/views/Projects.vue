@@ -6,7 +6,7 @@
 		</svg>
 		<h1>Projects</h1>
 		<div class="projects--content">
-			<ProjectListItem v-scroll="{class: 'visible', threshold: 0.4}" :project="project"  v-for="project in projects"/>
+			<ProjectListItem v-scroll="{class: 'visible', threshold: 0.3}" :project="project"  v-for="project in projects"/>
 		</div>
 		<FooterStyle ref="footer" />
 	</div>

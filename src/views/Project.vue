@@ -29,17 +29,26 @@
 			<div class="content--description">
 				<p v-html="project.description"></p>
 			</div>
-			<div v-for="image in project.gallery" class="content--img img">
+			<div v-scroll="{class: 'visible', threshold: 0.3}" v-for="image in project.gallery" class="content--img img">
 				<img :src="image.url" :alt="image.title">
 			</div>
-			<div class="content--focus focus1">
+			<div v-scroll="{class: 'visible', threshold: 0.3}" class="content--focus focus1">
 				<h2 v-html="`${project.focus_1.title}`"></h2>
 				<p v-html="project.focus_1.content"></p>
 			</div>
-			<div class="content--focus focus2">
+			<div v-scroll="{class: 'visible', threshold: 0.3}" class="content--focus focus2">
 				<h2 v-html="project.focus_2.title"></h2>
 				<p v-html="project.focus_2.content"></p>
 			</div>
+		</div>
+		<div class="content--next">
+			<router-link :to="`/project/${this.nextProject.id}`" class="next--project">
+				<p>– next project</p>
+				<div class="project--img img" :style="`${getBgImage(this.nextProject.featured_image)}`">
+					<div class="project--color" :style="`background-color: ${getProjectColor(this.nextProject)}`"></div>
+				</div>
+				<p class="name" v-html="this.nextProject.title"></p>
+			</router-link>
 		</div>
 		<FooterStyle ref="footer" />
 	</div>
@@ -57,9 +66,20 @@ export default {
 	},
 	computed: {
 		...mapState({
+			projects: state => state.projects,
 			project() {
 				return this.$store.getters.getProjectById(this.$route.params.id);
 			},
+			nextProject() {
+				const projects = this.$store.state.projects;
+				const ids = projects.map(project => project.id);
+				const index = ids.indexOf(this.project.id);
+				if (index + 1 <= ids.length - 1) {
+					return this.$store.getters.getProjectById(ids[index + 1]);
+				} else {
+					return this.$store.getters.getProjectById(ids[0]);
+				}
+			}
 		}),
 		...mapGetters(['getProjectColor']),
 	},
@@ -136,7 +156,6 @@ export default {
 	.project--content{
 		max-width:100%;
 		margin-top: 17vh;
-		margin-bottom: 25vh;
 		padding: 0 15% 0 15%;
 		box-sizing: border-box;
 		position:relative;
@@ -149,6 +168,15 @@ export default {
 		grid-template-areas:
 		"description description image_1";
 	}
+	.project--content div:not(.content--description){
+		transform:translateY(4vh);
+		opacity:0;
+		transition:.5s ease-out;
+	}
+	.project--content div.visible{
+		transform:translateY(0);
+		opacity:1;
+	}
 	.content--description{
 		grid-area: description;
 		margin-top: -4%;
@@ -157,6 +185,7 @@ export default {
 	.content--focus{
 		max-width:37vw;
 		align-self: center;
+		transition-delay: .5s;
 	}
 	.focus1{
 		grid-area: 2 / 1 / 3 / 3;
@@ -180,7 +209,40 @@ export default {
 	}
 	img{
 		max-width: 450px;
-		max-height: 500px;
+		max-height: 400px;
 		object-fit: cover;
+	}
+	/* NOTE: NEXT PROJECT **********************************/
+	.content--next{
+		width:100%;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		margin-bottom: 25vh;
+		margin-top:25vh;
+	}
+	.content--next p{
+		font-family: 'Qontra';
+	}
+	.content--next p:nth-of-type(2){
+		font-size:1.3rem;
+		font-weight:bold;
+		text-transform:uppercase;
+	}
+	.next--project{
+		color:white;
+		text-decoration:none;
+	}
+	.project--img{
+		width:15vw;;
+		height:14vh;
+		position:relative;
+	}
+	.project--color {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: 0;
+		opacity: 0.6;
 	}
 </style>

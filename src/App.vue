@@ -8,7 +8,7 @@
 			@after-enter="afterEnter"
 			v-else
 		>
-			<router-view ref="page"/>
+			<router-view :key="$route.path" ref="page"/>
 		</transition>
 		<PageTransition ref="transition" />
 	</div>

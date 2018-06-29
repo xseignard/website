@@ -4,21 +4,21 @@
 		<h1>{{about.name}}</h1>
 		<div class="about--content">
 			<div class="about--content--left">
-				<div v-html="about.home_intro" />
-				<div v-html="about.about_intro" />
+				<div v-scroll="{class: 'visible', threshold: 0.4}" v-html="about.home_intro" />
+				<div v-scroll="{class: 'visible', threshold: 0.4}" v-html="about.about_intro" />
 			</div>
 			<div class="about--content--right">
 				<div class="about--content--right--domains">
-					<p>Web<br>development</p>
-					<svg width="14px" height="2px">
+					<p v-scroll="{class: 'visible', threshold: 0.4}">Web<br>development</p>
+					<svg v-scroll="{class: 'visible', threshold: 0.4}" width="14px" height="2px">
 						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[0]}`"/>
 					</svg>
-					<p>Interactive<br>installations</p>
-					<svg width="14px" height="2px">
+					<p v-scroll="{class: 'visible', threshold: 0.4}">Interactive<br>installations</p>
+					<svg v-scroll="{class: 'visible', threshold: 0.4}" width="14px" height="2px">
 						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[1]}`"/>
 					</svg>
-					<p>Other</p>
-					<svg width="14px" height="2px">
+					<p v-scroll="{class: 'visible', threshold: 0.4}" >Other</p>
+					<svg v-scroll="{class: 'visible', threshold: 0.4}" width="14px" height="2px">
 						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[2]}`"/>
 					</svg>
 				</div>
@@ -38,6 +38,7 @@ import { mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
 import { colors } from '@/utils';
+import { getDelay } from '@/utils';
 
 export default {
 	components: {
@@ -73,6 +74,26 @@ export default {
 .about--content--left {
 	max-width: 40%;
 	flex-grow: 1;
+}
+.about--content--left div{
+	transform: translateY(4vh);
+	opacity:0;
+	transition:.5s ease-out;
+}
+.about--content--left div:nth-child(2){
+	transition-delay:.1s;
+}
+.about--content--right--domains *{
+	transition: .5s ease-out;
+	transform:translateY(-4vh);
+	opacity:0;
+}
+svg.visible,
+svg.visible line,
+p.visible,
+div.visible{
+	opacity:1;
+	transform:translateY(0);
 }
 .about--content--right {
 	display: flex;

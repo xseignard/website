@@ -44,12 +44,19 @@ export default new Vuex.Store({
 			commit(
 				'GET_PROJECTS',
 				projects.map(project => {
-					// TODO: sort by date
 					return {
 						id: project.id,
 						title: project.title.rendered,
 						...project.acf,
 					};
+				}).sort(function(a, b){
+					let d = new Date (a.date);
+					let t = new Date (b.date);
+					return t-d;
+				}).map(project => {
+					const date = project.date;
+					project.date = date.split('/').filter((e, i) => i !== 1).join('/');
+					return project
 				})
 			);
 		},

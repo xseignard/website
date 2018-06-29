@@ -7,9 +7,8 @@
 				</svg>
 				<div class="hover--details">
 					<p v-html="project.baseline" class="baseline"></p>
-					<p class="type">–</p>
 					<p v-html="project.type[0]"class="type"></p>
-					<p>{{project.date}}</p>
+					<p class="type">–</p>
 					<p>
 						<ul>
 							<li v-for ="t in project.technologies">{{t.name}}</li>
@@ -88,6 +87,9 @@ rect {
 .type {
 	text-transform: uppercase;
 	font-weight: bold;
+}
+.type:nth-child(2){
+	margin:0;
 }
 ul {
 	list-style-type: none;
