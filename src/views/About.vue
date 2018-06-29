@@ -23,8 +23,8 @@
 					</svg>
 				</div>
 				<div class="about--content--right--img">
-					<svg width="100%" height="100%">
-						<polygon id="polymorph" points="0 0, 0 0, 0 15, 0 15" fill="#F88429" />
+					<svg v-scroll="{class: 'reveal', threshold: 0.4}" width="100%" height="100%">
+						<rect x="0" y="0" width="100%" height="100%" fill="#F88429" />
 					</svg>
 				</div>
 			</div>
@@ -55,6 +55,33 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+	.about--content{
+		flex-direction:column-reverse;
+		margin-top:35vh;
+		margin-bottom:25vh;
+	}
+	.about--content .about--content--left{
+		max-width:100%;
+	}
+	.about--content .about--content--right{
+		flex-direction:column-reverse;
+	}
+	.about--content .about--content--right--domains{
+		flex-direction:row;
+		width:100%;
+		align-items:center;
+	}
+	.about--content .about--content--right--domains svg{
+		transform:rotate(90deg);
+	}
+	.about--content .about--content--right--domains p:first-of-type {
+		margin-top: auto;
+	}
+	.about--content .about--content--right--img{
+		width:100%;
+	}
+}
 .about {
 	display: flex;
 	flex-direction: column;
@@ -81,7 +108,7 @@ export default {
 	transition:.5s ease-out;
 }
 .about--content--left div:nth-child(2){
-	transition-delay:.1s;
+	transition-delay:.2s;
 }
 .about--content--right--domains *{
 	transition: .5s ease-out;
@@ -115,6 +142,12 @@ div.visible{
 .about--content--right--domains p:first-of-type {
 	margin-top: 0;
 }
+.about--content--right--domains p:nth-of-type(2){
+	transition-delay: .2s;
+}
+.about--content--right--domains p:nth-of-type(3){
+	transition-delay: .4s;
+}
 .about--content--right--domains svg {
 	fill: none;
 	stroke-linecap: round;
@@ -127,5 +160,13 @@ div.visible{
 	min-width: 250px;
 	width: 22vw;
 	height: 25vh;
+	overflow:hidden;
 }
+.about--content--right--img rect{
+	transition: .35s .6s ease-out;
+}
+.about--content--right--img svg.reveal rect{
+	transform:translateY(100%);
+}
+
 </style>

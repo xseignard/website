@@ -29,14 +29,14 @@
 			<div class="content--description">
 				<p v-html="project.description"></p>
 			</div>
-			<div v-scroll="{class: 'visible', threshold: 0.3}" v-for="image in project.gallery" class="content--img img">
+			<div v-scroll="{class: 'visible', threshold: 0.2}" v-for="image in project.gallery" class="content--img img">
 				<img :src="image.url" :alt="image.title">
 			</div>
-			<div v-scroll="{class: 'visible', threshold: 0.3}" class="content--focus focus1">
+			<div v-scroll="{class: 'visible', threshold: 0.6}" class="content--focus focus1">
 				<h2 v-html="`${project.focus_1.title}`"></h2>
 				<p v-html="project.focus_1.content"></p>
 			</div>
-			<div v-scroll="{class: 'visible', threshold: 0.3}" class="content--focus focus2">
+			<div v-scroll="{class: 'visible', threshold: 0.6}" class="content--focus focus2">
 				<h2 v-html="project.focus_2.title"></h2>
 				<p v-html="project.focus_2.content"></p>
 			</div>
@@ -185,7 +185,6 @@ export default {
 	.content--focus{
 		max-width:37vw;
 		align-self: center;
-		transition-delay: .5s;
 	}
 	.focus1{
 		grid-area: 2 / 1 / 3 / 3;
@@ -202,7 +201,7 @@ export default {
 		margin-right: 4vw;
 	}
 	.content--img:nth-of-type(4){
-			margin-left:4vw;
+		margin-left:4vw;
 	}
 	.content--img:nth-of-type(5){
 		grid-area: 4 / 3 / 5 / 4 ;

@@ -32,6 +32,19 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width : 768px) {
+	#contacts{
+		justify-content: center;
+		flex-direction:column;
+	}
+	#contacts #contacts--contact{
+		text-align:center;
+	}
+	#contacts #contacts--social{
+		width:90%;
+		margin-top:3vh;
+	}
+}
 .footer {
 	position: absolute;
 	bottom: 0;
