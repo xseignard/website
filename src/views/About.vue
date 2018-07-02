@@ -60,6 +60,7 @@ export default {
 		flex-direction:column-reverse;
 		margin-top:35vh;
 		margin-bottom:25vh;
+		padding: 0 10% 0 10%;
 	}
 	.about--content .about--content--left{
 		max-width:100%;

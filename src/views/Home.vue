@@ -151,6 +151,9 @@ export default {
 		font-size:2.5rem;
 		letter-spacing: 4px;
 	}
+	.home .main-button{
+		padding:0 7% 0 7%;
+	}
 	.home .home--content{
 		display:block;
 		margin-top: 6vh;
@@ -205,7 +208,7 @@ a {
 	margin-top: 50px;
 }
 .main-button {
-	padding: 0 40px 0 40px;
+	padding: 0 10% 0 10%;
 	border: 2px solid #8b73cf;
 	border-radius: 3px;
 	background-color: transparent;
