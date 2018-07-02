@@ -32,9 +32,7 @@
 							<div :style="project1.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project1)}`"></div>
 								<div class="hover">
-									<svg width="100%" height="100%">
-										<rect x="0" y="0" width="0" height="100%" :style="`fill:${getProjectColor(project1)}`"/>
-									</svg>
+									<div class="layer" :style="`background-color:${getProjectColor(project1)}`"/>
 									<div class="hover--details">
 										<p v-html="project1.baseline" class="baseline"></p>
 										<p v-html="project1.type[0]"class="type"></p>
@@ -53,9 +51,7 @@
 							<div :style="project2.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project2)}`"></div>
 								<div class="hover">
-									<svg width="100%" height="100%">
-										<rect x="0" y="0" width="0" height="100%" :style="`fill:${getProjectColor(project2)}`"/>
-									</svg>
+									<div class="layer" :style="`background-color:${getProjectColor(project2)}`"/>
 									<div class="hover--details">
 										<p v-html="project2.baseline" class="baseline"></p>
 										<p v-html="project2.type[0]"class="type"></p>
@@ -106,7 +102,7 @@ export default {
 				style: {
 					backgroundImage: `url(${state.projects[0].featured_image.url})`,
 				},
-				baseline:state.projects[0].baseline,
+				baseline: state.projects[0].baseline,
 				type: state.projects[0].type,
 				technologies: state.projects[0].technologies,
 			}),
@@ -116,7 +112,7 @@ export default {
 				style: {
 					backgroundImage: `url(${state.projects[1].featured_image.url})`,
 				},
-				baseline:state.projects[1].baseline,
+				baseline: state.projects[1].baseline,
 				type: state.projects[1].type,
 				technologies: state.projects[1].technologies,
 			}),
@@ -141,9 +137,10 @@ export default {
 }
 @media (max-width: 768px) {
 	.home .home--background,
-	.home .home--top{
+	.home .home--top {
 		min-height: 75vh;
 	}
+<<<<<<< HEAD
 	.home .home--top--content{
 		flex-direction:column;
 		padding:0 10% 0 10%;
@@ -157,20 +154,31 @@ export default {
 	}
 	.home .main-button{
 		padding:0 7% 0 7%;
+=======
+	.home .home--top--content {
+		flex-direction: column;
 	}
-	.home .home--content{
-		display:block;
+	.home h1 {
+		font-size: 2.5rem;
+		letter-spacing: 4px;
+	}
+	.home .main-button {
+		padding: 0 7% 0 7%;
+>>>>>>> 5998c29edf95c52b51c96a7939f20124dc9550e3
+	}
+	.home .home--content {
+		display: block;
 		margin-top: 6vh;
 	}
-	.home--content > div{
+	.home--content > div {
 		margin-top: 2vh;
 	}
-	.home .home--content--projects--list{
-		flex-direction:column;
+	.home .home--content--projects--list {
+		flex-direction: column;
 	}
-	.home .project{
-		width:100%;
-		margin-bottom:4vh;
+	.home .project {
+		width: 100%;
+		margin-bottom: 4vh;
 	}
 }
 .home--top {
@@ -189,20 +197,20 @@ export default {
 	display: flex;
 	justify-content: space-between;
 }
-.top--content--title{
+.top--content--title {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 }
-.top--content--title p{
+.top--content--title p {
 	font-family: 'Qontra';
-	font-weight:lighter;
+	font-weight: lighter;
 	text-transform: lowercase;
-	font-size:1.35rem;
+	font-size: 1.35rem;
 }
 h1 {
 	margin-left: 0;
-	margin-bottom:0;
+	margin-bottom: 0;
 	font-size: 4rem;
 	letter-spacing: 6px;
 	position: static;
@@ -242,7 +250,7 @@ h2 {
 }
 .home--content {
 	margin-top: 1vh;
-	margin-bottom:30vh;
+	margin-bottom: 30vh;
 	display: inline-grid;
 	grid-template-columns: 1fr 2fr;
 	grid-template-areas: 'about projects';
@@ -277,7 +285,7 @@ h2 {
 	color: #fff;
 	margin: 0;
 }
-.project .baseline{
+.project .baseline {
 	margin-bottom: 5%;
 }
 .project {
@@ -290,15 +298,15 @@ h2 {
 .project p {
 	margin-bottom: 0;
 }
-.intro{
+.intro {
 	text-transform: uppercase;
-	font-weight:bold;
+	font-weight: bold;
 }
 .img {
 	height: 25vh;
 	width: 100%;
 	position: relative;
-	transition:1s ease-out;
+	transition: 1s ease-out;
 }
 .color {
 	width: 100%;
@@ -334,14 +342,20 @@ h2 {
 	opacity: 1;
 	transform: translateX(0);
 }
-rect {
-	transition: 0.3s ease-out;
-}
-.project:hover rect {
+.layer {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
+	height: 100%;
+	transition: 0.3s ease-out;
+	transform: translateX(-100%);
+}
+.project:hover .layer {
+	transform: translateX(0);
 }
 .hover--details {
-	transform:translateX(-10%);
+	transform: translateX(-10%);
 	opacity: 0;
 	padding: 5%;
 	box-sizing: border-box;
@@ -356,8 +370,8 @@ rect {
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.type:nth-child(2){
-	margin:0;
+.type:nth-child(2) {
+	margin: 0;
 }
 ul {
 	list-style-type: none;

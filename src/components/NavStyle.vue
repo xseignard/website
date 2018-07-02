@@ -64,6 +64,8 @@ svg {
 	stroke-dashoffset: 100;
 	transition: 0.25s ease-out;
 	stroke-linecap: round;
+	top: 0;
+	left: 0;
 }
 #nav a.router-link-exact-active svg,
 #nav a:hover svg {

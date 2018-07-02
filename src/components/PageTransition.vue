@@ -1,9 +1,9 @@
 <template>
-	<svg width="100vw" height="100vh" :style="style">
+	<svg width="100%" height="100%" :style="style">
 		<rect
 			x="0"
 			:y="y"
-			width="100vw"
+			width="100%"
 			:height="height"
 			:fill="fill"
 		/>
@@ -17,37 +17,37 @@ import { getRandomColor } from '@/utils';
 const duration = 500;
 
 export default {
-	name: 'transition',
-	data: () => ({
-		height: 0,
-		y: 0,
-		visible: false,
-		fill: '#F88429',
-	}),
+	data() {
+		return {
+			height: 0,
+			y: 0,
+			visible: false,
+			fill: '#F88429',
+		};
+	},
 	computed: {
 		style() {
 			return this.visible ? 'visibility: visible' : 'visibility: hidden';
 		},
 	},
 	methods: {
-		beforeEnter(cb) {
+		beforeEnter(el) {
+			el.style.opacity = 0;
 			// reset values before enter animation
 			this.height = 0;
 			this.y = 0;
 			this.visible = true;
 			this.fill = getRandomColor();
 		},
-		enter(cb) {
+		enter(el, done) {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
-				height: '100vh',
+				height: '100%',
 				round: 1,
 				easing: 'easeInOutQuart',
 				duration: duration,
-				complete: () => {
-					cb();
-				},
+				complete: () => done && done(),
 			}).add({
 				targets: '#app',
 				scrollTop: 0,
@@ -60,7 +60,7 @@ export default {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
-				y: '100vh',
+				y: '100%',
 				round: 1,
 				easing: 'easeInOutQuart',
 				duration: duration,
@@ -80,9 +80,7 @@ export default {
 				targets: el,
 				opacity: 0,
 				duration: duration * 1.7,
-				complete: () => {
-					done();
-				},
+				complete: () => done && done(),
 			});
 		},
 	},

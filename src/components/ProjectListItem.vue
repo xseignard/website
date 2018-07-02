@@ -1,11 +1,9 @@
 <template>
-	<router-link :to="`/project/${project.id}`" @click.native="test" id="projectItem">
+	<router-link :to="`/project/${project.id}`" @click.native="saveClickedProject" class="projectItem">
 		<div class="itemID img" :style="`${getBgImage(project.featured_image)}`">
 			<div class="color" :style="`background-color: ${getProjectColor(project)}`"></div>
 			<div class="hover">
-				<svg width="100%" height="100%">
-					<rect x="0" y="0" width="0" height="100%" :style="`fill:${getProjectColor(project)}`"/>
-				</svg>
+				<div class="layer" :style="`background-color:${getProjectColor(project)}`"/>
 				<div class="hover--details">
 					<p v-html="project.baseline" class="baseline"></p>
 					<p v-html="project.type[0]"class="type"></p>
@@ -34,8 +32,8 @@ export default {
 		getBgImage(img) {
 			return `background-image: url(${img.url})`;
 		},
-		test(evt) {
-			console.log(evt);
+		saveClickedProject(evt) {
+			this.$store.commit('SET_CLICKED_PROJECT', this.$el);
 		},
 	},
 	computed: {
@@ -45,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-#projectItem {
+.projectItem {
 	color: white;
 	text-decoration: none;
 }
@@ -73,18 +71,29 @@ export default {
 	position: absolute;
 	overflow: hidden;
 }
-#projectItem:hover .hover--details {
-	opacity: 1;
-	transform:translateX(0);
+@media (max-width: 768px) {
+	.hover {
+		display: none;
+	}
 }
-rect {
+.projectItem:hover .hover--details {
+	opacity: 1;
+	transform: translateX(0);
+}
+.layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: translateX(-100%);
 	transition: 0.3s ease-out;
 }
-#projectItem:hover rect {
-	width: 100%;
+.projectItem:hover .layer {
+	transform: translateX(0);
 }
 .hover--details {
-	transform:translateX(-10%);
+	transform: translateX(-10%);
 	opacity: 0;
 	padding: 5%;
 	box-sizing: border-box;
@@ -99,8 +108,8 @@ rect {
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.type:nth-child(2){
-	margin:0;
+.type:nth-child(2) {
+	margin: 0;
 }
 ul {
 	list-style-type: none;

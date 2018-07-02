@@ -24,6 +24,7 @@ new Vue({
 	mounted() {
 		this.ps = new PerfectScrollbar('#app', {
 			suppressScrollX: true,
+			wheelSpeed: 2,
 		});
 	},
 	watch: {
