@@ -23,6 +23,9 @@
 						</ul>
 					</p>
 				</div>
+				<svg width="300px" height="1px">
+					<line x1="50" y1="0" x2="250" y2="0" :style="`stroke:${getProjectColor(project)}`"/>
+				</svg>
 			</div>
 		</div>
 		<div class="project--content">
@@ -103,10 +106,10 @@ export default {
 			box-sizing: border-box;
 		}
 		.project .project--top{
-			height:85vh;
+			height:90vh;
 		}
-		svg{
-			height:62vh;
+		.project .project--top svg{
+			display:block;
 		}
 		.project h1{
 			font-size: 2.3rem;
@@ -118,16 +121,16 @@ export default {
 			font-size:0.85rem;
 		}
 		.project .project--presentation{
-			flex-direction:column-reverse;
+			flex-direction:column;
 			padding:0 10% 0 10%;
 		}
 		.project .heroimage{
 			width:100%;
 			height:33vh;
+			margin-bottom: 3vh;
 		}
 		.project .details{
 			margin-left:0;
-			margin-bottom: 3vh;
 		}
 		.details p{
 			margin-bottom:3.5%;
@@ -191,9 +194,18 @@ export default {
 		letter-spacing: 1px;
 		margin-top:0;
 	}
+	.details p:last-of-type{
+		margin-bottom: 4%;
+	}
 	.details .type{
 		text-transform: uppercase;
 		font-weight: bold;
+	}
+	.project--top svg{
+		display:none;
+		stroke-linecap: round;
+		stroke-width: 0.5px;
+		margin-top:5%;
 	}
 	.heroimage{
 		width:40vw;
@@ -205,7 +217,7 @@ export default {
 			grid-template-areas: "description";
 			grid-template-columns: 1fr;
 			grid-gap:10vh 2vh;
-			margin-top: 8vh;
+			margin-top: 4.5vh;
 			padding: 0 10% 0 10%;
 		}
 		.project .content--description{

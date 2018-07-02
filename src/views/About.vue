@@ -59,7 +59,7 @@ export default {
 	.about--content{
 		flex-direction:column-reverse;
 		margin-top:35vh;
-		margin-bottom:25vh;
+		margin-bottom:33vh;
 		padding: 0 10% 0 10%;
 	}
 	.about--content .about--content--left{
@@ -70,8 +70,10 @@ export default {
 	}
 	.about--content .about--content--right--domains{
 		flex-direction:row;
-		width:100%;
+		width:110%;
 		align-items:center;
+		text-align:center;
+		padding: 0;
 	}
 	.about--content .about--content--right--domains svg{
 		transform:rotate(90deg);
