@@ -56,31 +56,34 @@ export default {
 
 <style scoped>
 @media (max-width: 768px) {
-	.about--content{
-		flex-direction:column-reverse;
-		margin-top:35vh;
-		margin-bottom:25vh;
+	.about--content {
+		flex-direction: column-reverse;
+		margin-top: 35vh;
+		margin-bottom: 25vh;
 		padding: 0 10% 0 10%;
 	}
-	.about--content .about--content--left{
-		max-width:100%;
+	.about--content .about--content--left {
+		max-width: 100%;
 	}
-	.about--content .about--content--right{
-		flex-direction:column-reverse;
+	.about--content .about--content--right {
+		flex-direction: column-reverse;
 	}
-	.about--content .about--content--right--domains{
-		flex-direction:row;
-		width:100%;
-		align-items:center;
+	.about--content .about--content--right--domains {
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		text-align: center;
+		width: 90vw;
+		padding-right: 0;
 	}
-	.about--content .about--content--right--domains svg{
-		transform:rotate(90deg);
+	.about--content .about--content--right--domains svg {
+		transform: rotate(90deg);
 	}
 	.about--content .about--content--right--domains p:first-of-type {
 		margin-top: auto;
 	}
-	.about--content .about--content--right--img{
-		width:100%;
+	.about--content .about--content--right--img {
+		width: 100%;
 	}
 }
 .about {
@@ -103,25 +106,25 @@ export default {
 	max-width: 40%;
 	flex-grow: 1;
 }
-.about--content--left div{
+.about--content--left div {
 	transform: translateY(4vh);
-	opacity:0;
-	transition:.5s ease-out;
+	opacity: 0;
+	transition: 0.5s ease-out;
 }
-.about--content--left div:nth-child(2){
-	transition-delay:.2s;
+.about--content--left div:nth-child(2) {
+	transition-delay: 0.2s;
 }
-.about--content--right--domains *{
-	transition: .5s ease-out;
-	transform:translateY(-4vh);
-	opacity:0;
+.about--content--right--domains * {
+	transition: 0.5s ease-out;
+	transform: translateY(-4vh);
+	opacity: 0;
 }
 svg.visible,
 svg.visible line,
 p.visible,
-div.visible{
-	opacity:1;
-	transform:translateY(0);
+div.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 .about--content--right {
 	display: flex;
@@ -143,11 +146,11 @@ div.visible{
 .about--content--right--domains p:first-of-type {
 	margin-top: 0;
 }
-.about--content--right--domains p:nth-of-type(2){
-	transition-delay: .2s;
+.about--content--right--domains p:nth-of-type(2) {
+	transition-delay: 0.2s;
 }
-.about--content--right--domains p:nth-of-type(3){
-	transition-delay: .4s;
+.about--content--right--domains p:nth-of-type(3) {
+	transition-delay: 0.4s;
 }
 .about--content--right--domains svg {
 	fill: none;
@@ -161,13 +164,12 @@ div.visible{
 	min-width: 250px;
 	width: 22vw;
 	height: 25vh;
-	overflow:hidden;
+	overflow: hidden;
 }
-.about--content--right--img rect{
-	transition: .35s .6s ease-out;
+.about--content--right--img rect {
+	transition: 0.35s 0.6s ease-out;
 }
-.about--content--right--img svg.reveal rect{
-	transform:translateY(100%);
+.about--content--right--img svg.reveal rect {
+	transform: translateY(100%);
 }
-
 </style>
