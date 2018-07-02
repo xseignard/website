@@ -140,7 +140,6 @@ export default {
 	.home .home--top {
 		min-height: 75vh;
 	}
-<<<<<<< HEAD
 	.home .home--top--content{
 		flex-direction:column;
 		padding:0 10% 0 10%;
@@ -152,9 +151,7 @@ export default {
 	.home a{
 		min-width:70%;
 	}
-	.home .main-button{
-		padding:0 7% 0 7%;
-=======
+
 	.home .home--top--content {
 		flex-direction: column;
 	}
@@ -164,7 +161,6 @@ export default {
 	}
 	.home .main-button {
 		padding: 0 7% 0 7%;
->>>>>>> 5998c29edf95c52b51c96a7939f20124dc9550e3
 	}
 	.home .home--content {
 		display: block;

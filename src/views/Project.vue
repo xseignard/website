@@ -169,11 +169,10 @@ export default {
 	}
 	.project--top{
 		height:80vh;
-=======
+	}
 @media (max-width: 768px) {
 	.project .project--title {
 		margin: 0;
->>>>>>> 5998c29edf95c52b51c96a7939f20124dc9550e3
 		width: 100%;
 		top: 13vh;
 		padding: 0 7% 0 7%;
@@ -182,7 +181,6 @@ export default {
 	.project .project--top {
 		height: 85vh;
 	}
-<<<<<<< HEAD
 	.details p:last-of-type{
 		margin-bottom: 4%;
 	}
@@ -245,10 +243,9 @@ export default {
 		grid-template-rows: auto;
 		grid-template-areas:
 		"description description image_1";
-=======
+	}
 	svg {
 		height: 62vh;
->>>>>>> 5998c29edf95c52b51c96a7939f20124dc9550e3
 	}
 	.project h1 {
 		font-size: 2.3rem;
