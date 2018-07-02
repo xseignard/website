@@ -71,6 +71,11 @@ export default {
 	position: absolute;
 	overflow: hidden;
 }
+@media (max-width: 768px) {
+	.hover {
+		display: none;
+	}
+}
 .projectItem:hover .hover--details {
 	opacity: 1;
 	transform: translateX(0);

@@ -10,7 +10,8 @@
 		</div>
 		<div class="project--top">
 			<div class="project--presentation">
-				<div class="img heroimage" :style="`${getBgImage(project.featured_image)}`">
+				<div class="heroimage--container">
+					<div class="img heroimage" :style="getBgImage(project.featured_image.sizes.large)" />
 					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: #F88429`"/>
 				</div>
 				<div class="details">
@@ -91,7 +92,7 @@ export default {
 	},
 	methods: {
 		getBgImage(img) {
-			return `background-image: url(${img.url})`;
+			return `background-image: url(${img})`;
 		},
 	},
 };
@@ -189,8 +190,6 @@ h1 {
 }
 li:not(:last-of-type)::after {
 	content: ', ';
-	padding-right: 2vw;
-	margin-left: -1vw;
 }
 .details p {
 	letter-spacing: 1px;
@@ -200,13 +199,15 @@ li:not(:last-of-type)::after {
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.heroimage {
-	width: 40vw;
-	height: 45vh;
+.heroimage--container {
 	position: relative;
 	overflow: hidden;
 }
-.heroimage .layer {
+.heroimage {
+	width: 40vw;
+	height: 45vh;
+}
+.layer {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -214,7 +215,7 @@ li:not(:last-of-type)::after {
 	height: 101%;
 	transition: 0.35s 0.6s ease-out;
 }
-.heroimage .layer.reveal {
+.layer.reveal {
 	transform: translateY(101%);
 }
 /* NOTE: PROJECT CONTENT **********************************/

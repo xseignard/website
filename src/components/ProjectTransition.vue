@@ -46,7 +46,7 @@ export default {
 	},
 	methods: {
 		beforeLeave(el) {
-			const boundaries = this.clickedProject.querySelector('.layer').getBoundingClientRect();
+			const boundaries = this.clickedProject.querySelector('.itemID').getBoundingClientRect();
 			this.x = boundaries.x;
 			this.y = boundaries.y;
 			this.height = Math.ceil(boundaries.height);
