@@ -111,9 +111,6 @@ export default {
 	.project .project--top {
 		height: 85vh;
 	}
-	svg {
-		height: 62vh;
-	}
 	.project h1 {
 		font-size: 2.3rem;
 		letter-spacing: 2px;
@@ -124,16 +121,16 @@ export default {
 		font-size: 0.85rem;
 	}
 	.project .project--presentation {
-		flex-direction: column-reverse;
+		flex-direction: column;
 		padding: 0 10% 0 10%;
 	}
 	.project .heroimage {
 		width: 100%;
 		height: 33vh;
+		margin-bottom: 3vh;
 	}
 	.project .details {
 		margin-left: 0;
-		margin-bottom: 3vh;
 	}
 	.details p {
 		margin-bottom: 3.5%;
