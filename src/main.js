@@ -29,6 +29,7 @@ new Vue({
 	watch: {
 		$route() {
 			setTimeout(() => {
+				console.log('[PS] Update');
 				this.ps.update();
 			}, 1000);
 		},

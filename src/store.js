@@ -9,6 +9,7 @@ export default new Vuex.Store({
 		projects: [],
 		loading: true,
 		about: {},
+		clickedProject: null,
 	},
 	getters: {
 		getProjectById: state => id => {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
 		SET_LOADING(state, loading) {
 			state.loading = loading;
 		},
+		SET_CLICKED_PROJECT(state, clickedProject) {
+			state.clickedProject = clickedProject;
+		},
 	},
 	actions: {
 		async getProjects({ commit }) {
@@ -43,21 +47,27 @@ export default new Vuex.Store({
 			const projects = await res.json();
 			commit(
 				'GET_PROJECTS',
-				projects.map(project => {
-					return {
-						id: project.id,
-						title: project.title.rendered,
-						...project.acf,
-					};
-				}).sort(function(a, b){
-					let d = new Date (a.date);
-					let t = new Date (b.date);
-					return t-d;
-				}).map(project => {
-					const date = project.date;
-					project.date = date.split('/').filter((e, i) => i !== 1).join('/');
-					return project
-				})
+				projects
+					.map(project => {
+						return {
+							id: project.id,
+							title: project.title.rendered,
+							...project.acf,
+						};
+					})
+					.sort(function(a, b) {
+						const d = new Date(a.date);
+						const t = new Date(b.date);
+						return t - d;
+					})
+					.map(project => {
+						const date = project.date;
+						project.date = date
+							.split('/')
+							.filter((e, i) => i !== 1)
+							.join('/');
+						return project;
+					})
 			);
 		},
 		async getAbout({ commit }) {
