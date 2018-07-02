@@ -46,7 +46,8 @@
 		<div class="content--next">
 			<router-link :to="`/project/${this.nextProject.id}`" class="next--project">
 				<p>– next project</p>
-				<div class="project--img img" :style="`${getBgImage(this.nextProject.featured_image)}`">
+				<div class="project--img img">
+					<img :src="this.nextProject.featured_image.url" :alt="this.nextProject.title">
 					<div class="project--color" :style="`background-color: ${getProjectColor(this.nextProject)}`"></div>
 				</div>
 				<p class="name" v-html="this.nextProject.title"></p>
@@ -97,6 +98,51 @@ export default {
 </script>
 
 <style scoped>
+/* NOTE: PROJECT TOP *********************/
+@media (max-width: 768px) {
+	.project .project--title {
+		margin: 0;
+		width: 100%;
+		top: 13vh;
+		padding: 0 7% 0 7%;
+		box-sizing: border-box;
+	}
+	.project .project--top {
+		height: 85vh;
+	}
+	svg {
+		height: 62vh;
+	}
+	.project h1 {
+		font-size: 2.3rem;
+		letter-spacing: 2px;
+		align-self: start;
+	}
+	.baseline {
+		margin-top: 2%;
+		font-size: 0.85rem;
+	}
+	.project .project--presentation {
+		flex-direction: column-reverse;
+		padding: 0 10% 0 10%;
+	}
+	.project .heroimage {
+		width: 100%;
+		height: 33vh;
+	}
+	.project .details {
+		margin-left: 0;
+		margin-bottom: 3vh;
+	}
+	.details p {
+		margin-bottom: 3.5%;
+		font-size: 0.9rem;
+	}
+	.project .details ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
 h2 {
 	text-transform: uppercase;
 	font-family: 'Qontra';
@@ -142,7 +188,9 @@ h1 {
 	margin: 0;
 }
 li:not(:last-of-type)::after {
-	content: ',';
+	content: ', ';
+	padding-right: 2vw;
+	margin-left: -1vw;
 }
 .details p {
 	letter-spacing: 1px;
@@ -155,8 +203,8 @@ li:not(:last-of-type)::after {
 .heroimage {
 	width: 40vw;
 	height: 45vh;
-	overflow: hidden;
 	position: relative;
+	overflow: hidden;
 }
 .heroimage .layer {
 	position: absolute;
@@ -170,6 +218,36 @@ li:not(:last-of-type)::after {
 	transform: translateY(101%);
 }
 /* NOTE: PROJECT CONTENT **********************************/
+@media (max-width: 768px) {
+	.project .project--content {
+		grid-template-areas: 'description';
+		grid-template-columns: 1fr;
+		grid-gap: 10vh 2vh;
+		margin-top: 8vh;
+		padding: 0 10% 0 10%;
+	}
+	.project .content--description {
+		max-width: 100%;
+	}
+	.project .content--img {
+		justify-self: start;
+	}
+	.project img {
+		max-width: 100%;
+	}
+	.project .content--focus {
+		max-width: 100%;
+	}
+	.project .focus1 {
+		grid-area: 3 / 1 / 4 / 2;
+	}
+	.project .focus2 {
+		grid-area: 5 / 1 / 6 /2;
+	}
+	.project .content--img:nth-of-type(5) {
+		grid-column: 1 / 2;
+	}
+}
 .project--content {
 	max-width: 100%;
 	margin-top: 17vh;
@@ -228,6 +306,19 @@ img {
 	object-fit: cover;
 }
 /* NOTE: NEXT PROJECT **********************************/
+@media (max-width: 768px) {
+	.project .next--project {
+		min-width: 50%;
+	}
+	.project .content--next {
+		margin-top: 20vh;
+		margin-bottom: 40vh;
+	}
+	.project .project--img {
+		max-width: 50vw;
+	}
+}
+
 .content--next {
 	width: 100%;
 	display: flex;
@@ -245,13 +336,26 @@ img {
 	text-transform: uppercase;
 }
 .next--project {
+	min-width: 20%;
 	color: white;
 	text-decoration: none;
 }
 .project--img {
-	width: 15vw;
-	height: 14vh;
+	max-width: 17vw;
+	width: 95%;
+	height: 20vh;
 	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+.next--project:hover img {
+	transform: scale(1.1);
+}
+.project--img img {
+	max-height: 100%;
+	object-fit: cover;
+	transition: 0.25s ease-out;
 }
 .project--color {
 	width: 100%;
