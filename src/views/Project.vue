@@ -103,7 +103,6 @@ export default {
 
 <style scoped>
 /* NOTE: PROJECT TOP *********************/
-<<<<<<< HEAD
 	@media (max-width:768px) {
 		.project .project--title{
 			margin:0;
@@ -138,14 +137,23 @@ export default {
 		}
 		.project .details{
 			margin-left:0;
+			margin-bottom: 3vh;
 		}
 		.details p{
 			margin-bottom:3.5%;
 			font-size: 0.9rem;
 		}
+		.details p:last-of-type{
+			margin-bottom: 4%;
+		}
 		.project .details ul{
 			display:flex;
 			flex-wrap: wrap;
+		}
+		.project h1 {
+			font-size: 2.3rem;
+			letter-spacing: 2px;
+			align-self: start;
 		}
 	}
 	h2{
@@ -159,6 +167,9 @@ export default {
 		position:static;
 		margin:0;
 	}
+	.project > svg {
+		height: 55vh;
+	}
 	.project--title{
 		margin-left: 15%;
 		position: absolute;
@@ -169,20 +180,6 @@ export default {
 	}
 	.project--top{
 		height:80vh;
-	}
-@media (max-width: 768px) {
-	.project .project--title {
-		margin: 0;
-		width: 100%;
-		top: 13vh;
-		padding: 0 7% 0 7%;
-		box-sizing: border-box;
-	}
-	.project .project--top {
-		height: 85vh;
-	}
-	.details p:last-of-type{
-		margin-bottom: 4%;
 	}
 	.details .type{
 		text-transform: uppercase;
@@ -244,113 +241,81 @@ export default {
 		grid-template-areas:
 		"description description image_1";
 	}
-	svg {
-		height: 62vh;
+
+	h2 {
+		text-transform: uppercase;
+		font-family: 'Qontra';
 	}
-	.project h1 {
-		font-size: 2.3rem;
-		letter-spacing: 2px;
-		align-self: start;
+	h2::before {
+		content: '– ';
 	}
-	.baseline {
-		margin-top: 2%;
-		font-size: 0.85rem;
+	h1 {
+		position: static;
+		margin: 0;
 	}
-	.project .project--presentation {
-		flex-direction: column-reverse;
-		padding: 0 10% 0 10%;
+	.project--title {
+		margin-left: 15%;
+		position: absolute;
+		top: 15vh;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 	}
-	.project .heroimage {
+	.project--top {
+		height: 80vh;
 		width: 100%;
-		height: 33vh;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
 	}
-	.project .details {
-		margin-left: 0;
-		margin-bottom: 3vh;
+	.project--presentation {
+		display: flex;
+		box-sizing: border-box;
+		padding: 0 15% 2% 27%;
+	}
+	.color {
+		position: absolute;
+		z-index: -1;
+	}
+	.details {
+		margin-left: 4%;
+		min-width: 300px;
+	}
+	.details ul {
+		padding: 0;
+		list-style-type: none;
+		margin: 0;
+	}
+	li:not(:last-of-type)::after {
+		content: ', ';
 	}
 	.details p {
-		margin-bottom: 3.5%;
-		font-size: 0.9rem;
+		letter-spacing: 1px;
+		margin-top: 0;
 	}
-	.project .details ul {
-		display: flex;
-		flex-wrap: wrap;
+	.details .type {
+		text-transform: uppercase;
+		font-weight: bold;
 	}
-}
-h2 {
-	text-transform: uppercase;
-	font-family: 'Qontra';
-}
-h2::before {
-	content: '– ';
-}
-h1 {
-	position: static;
-	margin: 0;
-}
-.project--title {
-	margin-left: 15%;
-	position: absolute;
-	top: 15vh;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-.project--top {
-	height: 80vh;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-}
-.project--presentation {
-	display: flex;
-	box-sizing: border-box;
-	padding: 0 15% 2% 27%;
-}
-.color {
-	position: absolute;
-	z-index: -1;
-}
-.details {
-	margin-left: 4%;
-	min-width: 300px;
-}
-.details ul {
-	padding: 0;
-	list-style-type: none;
-	margin: 0;
-}
-li:not(:last-of-type)::after {
-	content: ', ';
-}
-.details p {
-	letter-spacing: 1px;
-	margin-top: 0;
-}
-.details .type {
-	text-transform: uppercase;
-	font-weight: bold;
-}
-.heroimage--container {
-	position: relative;
-	overflow: hidden;
-}
-.heroimage {
-	width: 40vw;
-	height: 45vh;
-}
-.layer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 101%;
-	transition: 0.35s 0.6s ease-out;
-}
-.layer.reveal {
-	transform: translateY(101%);
-}
+	.heroimage--container {
+		position: relative;
+		overflow: hidden;
+	}
+	.heroimage {
+		width: 40vw;
+		height: 45vh;
+	}
+	.layer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 101%;
+		transition: 0.35s 0.6s ease-out;
+	}
+	.layer.reveal {
+		transform: translateY(101%);
+	}
 /* NOTE: PROJECT CONTENT **********************************/
 @media (max-width: 768px) {
 	.project .project--content {
