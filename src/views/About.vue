@@ -4,7 +4,7 @@
 		<h1>{{about.name}}</h1>
 		<div class="about--content">
 			<div class="about--content--left">
-				<div v-scroll="{class: 'visible', threshold: 0.4}" v-html="about.home_intro" />
+				<div v-scroll="{class: 'visible', threshold: 0.3}" v-html="about.home_intro" />
 				<div v-scroll="{class: 'visible', threshold: 0.4}" v-html="about.about_intro" />
 			</div>
 			<div class="about--content--right">
@@ -59,7 +59,6 @@ export default {
 	.about--content {
 		flex-direction: column-reverse;
 		margin-top: 35vh;
-		margin-bottom: 25vh;
 		padding: 0 10% 0 10%;
 	}
 	.about--content .about--content--left {
@@ -83,6 +82,7 @@ export default {
 		margin-top: auto;
 	}
 	.about--content .about--content--right--img {
+		margin-top:7%;
 		width: 100%;
 	}
 }

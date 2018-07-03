@@ -125,16 +125,6 @@ export default {
 
 <style scoped>
 /* NOTE: TOP LAYOUT **************************/
-.home--background,
-.home--top {
-	min-height: 83vh;
-	width: 100vw;
-}
-.home--background {
-	background-size: cover;
-	background-position: center;
-	z-index: -1;
-}
 @media (max-width: 768px) {
 	.home .home--background,
 	.home .home--top {
@@ -150,10 +140,13 @@ export default {
 	}
 	.home a{
 		min-width:70%;
+		margin-top:7%;
 	}
-
 	.home .home--top--content {
 		flex-direction: column;
+	}
+	.home .top--content--title{
+		align-items: flex-start;
 	}
 	.home h1 {
 		font-size: 2.5rem;
@@ -165,6 +158,7 @@ export default {
 	.home .home--content {
 		display: block;
 		margin-top: 6vh;
+		margin-bottom:0;
 	}
 	.home--content > div {
 		margin-top: 2vh;
@@ -176,6 +170,16 @@ export default {
 		width: 100%;
 		margin-bottom: 4vh;
 	}
+}
+.home--background,
+.home--top {
+	min-height: 83vh;
+	width: 100vw;
+}
+.home--background {
+	background-size: cover;
+	background-position: center;
+	z-index: -1;
 }
 .home--top {
 	position: absolute;

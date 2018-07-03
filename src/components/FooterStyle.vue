@@ -33,6 +33,10 @@ export default {
 
 <style scoped>
 @media (max-width : 768px) {
+	div.footer{
+		position:static;
+		margin-top:10%;
+	}
 	#contacts{
 		justify-content: center;
 		flex-direction:column;

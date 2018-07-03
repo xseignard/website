@@ -112,7 +112,7 @@ export default {
 			box-sizing: border-box;
 		}
 		.project .project--top{
-			height:90vh;
+			height:93vh;
 		}
 		.project .project--top svg{
 			display:block;
@@ -180,89 +180,6 @@ export default {
 	}
 	.project--top{
 		height:80vh;
-	}
-	.details .type{
-		text-transform: uppercase;
-		font-weight: bold;
-	}
-	.project--top svg{
-		display:none;
-		stroke-linecap: round;
-		stroke-width: 0.5px;
-		margin-top:5%;
-	}
-	.heroimage{
-		width:40vw;
-		height:45vh;
-	}
-	/* NOTE: PROJECT CONTENT **********************************/
-	@media (max-width:768px) {
-		.project .project--content{
-			grid-template-areas: "description";
-			grid-template-columns: 1fr;
-			grid-gap:10vh 2vh;
-			margin-top: 4.5vh;
-			padding: 0 10% 0 10%;
-		}
-		.project .content--description{
-			max-width:100%;
-		}
-		.project .content--img{
-			justify-self:start;
-		}
-		.project img{
-			max-width:100%;
-		}
-		.project .content--focus{
-			max-width: 100%;
-		}
-		.project .focus1{
-			grid-area: 3 / 1 / 4 / 2;
-		}
-		.project .focus2{
-			grid-area: 5 / 1 / 6 /2;
-		}
-		.project .content--img:nth-of-type(5){
-			grid-column:1 / 2;
-		}
-	}
-	.project--content{
-		max-width:100%;
-		margin-top: 17vh;
-		padding: 0 15% 0 15%;
-		box-sizing: border-box;
-		position:relative;
-		display: grid;
-		justify-content: space-between;
-		justify-items:start;
-		grid-gap : 17vh 2vh;
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: auto;
-		grid-template-areas:
-		"description description image_1";
-	}
-
-	h2 {
-		text-transform: uppercase;
-		font-family: 'Qontra';
-	}
-	h2::before {
-		content: '– ';
-	}
-	h1 {
-		position: static;
-		margin: 0;
-	}
-	.project--title {
-		margin-left: 15%;
-		position: absolute;
-		top: 15vh;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-	.project--top {
-		height: 80vh;
 		width: 100%;
 		display: flex;
 		justify-content: center;
@@ -287,23 +204,17 @@ export default {
 		margin: 0;
 	}
 	li:not(:last-of-type)::after {
-		content: ', ';
+		content: ',';
+		padding-right: 6px;
+		margin-left: -4px;
 	}
 	.details p {
 		letter-spacing: 1px;
 		margin-top: 0;
 	}
-	.details .type {
-		text-transform: uppercase;
-		font-weight: bold;
-	}
 	.heroimage--container {
 		position: relative;
 		overflow: hidden;
-	}
-	.heroimage {
-		width: 40vw;
-		height: 45vh;
 	}
 	.layer {
 		position: absolute;
@@ -316,37 +227,51 @@ export default {
 	.layer.reveal {
 		transform: translateY(101%);
 	}
-/* NOTE: PROJECT CONTENT **********************************/
-@media (max-width: 768px) {
-	.project .project--content {
-		grid-template-areas: 'description';
-		grid-template-columns: 1fr;
-		grid-gap: 10vh 2vh;
-		margin-top: 8vh;
-		padding: 0 10% 0 10%;
+	.details .type{
+		text-transform: uppercase;
+		font-weight: bold;
 	}
-	.project .content--description {
-		max-width: 100%;
+	.project--top svg{
+		display:none;
+		stroke-linecap: round;
+		stroke-width: 0.5px;
 	}
-	.project .content--img {
-		justify-self: start;
+	.heroimage{
+		width:40vw;
+		height:45vh;
 	}
-	.project img {
-		max-width: 100%;
+	/* NOTE: PROJECT CONTENT **********************************/
+	@media (max-width:768px) {
+		.project .project--content{
+			grid-template-areas: "description";
+			grid-template-columns: 1fr;
+			grid-gap:10vh 2vh;
+			margin-top: 2vh;
+			padding: 0 10% 0 10%;
+		}
+		.project .content--description{
+			max-width:100%;
+		}
+		.project .content--img{
+			justify-self:start;
+		}
+		.project img{
+			max-width:100%;
+		}
+		.project .content--focus{
+			max-width: 100%;
+		}
+		.project .focus1{
+			grid-area: 3 / 1 / 4 / 2;
+		}
+		.project .focus2{
+			grid-area: 5 / 1 / 6 /2;
+		}
+		.project .content--img:nth-of-type(5){
+			grid-column:1 / 2;
+		}
 	}
-	.project .content--focus {
-		max-width: 100%;
-	}
-	.project .focus1 {
-		grid-area: 3 / 1 / 4 / 2;
-	}
-	.project .focus2 {
-		grid-area: 5 / 1 / 6 /2;
-	}
-	.project .content--img:nth-of-type(5) {
-		grid-column: 1 / 2;
-	}
-}
+
 .project--content {
 	max-width: 100%;
 	margin-top: 17vh;
@@ -405,19 +330,19 @@ img {
 	object-fit: cover;
 }
 /* NOTE: NEXT PROJECT **********************************/
+
 @media (max-width: 768px) {
 	.project .next--project {
 		min-width: 50%;
 	}
 	.project .content--next {
-		margin-top: 20vh;
-		margin-bottom: 40vh;
+		margin-top: 23%;
+		margin-bottom: 0;
 	}
 	.project .project--img {
 		max-width: 50vw;
 	}
 }
-
 .content--next {
 	width: 100%;
 	display: flex;
@@ -452,7 +377,7 @@ img {
 	transform: scale(1.1);
 }
 .project--img img {
-	max-height: 100%;
+	min-height: 100%;
 	object-fit: cover;
 	transition: 0.25s ease-out;
 }
