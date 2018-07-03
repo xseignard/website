@@ -130,12 +130,12 @@ export default {
 	.home .home--top {
 		min-height: 75vh;
 	}
-	.home .home--top--content{
-		flex-direction:column;
-		padding:0 10% 0 10%;
+	.home .home--top--content {
+		flex-direction: column;
+		padding: 0 10% 0 10%;
 	}
-	.home h1{
-		font-size:2.8rem;
+	.home h1 {
+		font-size: 2.8rem;
 		letter-spacing: 4px;
 	}
 	.home a{
@@ -218,7 +218,7 @@ h1 {
 a {
 	align-self: flex-end;
 	margin-top: 50px;
-	min-width:30%;
+	min-width: 30%;
 }
 .main-button {
 	padding: 0 10% 0 10%;
@@ -337,6 +337,11 @@ h2 {
 	height: 100%;
 	position: absolute;
 	overflow: hidden;
+}
+@media (max-width: 768px) {
+	.hover {
+		visibility: hidden;
+	}
 }
 .project:hover .hover--details {
 	opacity: 1;

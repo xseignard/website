@@ -31,7 +31,7 @@ export default {
 		},
 	},
 	methods: {
-		beforeEnter(el) {
+		beforeLeave(el) {
 			el.style.opacity = 0;
 			// reset values before enter animation
 			this.height = 0;
@@ -39,7 +39,7 @@ export default {
 			this.visible = true;
 			this.fill = getRandomColor();
 		},
-		enter(el, done) {
+		leave(el, done) {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
@@ -48,15 +48,20 @@ export default {
 				easing: 'easeInOutQuart',
 				duration: duration,
 				complete: () => done && done(),
-			}).add({
+			});
+		},
+		beforeEnter(el) {
+			// sets the opacity to 0 of the entering element
+			el.style.opacity = 0;
+			// scroll to the top of the #app container
+			anime({
 				targets: '#app',
 				scrollTop: 0,
 				easing: 'linear',
 				duration: duration / 5,
-				offset: 400,
 			});
 		},
-		afterEnter(el) {
+		enter(el, done) {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
@@ -65,7 +70,8 @@ export default {
 				easing: 'easeInOutQuart',
 				duration: duration,
 				complete: () => {
-					this.$data.visible = false;
+					this.visible = false;
+					done();
 				},
 			}).add({
 				targets: el,
@@ -73,14 +79,6 @@ export default {
 				easing: 'linear',
 				duration: duration * 1.7,
 				offset: `-=${duration * 1.2}`,
-			});
-		},
-		leave(el, done) {
-			anime({
-				targets: el,
-				opacity: 0,
-				duration: duration * 1.7,
-				complete: () => done && done(),
 			});
 		},
 	},

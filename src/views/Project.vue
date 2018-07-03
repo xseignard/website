@@ -156,25 +156,22 @@ export default {
 			align-self: start;
 		}
 	}
-	h2{
-		text-transform: uppercase;
-		font-family: 'Qontra';
+	.project .project--top {
+		height: 90vh;
 	}
-	h2::before{
-		content:'– ';
+	.project .project--top svg {
+		display: block;
 	}
-	h1{
-		position:static;
-		margin:0;
+	.project h1 {
+		font-size: 2.3rem;
+		letter-spacing: 2px;
+		align-self: start;
 	}
-	.project > svg {
-		height: 55vh;
+	.baseline {
+		margin-top: 2%;
+		font-size: 0.85rem;
 	}
-	.project--title{
-		margin-left: 15%;
-		position: absolute;
-		top: 15vh;
-		display: flex;
+	.project .project--presentation {
 		flex-direction: column;
 		align-items: flex-end;
 	}
@@ -185,32 +182,71 @@ export default {
 		justify-content: center;
 		align-items: flex-end;
 	}
-	.project--presentation {
+	.project .details ul {
 		display: flex;
-		box-sizing: border-box;
-		padding: 0 15% 2% 27%;
+		flex-wrap: wrap;
 	}
-	.color {
-		position: absolute;
-		z-index: -1;
+	.project h1 {
+		font-size: 2.3rem;
+		letter-spacing: 2px;
+		align-self: start;
 	}
-	.details {
-		margin-left: 4%;
-		min-width: 300px;
-	}
-	.details ul {
-		padding: 0;
-		list-style-type: none;
-		margin: 0;
+}
+h2 {
+	text-transform: uppercase;
+	font-family: 'Qontra';
+}
+h2::before {
+	content: '– ';
+}
+h1 {
+	position: static;
+	margin: 0;
+}
+.project > svg {
+	height: 55vh;
+}
+.project--title {
+	margin-left: 15%;
+	position: absolute;
+	top: 15vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.project--top {
+	height: 80vh;
+}
+.details .type {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.project--top svg {
+	display: none;
+	stroke-linecap: round;
+	stroke-width: 0.5px;
+	margin-top: 5%;
+}
+.heroimage {
+	width: 40vw;
+	height: 45vh;
+}
+/* NOTE: PROJECT CONTENT **********************************/
+@media (max-width: 768px) {
+	.project .project--content {
+		grid-template-areas: 'description';
+		grid-template-columns: 1fr;
+		grid-gap: 10vh 2vh;
+		margin-top: 4.5vh;
+		padding: 0 10% 0 10%;
 	}
 	li:not(:last-of-type)::after {
 		content: ',';
 		padding-right: 6px;
 		margin-left: -4px;
 	}
-	.details p {
-		letter-spacing: 1px;
-		margin-top: 0;
+	.project .content--img {
+		justify-self: start;
 	}
 	.heroimage--container {
 		position: relative;
@@ -224,8 +260,8 @@ export default {
 		height: 101%;
 		transition: 0.35s 0.6s ease-out;
 	}
-	.layer.reveal {
-		transform: translateY(101%);
+	.project .content--img:nth-of-type(5) {
+		grid-column: 1 / 2;
 	}
 	.details .type{
 		text-transform: uppercase;

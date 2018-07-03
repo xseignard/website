@@ -22,15 +22,16 @@ new Vue({
 		await this.$store.dispatch('getData');
 	},
 	mounted() {
-		this.ps = new PerfectScrollbar('#app', {
-			suppressScrollX: true,
-			wheelSpeed: 2,
-		});
+		if (window.innerWidth > 768) {
+			this.ps = new PerfectScrollbar('#app', {
+				suppressScrollX: true,
+			});
+		}
 	},
 	watch: {
 		$route() {
 			setTimeout(() => {
-				this.ps.update();
+				this.ps && this.ps.update();
 			}, 1000);
 		},
 	},
