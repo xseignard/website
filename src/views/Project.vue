@@ -26,6 +26,9 @@
 						</ul>
 					</p>
 				</div>
+				<svg width="300px" height="1px">
+					<line x1="50" y1="0" x2="250" y2="0" :style="`stroke:${getProjectColor(project)}`"/>
+				</svg>
 			</div>
 		</div>
 		<div class="project--content">
@@ -109,7 +112,10 @@ export default {
 		box-sizing: border-box;
 	}
 	.project .project--top {
-		height: 85vh;
+		height: 90vh;
+	}
+	.project .project--top svg {
+		display: block;
 	}
 	.project h1 {
 		font-size: 2.3rem;
@@ -131,16 +137,110 @@ export default {
 	}
 	.project .details {
 		margin-left: 0;
+		margin-bottom: 3vh;
 	}
 	.details p {
 		margin-bottom: 3.5%;
 		font-size: 0.9rem;
 	}
+	.details p:last-of-type {
+		margin-bottom: 4%;
+	}
 	.project .details ul {
 		display: flex;
 		flex-wrap: wrap;
 	}
+	.project h1 {
+		font-size: 2.3rem;
+		letter-spacing: 2px;
+		align-self: start;
+	}
 }
+h2 {
+	text-transform: uppercase;
+	font-family: 'Qontra';
+}
+h2::before {
+	content: '– ';
+}
+h1 {
+	position: static;
+	margin: 0;
+}
+.project > svg {
+	height: 55vh;
+}
+.project--title {
+	margin-left: 15%;
+	position: absolute;
+	top: 15vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.project--top {
+	height: 80vh;
+}
+.details .type {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.project--top svg {
+	display: none;
+	stroke-linecap: round;
+	stroke-width: 0.5px;
+	margin-top: 5%;
+}
+.heroimage {
+	width: 40vw;
+	height: 45vh;
+}
+/* NOTE: PROJECT CONTENT **********************************/
+@media (max-width: 768px) {
+	.project .project--content {
+		grid-template-areas: 'description';
+		grid-template-columns: 1fr;
+		grid-gap: 10vh 2vh;
+		margin-top: 4.5vh;
+		padding: 0 10% 0 10%;
+	}
+	.project .content--description {
+		max-width: 100%;
+	}
+	.project .content--img {
+		justify-self: start;
+	}
+	.project img {
+		max-width: 100%;
+	}
+	.project .content--focus {
+		max-width: 100%;
+	}
+	.project .focus1 {
+		grid-area: 3 / 1 / 4 / 2;
+	}
+	.project .focus2 {
+		grid-area: 5 / 1 / 6 /2;
+	}
+	.project .content--img:nth-of-type(5) {
+		grid-column: 1 / 2;
+	}
+}
+.project--content {
+	max-width: 100%;
+	margin-top: 17vh;
+	padding: 0 15% 0 15%;
+	box-sizing: border-box;
+	position: relative;
+	display: grid;
+	justify-content: space-between;
+	justify-items: start;
+	grid-gap: 17vh 2vh;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: 'description description image_1';
+}
+
 h2 {
 	text-transform: uppercase;
 	font-family: 'Qontra';

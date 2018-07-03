@@ -68,6 +68,10 @@ h1 {
 	.projects--content {
 		padding: 0;
 		grid-template-columns: 1fr;
+		margin-bottom:33vh;
+	}
+	.projects .projects--content a:not(:last-child){
+		margin-bottom:6%;
 	}
 	.projects--content a:nth-child(2n) {
 		margin-top: 0;

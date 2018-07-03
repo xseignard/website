@@ -9,7 +9,7 @@
 					<p v-html ="'– ' + about.home_tagline"></p>
 				</div>
 				<router-link to="/projects">
-					<button type="button" class="main-button" >
+					<button type="button" class="main-button">
 						<p>SEE WHAT I MAKE</p>
 					</button>
 				</router-link>
@@ -140,6 +140,18 @@ export default {
 	.home .home--top {
 		min-height: 75vh;
 	}
+	.home .home--top--content{
+		flex-direction:column;
+		padding:0 10% 0 10%;
+	}
+	.home h1{
+		font-size:2.8rem;
+		letter-spacing: 4px;
+	}
+	.home a{
+		min-width:70%;
+	}
+
 	.home .home--top--content {
 		flex-direction: column;
 	}
@@ -202,6 +214,7 @@ h1 {
 a {
 	align-self: flex-end;
 	margin-top: 50px;
+	min-width:30%;
 }
 .main-button {
 	padding: 0 10% 0 10%;
@@ -300,6 +313,7 @@ h2 {
 }
 .secondary-button {
 	border: 2px solid white;
+	background-color: white;
 	border-radius: 3px;
 	padding: 5px 25px 5px 25px;
 	transition: 0.2s ease-out;
