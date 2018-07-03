@@ -73,7 +73,7 @@ export default {
 }
 @media (max-width: 768px) {
 	.hover {
-		display: none;
+		visibility: hidden;
 	}
 }
 .projectItem:hover .hover--details {

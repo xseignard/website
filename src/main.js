@@ -25,7 +25,6 @@ new Vue({
 		if (window.innerWidth > 768) {
 			this.ps = new PerfectScrollbar('#app', {
 				suppressScrollX: true,
-				wheelSpeed: 2,
 			});
 		}
 	},

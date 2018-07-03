@@ -46,7 +46,7 @@ export default {
 	},
 	methods: {
 		beforeLeave(el) {
-			const boundaries = this.clickedProject.querySelector('.itemID').getBoundingClientRect();
+			const boundaries = this.clickedProject.querySelector('.hover').getBoundingClientRect();
 			this.x = boundaries.x;
 			this.y = boundaries.y;
 			this.height = Math.ceil(boundaries.height);
@@ -96,14 +96,12 @@ export default {
 			this.h = '45%';
 		},
 		beforeEnter(el) {
-			const tl = anime.timeline();
-			tl.add({
+			anime({
 				targets: '#app',
 				scrollTop: 0,
 				easing: 'linear',
 				duration: duration / 5,
 			});
-			// el.style.opacity = 0;
 		},
 		enter(el, done) {
 			const tl = anime.timeline();
@@ -115,6 +113,7 @@ export default {
 				delay: 100,
 				complete: () => {
 					this.visible = false;
+					done();
 				},
 			});
 		},
