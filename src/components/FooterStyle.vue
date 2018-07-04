@@ -31,28 +31,13 @@ export default {
 };
 </script>
 
-<style scoped>
-@media (max-width : 768px) {
-	div.footer{
-		position:static;
-		margin-top:10%;
-	}
-	#contacts{
-		justify-content: center;
-		flex-direction:column;
-	}
-	#contacts #contacts--contact{
-		text-align:center;
-	}
-	#contacts #contacts--social{
-		width:90%;
-		margin-top:3vh;
-	}
-}
+<style scoped lang="scss">
+@import '../assets/_variables';
+
 .footer {
 	position: absolute;
 	bottom: 0;
-	padding: 0 15% 2% 15%;
+	padding: $padding-desktop;
 	box-sizing: border-box;
 	margin-top: 20px;
 	width: 100%;
@@ -60,44 +45,63 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media (max-width: 768px) {
+		position: static;
+		margin-top: 10%;
+	}
 }
 svg {
 	stroke-linecap: round;
 	stroke-width: 0.5px;
 	margin-bottom: 3%;
-	stroke: #8b73cf;
+	stroke: $purple;
 }
 #contacts {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	@media (max-width: 768px) {
+		justify-content: center;
+		flex-direction: column;
+	}
 }
 #contacts--contact {
 	text-align: right;
+	@media (max-width: 768px) {
+		text-align: center;
+	}
 }
 #contacts--social {
 	width: 20%;
 	display: flex;
 	justify-content: space-between;
+	img {
+		height: 30px;
+		width: 30px;
+		padding: 5px;
+	}
+	a {
+		&:hover {
+			transform: scale(1.1);
+			filter: invert(0.5) sepia(1) saturate(4) hue-rotate(340deg);
+		}
+	}
+	@media (max-width: 768px) {
+		width: 90%;
+		margin-top: 3vh;
+	}
 }
-#contacts--social img {
-	height: 30px;
-	width: 30px;
-	padding: 5px;
-}
+
 a {
 	text-decoration: none;
 	color: white;
 	transition: 0.25s ease-out;
+	&:hover {
+		color: $green;
+	}
 }
-a:hover {
-	color: #4fdab1;
-}
-#contacts--social a:hover {
-	transform: scale(1.1);
-	filter: invert(0.5) sepia(1) saturate(4) hue-rotate(340deg);
-}
+
 #mentions p {
 	font-size: 0.55em;
 }

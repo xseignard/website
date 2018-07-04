@@ -32,49 +32,52 @@ export default {
 };
 </script>
 
-<style scoped>
-h1 {
-	color: #24003b;
-}
-.color {
-	position: fixed;
-	z-index: -1;
-}
-.projects--content {
-	padding: 0 15% 0 15%;
-	margin-top: 42vh;
-	display: grid;
-	grid-column-gap: 5vh;
-	justify-content: center;
-	justify-items: center;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto;
-	margin-bottom: 25vh;
-}
-.projects--content a {
-	transform: translateY(4vh);
-	opacity: 0;
-	transition: 0.3s ease-out;
-}
-.projects--content a.visible {
-	transform: translateY(0);
-	opacity: 1;
-}
-.projects--content a:nth-child(2n) {
-	margin-top: 10vh;
-	transition-delay: 0.2s;
-}
-@media (max-width: 768px) {
-	.projects--content {
-		padding: 0;
-		grid-template-columns: 1fr;
-		margin-bottom:0;
+<style scoped lang="scss">
+@import '../assets/_variables';
+.projects {
+	h1 {
+		color: #24003b;
 	}
-	.projects .projects--content a:not(:last-child){
-		margin-bottom:6%;
+	.color {
+		position: fixed;
+		z-index: -1;
 	}
-	.projects--content a:nth-child(2n) {
-		margin-top: 0;
+	&--content {
+		padding: $padding-desktop;
+		margin-top: 42vh;
+		display: grid;
+		grid-column-gap: 5vh;
+		justify-content: center;
+		justify-items: center;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto;
+		margin-bottom: $margin-bottom;
+		@media (max-width: 768px) {
+			padding: 0;
+			grid-template-columns: 1fr;
+			margin-bottom: 0;
+		}
+		a {
+			transform: translateY(4vh);
+			opacity: 0;
+			@include short-transition(0s);
+			&.visible {
+				transform: translateY(0);
+				opacity: 1;
+			}
+			&:nth-child(2n) {
+				margin-top: 10vh;
+				transition-delay: 0.2s;
+				@media (max-width: 768px) {
+					margin-top: 0;
+				}
+			}
+			&:not(:last-child) {
+				@media (max-width: 768px) {
+					margin-bottom: 6%;
+				}
+			}
+		}
 	}
 }
 </style>

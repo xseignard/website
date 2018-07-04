@@ -38,7 +38,6 @@ export default {
 			type: String,
 			default: 'white',
 		},
-
 	},
 	computed: {
 		style() {
@@ -50,8 +49,8 @@ export default {
 	//
 	// 	}
 	// },
-	methods: {
-		showMenu: function(event){
+	methods: {
+		showMenu: function(event) {
 			var menu = document.querySelector('.nav--list');
 			var bar1 = document.querySelector('.bar1');
 			var bar2 = document.querySelector('.bar2');
@@ -62,61 +61,60 @@ export default {
 			bar1.classList.toggle('animate1');
 			bar2.classList.toggle('disappear');
 			bar3.classList.toggle('animate2');
-		}
+		},
 	},
 };
 </script>
 
 <style scoped>
-@media (max-width:768px) {
-	div#nav{
-		padding:0;
+@media (max-width: 768px) {
+	div#nav {
+		padding: 0;
 	}
-	#nav .menu-icon{
-		display:flex;
+	#nav .menu-icon {
+		display: flex;
 		position: absolute;
-		padding:30px;
+		padding: 30px;
 	}
-	.nav--list{
-		height:0;
-		width:100%;
+	.nav--list {
+		height: 0;
+		width: 100%;
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
-		overflow:hidden;
+		overflow: hidden;
 	}
-	.white{
-		background-color:white;
-	}
-	.fill{
-		fill:#24003B;
-	}
-	#nav a{
-		color:#24003B;
-		text-align: center;
-	}
-	.showing{
-		height:40vh;
-		padding-bottom:10%;
+	.white {
 		background-color: white;
 	}
-
+	.fill {
+		fill: #24003b;
+	}
+	#nav a {
+		color: #24003b;
+		text-align: center;
+	}
+	.showing {
+		height: 40vh;
+		padding-bottom: 10%;
+		background-color: white;
+	}
 }
 #nav {
 	z-index: 1;
 	position: absolute;
 	top: 0;
 	padding: 50px;
-	display:flex;
+	display: flex;
 	justify-content: flex-end;
 	width: 100%;
 	box-sizing: border-box;
-	height:auto;
+	height: auto;
 }
-.nav--list{
-	display:flex;
-	overflow:hidden;
-	transition: .4s ease-out;
+.nav--list {
+	display: flex;
+	overflow: hidden;
+	transition: 0.4s ease-out;
 }
 #nav a {
 	padding: 0 15px 0 15px;
@@ -143,37 +141,53 @@ export default {
 #nav a:hover svg {
 	stroke-dashoffset: 0;
 }
-.menu-icon{
-  height:27px;
+.menu-icon {
+	height: 27px;
 	display: none;
 	position: relative;
-  flex-direction:column;
-  justify-content : space-between;
-  align-items:flex-end;
-	cursor:pointer;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+	cursor: pointer;
 }
-rect{
-	transition: .25s ease-out;
+rect {
+	transition: 0.25s ease-out;
 }
-.animate1{
-  animation : spin1 .35s ease forwards;
+.animate1 {
+	animation: spin1 0.35s ease forwards;
 }
-.disappear{
-  opacity:0;
+.disappear {
+	opacity: 0;
 }
-.animate2{
-  animation: spin2 .35s ease forwards;
+.animate2 {
+	animation: spin2 0.35s ease forwards;
 }
-@keyframes spin1{
-  0%{transform:translateY(0) rotate(0deg)}
-  25%{transform:rotate(0deg)}
-  60%{transform:translateY(130%)}
-  100%{transform:translateY(250%) rotate(-45deg)}
+@keyframes spin1 {
+	0% {
+		transform: translateY(0) rotate(0deg);
+	}
+	25% {
+		transform: rotate(0deg);
+	}
+	60% {
+		transform: translateY(130%);
+	}
+	100% {
+		transform: translateY(250%) rotate(-45deg);
+	}
 }
-@keyframes spin2{
-  0%{ transform:translateY(0) rotate(0deg)}
-  25%{transform:rotate(0deg)}
-  60%{transform:translateY(-130%)}
-  100%{transform:translateY(-250%) rotate(45deg)}
+@keyframes spin2 {
+	0% {
+		transform: translateY(0) rotate(0deg);
+	}
+	25% {
+		transform: rotate(0deg);
+	}
+	60% {
+		transform: translateY(-130%);
+	}
+	100% {
+		transform: translateY(-250%) rotate(45deg);
+	}
 }
 </style>

@@ -1,0 +1,13 @@
+$padding-desktop: 0 15% 0 15%;
+$padding-mobile: 0 10% 0 10%;
+$margin-bottom: 25vh;
+$green: #49d6a7;
+$purple: #8b73cf;
+$orange: #f88429;
+$dark-purple: #24003b;
+@mixin short-transition($delay) {
+	transition: 0.25s $delay ease-out;
+}
+@mixin long-transition($delay) {
+	transition: 0.5s $delay ease-out;
+}
