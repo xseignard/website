@@ -4,7 +4,7 @@
 		<h1>{{about.name}}</h1>
 		<div class="about--content">
 			<div class="about--content--left">
-				<div v-scroll="{class: 'visible', threshold: 0.3}" v-html="about.home_intro" />
+				<div v-scroll="{class: 'visible', threshold: 0.2}" v-html="about.home_intro" />
 				<div v-scroll="{class: 'visible', threshold: 0.4}" v-html="about.about_intro" />
 			</div>
 			<div class="about--content--right">
@@ -63,6 +63,9 @@ export default {
 	flex-grow: 1;
 	h1 {
 		text-transform: uppercase;
+		@media (max-width: 768px) {
+			margin-top: 0;
+		}
 	}
 	&--content {
 		width: 100%;
@@ -85,7 +88,7 @@ export default {
 		div {
 			transform: translateY(4vh);
 			opacity: 0;
-			@include long-transition(0s);
+			@include long-transition;
 			&:nth-child(2) {
 				transition-delay: 0.2s;
 			}
@@ -119,7 +122,7 @@ export default {
 			padding-right: 0;
 		}
 		*:not(svg) {
-			@include long-transition(0s);
+			@include long-transition;
 			transform: translateY(-4vh);
 			opacity: 0;
 		}
@@ -154,15 +157,16 @@ export default {
 		width: 22vw;
 		height: 25vh;
 		overflow: hidden;
+		@media (max-width: 768px) {
+			margin-top: 7%;
+			width: 100%;
+			min-height: 31vh;
+		}
 		svg.reveal {
 			rect {
 				@include short-transition(0.6s);
 				transform: translateY(100%);
 			}
-		}
-		@media (max-width: 768px) {
-			margin-top: 7%;
-			width: 100%;
 		}
 	}
 	.visible:not(svg),

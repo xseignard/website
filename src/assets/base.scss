@@ -12,9 +12,10 @@
 	src: url(./fonts/OpenSans-Regular.ttf);
 }
 
+@import './_variables';
 /** COMMON **/
 body {
-	background-color: #24003b;
+	background-color: $dark-purple;
 }
 h1 {
 	font-family: 'Qontra', sans-serif;

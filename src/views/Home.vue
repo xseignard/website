@@ -6,7 +6,7 @@
 			<div class="home--top--content">
 				<div class="home--top--content--title">
 					<h1 v-html="about.home_headline" />
-					<p v-html ="'– ' + about.home_tagline"></p>
+					<p  v-scroll="{class: 'visible-baseline', threshold: 0.2}" v-html ="'– ' + about.home_tagline"></p>
 				</div>
 				<router-link to="/projects">
 					<button type="button" class="main-button">
@@ -18,7 +18,7 @@
 		<div class="home--content">
 			<div class="home--content--about">
 				<h2> &#151; Hello, I'm Xavier</h2>
-				<p class="bio" v-html="about.home_intro" />
+				<p class="bio"  v-scroll="{class: 'visible', threshold: 0.1}" v-html="about.home_intro" />
 				<router-link to="/about">
 					<button type="button" class="secondary-button">
 						<p>MORE ABOUT ME</p>
@@ -27,11 +27,11 @@
 			</div>
 			<div class="home--content--projects">
 				<h2> &#151; Newest projects</h2>
-					<div class="home--content--projects--list">
+					<div class="home--content--projects--list" v-scroll="{class: 'visible', threshold: 0.05}">
 						<router-link :to="`/project/${project1.id}`" class="project">
 							<div :style="project1.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project1)}`"></div>
-								<div class="hover">
+								<div class="hover" v-scroll="{class: 'visible', threshold: 0.01}">
 									<div class="layer" :style="`background-color:${getProjectColor(project1)}`"/>
 									<div class="hover--details">
 										<p v-html="project1.baseline" class="baseline"></p>
@@ -50,7 +50,7 @@
 						<router-link :to="`/project/${project2.id}`" class="project">
 							<div :style="project2.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project2)}`"></div>
-								<div class="hover">
+								<div class="hover" v-scroll="{class: 'visible', threshold: 0.01}">
 									<div class="layer" :style="`background-color:${getProjectColor(project2)}`"/>
 									<div class="hover--details">
 										<p v-html="project2.baseline" class="baseline"></p>
@@ -199,6 +199,16 @@ export default {
 					font-weight: lighter;
 					text-transform: lowercase;
 					font-size: 1.35rem;
+					transform: translateX(-7vh);
+					opacity: 0;
+					@include short-transition;
+					@media (max-width: 768px) {
+						transform: translateX(7vh);
+					}
+					&.visible-baseline {
+						transform: translateX(0);
+						opacity: 1;
+					}
 				}
 			}
 		}
@@ -211,7 +221,7 @@ export default {
 		border-radius: 3px;
 		background-color: transparent;
 		color: white;
-		@include short-transition(0s);
+		@include short-transition;
 		@media (max-width: 768px) {
 			width: 70%;
 			padding: 0 4% 0 4%;
@@ -249,6 +259,13 @@ export default {
 			flex-direction: column;
 			p.bio {
 				margin-top: -1em;
+				transform: translateY(4vh);
+				opacity: 0;
+				@include short-transition(0.15s);
+				&.visible {
+					opacity: 1;
+					transform: translateY(0);
+				}
 			}
 		}
 		&--projects {
@@ -262,8 +279,15 @@ export default {
 				height: 90%;
 				width: 100%;
 				justify-content: space-between;
+				transform: translateY(4vh);
+				opacity: 0;
+				@include short-transition(0.3s);
 				@media (max-width: 768px) {
 					flex-direction: column;
+				}
+				&.visible {
+					transform: translateY(0);
+					opacity: 1;
 				}
 				a {
 					height: 100%;
@@ -278,10 +302,12 @@ export default {
 				justify-content: flex-end;
 				position: relative;
 				width: 45%;
+
 				@media (max-width: 768px) {
 					width: 100%;
 					margin-bottom: 4vh;
 				}
+
 				p {
 					margin-bottom: 0;
 				}
@@ -290,10 +316,13 @@ export default {
 					font-weight: bold;
 				}
 				.img {
-					height: 25vh;
+					min-height: 25vh;
 					width: 100%;
 					position: relative;
 					transition: 1s ease-out;
+					@media (max-width: 768px) {
+						min-height: 33vh;
+					}
 				}
 				.color {
 					width: 100%;
@@ -308,6 +337,13 @@ export default {
 					height: 100%;
 					position: absolute;
 					overflow: hidden;
+					&.visible .hover--details,
+					&.visible .layer {
+						@media (max-width: 768px) {
+							opacity: 1;
+							transform: translateX(0);
+						}
+					}
 					&--details {
 						transform: translateX(-10%);
 						opacity: 0;
@@ -316,6 +352,10 @@ export default {
 						position: relative;
 						z-index: 1;
 						@include short-transition(0.15s);
+						@media (max-width: 768px) {
+							@include long-transition(0.55s);
+							font-size: 0.9rem;
+						}
 					}
 					&:hover .hover--details {
 						opacity: 1;
@@ -330,8 +370,11 @@ export default {
 						left: 0;
 						width: 100%;
 						height: 100%;
-						@include short-transition(0s);
+						@include short-transition;
 						transform: translateX(-100%);
+						@media (max-width: 768px) {
+							@include long-transition(0.4s);
+						}
 					}
 					.baseline {
 						margin-bottom: 5%;
@@ -359,7 +402,7 @@ export default {
 			background-color: white;
 			border-radius: 3px;
 			padding: 5px 25px 5px 25px;
-			@include short-transition(0s);
+			@include short-transition;
 			&:hover {
 				transform: scale(1.05);
 				color: white;
@@ -367,7 +410,7 @@ export default {
 			}
 			p {
 				margin: 0;
-				font-size: 0.6rem;
+				font-size: 0.7rem;
 			}
 		}
 	}

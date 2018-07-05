@@ -15,12 +15,12 @@
 					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: #F88429`"/>
 				</div>
 				<div class="details">
-					<p class="type" v-for="type in project.type"> {{type}}</p>
-					<p v-html="'– ' + project.type_of_client"></p>
-					<p v-html ="project.date"></p>
-					<p>
-						<ul>
-							<li v-for="t in project.technologies">
+					<p v-scroll="{class: 'visible', threshold: 0.2}" class="type" v-for="type in project.type"> {{type}}</p>
+					<p v-scroll="{class: 'visible', threshold: 0.2}" v-html="'– ' + project.type_of_client"></p>
+					<p v-scroll="{class: 'visible', threshold: 0.2}" v-html ="project.date"></p>
+					<p class="technologies">
+						<ul class="technologies">
+							<li v-scroll="{class: 'visible', threshold: 0.2}" v-for="t in project.technologies">
 								{{ t.name}}
 							</li>
 						</ul>
@@ -180,6 +180,15 @@ export default {
 				margin-left: 0;
 				margin-bottom: 3vh;
 			}
+			*:not(.technologies) {
+				transform: translateX(4vh);
+				opacity: 0;
+				@include long-transition(0.2s);
+			}
+			*.visible {
+				transform: translateX(0);
+				opacity: 1;
+			}
 			ul {
 				padding: 0;
 				list-style-type: none;
@@ -187,6 +196,15 @@ export default {
 				@media (max-width: 768px) {
 					display: flex;
 					flex-wrap: wrap;
+				}
+				li:first-of-type {
+					transition-delay: 0.5s;
+				}
+				li:nth-of-type(2) {
+					transition-delay: 0.6s;
+				}
+				li:nth-of-type(3) {
+					transition-delay: 0.7s;
 				}
 				li:not(:last-of-type)::after {
 					content: ',';
@@ -205,6 +223,12 @@ export default {
 					margin-bottom: 3.5%;
 					font-size: 0.9rem;
 				}
+				&:nth-child(2) {
+					transition-delay: 0.3s;
+				}
+				&:nth-child(3) {
+					transition-delay: 0.4s;
+				}
 				&:last-of-type {
 					@media (max-width: 768px) {
 						margin-bottom: 4%;
@@ -215,13 +239,15 @@ export default {
 		.heroimage--container {
 			position: relative;
 			overflow: hidden;
+			@media (max-width: 768px) {
+				margin-bottom: 3vh;
+			}
 			.heroimage {
 				width: 40vw;
 				height: 45vh;
 				@media (max-width: 768px) {
 					width: 100%;
 					height: 33vh;
-					margin-bottom: 3vh;
 				}
 			}
 			.layer {
@@ -241,7 +267,7 @@ export default {
 	.project--content {
 		max-width: 100%;
 		margin-top: 17vh;
-		padding: 0 15% 0 15%;
+		padding: $padding-desktop;
 		box-sizing: border-box;
 		position: relative;
 		display: grid;
@@ -256,12 +282,12 @@ export default {
 			grid-template-columns: 1fr;
 			grid-gap: 10vh 2vh;
 			margin-top: 2vh;
-			padding: 0 10% 0 10%;
+			padding: $padding-mobile;
 		}
 		div:not(.content--description) {
 			transform: translateY(4vh);
 			opacity: 0;
-			@include long-transition(0s);
+			@include long-transition;
 		}
 		div.visible {
 			transform: translateY(0);
@@ -375,8 +401,9 @@ export default {
 				}
 				img {
 					min-height: 100%;
-					object-fit: contain;
-					@include short-transition(0s);
+					min-width: 100%;
+					object-fit: cover;
+					@include short-transition;
 				}
 			}
 		}

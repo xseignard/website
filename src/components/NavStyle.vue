@@ -1,5 +1,5 @@
 <template>
-	<div id="nav">
+	<div class="nav">
 		<div class="menu-icon" @click="showMenu">
       <svg class ="bar1" width="30" height="4">
         <rect width="30" height="4" rx="1" ry="1"/>
@@ -50,57 +50,28 @@ export default {
 	// 	}
 	// },
 	methods: {
-		showMenu: function(event) {
-			var menu = document.querySelector('.nav--list');
-			var bar1 = document.querySelector('.bar1');
-			var bar2 = document.querySelector('.bar2');
-			var bar3 = document.querySelector('.bar3');
-			var navBar = document.querySelector('#nav');
+		showMenu: event => {
+			const icon = document.querySelector('.menu-icon');
+			const menu = document.querySelector('.nav--list');
+			const bar1 = document.querySelector('.bar1');
+			const bar2 = document.querySelector('.bar2');
+			const bar3 = document.querySelector('.bar3');
+			const navBar = document.querySelector('.nav');
 			navBar.classList.toggle('white');
 			menu.classList.toggle('showing');
 			bar1.classList.toggle('animate1');
 			bar2.classList.toggle('disappear');
 			bar3.classList.toggle('animate2');
+			icon.classList.toggle('fixed');
 		},
 	},
 };
 </script>
 
-<style scoped>
-@media (max-width: 768px) {
-	div#nav {
-		padding: 0;
-	}
-	#nav .menu-icon {
-		display: flex;
-		position: absolute;
-		padding: 30px;
-	}
-	.nav--list {
-		height: 0;
-		width: 100%;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-around;
-		overflow: hidden;
-	}
-	.white {
-		background-color: white;
-	}
-	.fill {
-		fill: #24003b;
-	}
-	#nav a {
-		color: #24003b;
-		text-align: center;
-	}
-	.showing {
-		height: 40vh;
-		padding-bottom: 10%;
-		background-color: white;
-	}
-}
-#nav {
+<style scoped lang="scss">
+@import '../assets/_variables';
+
+.nav {
 	z-index: 1;
 	position: absolute;
 	top: 0;
@@ -110,84 +81,106 @@ export default {
 	width: 100%;
 	box-sizing: border-box;
 	height: auto;
+	@media (max-width: 768px) {
+		padding: 0;
+	}
+	&.white {
+		@media (max-width: 768px) {
+			background-color: white;
+		}
+	}
+	a {
+		padding: 0 15px 0 15px;
+		font-family: 'Qontra';
+		letter-spacing: 2px;
+		font-weight: bold;
+		text-decoration: none;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include short-transition;
+		@media (max-width: 768px) {
+			color: $dark-purple;
+			text-align: center;
+			opacity: 0;
+		}
+		&.router-link-exact-active svg,
+		&:hover svg {
+			stroke-dashoffset: 0;
+		}
+	}
+	.menu-icon {
+		height: 27px;
+		z-index: 2;
+		display: none;
+		position: relative;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-end;
+		cursor: pointer;
+		@media (max-width: 768px) {
+			display: flex;
+			position: absolute;
+			padding: 30px 30px 0 30px;
+		}
+		&.fixed {
+			position: fixed;
+		}
+		&.fill {
+			@media (max-width: 768px) {
+				fill: $dark-purple;
+			}
+		}
+		svg {
+			@include short-transition;
+		}
+	}
+	.nav--list {
+		display: flex;
+		overflow: hidden;
+		@include long-transition;
+		@media (max-width: 768px) {
+			height: 0;
+			width: 100%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			overflow: hidden;
+			position: fixed;
+		}
+		&.showing {
+			@media (max-width: 768px) {
+				height: 40vh;
+				padding: 5% 0 5% 0;
+				background-color: white;
+			}
+			a {
+				@media (max-width: 768px) {
+					opacity: 1;
+				}
+			}
+		}
+		svg {
+			position: absolute;
+			stroke-width: 1.5px;
+			stroke-dasharray: 100 100;
+			stroke-dashoffset: 100;
+			@include short-transition;
+			stroke-linecap: round;
+			top: 0;
+			left: 0;
+		}
+	}
 }
-.nav--list {
-	display: flex;
-	overflow: hidden;
-	transition: 0.4s ease-out;
-}
-#nav a {
-	padding: 0 15px 0 15px;
-	font-family: 'Qontra';
-	letter-spacing: 2px;
-	font-weight: bold;
-	text-decoration: none;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.nav--list svg {
-	position: absolute;
-	stroke-width: 1.5px;
-	stroke-dasharray: 100 100;
-	stroke-dashoffset: 100;
-	transition: 0.25s ease-out;
-	stroke-linecap: round;
-	top: 0;
-	left: 0;
-}
-#nav a.router-link-exact-active svg,
-#nav a:hover svg {
-	stroke-dashoffset: 0;
-}
-.menu-icon {
-	height: 27px;
-	display: none;
-	position: relative;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-end;
-	cursor: pointer;
-}
-rect {
-	transition: 0.25s ease-out;
-}
+// NOTE: ANIMATION ////////////////////////////
 .animate1 {
-	animation: spin1 0.35s ease forwards;
+	transform: translateY(280%) rotate(-45deg);
 }
 .disappear {
 	opacity: 0;
 }
 .animate2 {
-	animation: spin2 0.35s ease forwards;
-}
-@keyframes spin1 {
-	0% {
-		transform: translateY(0) rotate(0deg);
-	}
-	25% {
-		transform: rotate(0deg);
-	}
-	60% {
-		transform: translateY(130%);
-	}
-	100% {
-		transform: translateY(250%) rotate(-45deg);
-	}
-}
-@keyframes spin2 {
-	0% {
-		transform: translateY(0) rotate(0deg);
-	}
-	25% {
-		transform: rotate(0deg);
-	}
-	60% {
-		transform: translateY(-130%);
-	}
-	100% {
-		transform: translateY(-250%) rotate(45deg);
-	}
+	transform: translateY(-280%) rotate(45deg);
 }
 </style>

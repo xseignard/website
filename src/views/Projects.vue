@@ -60,7 +60,7 @@ export default {
 		a {
 			transform: translateY(4vh);
 			opacity: 0;
-			@include short-transition(0s);
+			@include short-transition;
 			&.visible {
 				transform: translateY(0);
 				opacity: 1;

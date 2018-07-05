@@ -2,7 +2,7 @@
 	<router-link :to="`/project/${project.id}`" @click.native="saveClickedProject" class="projectItem">
 		<div class="itemID img" :style="`${getBgImage(project.featured_image)}`">
 			<div class="color" :style="`background-color: ${getProjectColor(project)}`"></div>
-			<div class="hover">
+			<div class="hover" v-scroll="{class: 'visible', threshold: 1}">
 				<div class="layer" :style="`background-color:${getProjectColor(project)}`"/>
 				<div class="hover--details">
 					<p v-html="project.baseline" class="baseline"></p>
@@ -42,84 +42,91 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '../assets/_variables';
 .projectItem {
 	color: white;
 	text-decoration: none;
-}
-.itemID {
-	height: 30vh;
-	width: 27vw;
-	position: relative;
-	margin-right: 0;
-}
-@media (max-width: 768px) {
+	svg {
+		position: absolute;
+	}
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.15rem;
+	}
 	.itemID {
-		width: 70vw;
+		height: 30vh;
+		width: 27vw;
+		position: relative;
+		margin-right: 0;
+		@media (max-width: 768px) {
+			width: 70vw;
+			min-height: 33vh;
+		}
+		&:hover .hover--details,
+		&:hover .layer {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		.layer {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transform: translateX(-100%);
+			@include short-transition();
+			@media (max-width: 768px) {
+				@include long-transition(0.4s);
+			}
+		}
+		.color {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			bottom: 0;
+			opacity: 0.4;
+		}
+		.hover {
+			width: 85%;
+			height: 100%;
+			position: absolute;
+			overflow: hidden;
+			&.visible .hover--details,
+			&.visible .layer {
+				@media (max-width: 768px) {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+			&--details {
+				transform: translateX(-10%);
+				opacity: 0;
+				padding: 5%;
+				box-sizing: border-box;
+				position: relative;
+				z-index: 1;
+				@include short-transition(0.15s);
+				@media (max-width: 768px) {
+					@include long-transition(0.55s);
+					font-size: 0.9rem;
+				}
+				.baseline {
+					font-family: 'Open Sans Light';
+				}
+				.type {
+					text-transform: uppercase;
+					font-weight: bold;
+					&:nth-child(2) {
+						margin: 0;
+					}
+				}
+				ul {
+					list-style-type: none;
+					padding: 0;
+				}
+			}
+		}
 	}
-}
-.color {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	bottom: 0;
-	opacity: 0.4;
-}
-.hover {
-	width: 85%;
-	height: 100%;
-	position: absolute;
-	overflow: hidden;
-}
-@media (max-width: 768px) {
-	.hover {
-		display: none;
-	}
-}
-.projectItem:hover .hover--details {
-	opacity: 1;
-	transform: translateX(0);
-}
-.layer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	transform: translateX(-100%);
-	transition: 0.3s ease-out;
-}
-.projectItem:hover .layer {
-	transform: translateX(0);
-}
-.hover--details {
-	transform: translateX(-10%);
-	opacity: 0;
-	padding: 5%;
-	box-sizing: border-box;
-	position: relative;
-	z-index: 1;
-	transition: 0.25s 0.15s ease-out;
-}
-.baseline {
-	font-family: 'Open Sans Light';
-}
-.type {
-	text-transform: uppercase;
-	font-weight: bold;
-}
-.type:nth-child(2) {
-	margin: 0;
-}
-ul {
-	list-style-type: none;
-	padding: 0;
-}
-svg {
-	position: absolute;
-}
-h2 {
-	text-transform: uppercase;
-	font-size: 1.15rem;
 }
 </style>

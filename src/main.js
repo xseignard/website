@@ -8,7 +8,7 @@ import 'intersection-observer';
 
 import '@/directives/scroll';
 import 'normalize.css';
-import '@/assets/base.css';
+import '@/assets/base.scss';
 
 new Vue({
 	el: '#app',
