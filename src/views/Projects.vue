@@ -1,6 +1,6 @@
 <template>
 	<div class="page projects">
-		<NavStyle color="#24003b"/>
+		<NavStyle />
 		<svg class="color" width="100%" height="55%">
 			<rect width="100%" height="100%" fill="white"/>
 		</svg>
@@ -36,7 +36,7 @@ export default {
 @import '../assets/_variables';
 .projects {
 	h1 {
-		color: #24003b;
+		color: $dark-purple;
 	}
 	.color {
 		position: fixed;

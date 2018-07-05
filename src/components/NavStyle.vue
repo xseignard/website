@@ -1,29 +1,23 @@
 <template>
 	<div class="nav">
 		<div class="menu-icon" @click="showMenu">
-      <svg class ="bar1" width="30" height="4">
-        <rect width="30" height="4" rx="1" ry="1"/>
-      </svg>
-      <svg class="bar2" width="25" height="4">
-        <rect width="25" height="4" rx="1" ry="1"/>
-      </svg>
-      <svg class="bar3" width="30" height="4">
-        <rect width="30" height="4" rx="1" ry="1"/>
-      </svg>
-    </div>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
 		<div class="nav--list">
-			<router-link to="/" :style="style">HOME
-				<svg width="100%" height="100%" :style="style">
+			<router-link to="/">HOME
+				<svg width="100%" height="100%">
 					<line x1="15%" y1="50%" x2="85%" y2="50%"/>
 				</svg>
 			</router-link>
-			<router-link to="/about" :style="style">ABOUT
-				<svg width="100%" height="100%" :style="style">
+			<router-link to="/about">ABOUT
+				<svg width="100%" height="100%">
 					<line x1="15%" y1="50%" x2="85%" y2="50%"/>
 				</svg>
 			</router-link>
-			<router-link to="/projects" :style="style">PROJECTS
-				<svg width="100%" height="100%" :style="style">
+			<router-link to="/projects">PROJECTS
+				<svg width="100%" height="100%">
 					<line x1="10%" y1="50%" x2="90%" y2="50%"/>
 				</svg>
 			</router-link>
@@ -33,36 +27,16 @@
 
 <script>
 export default {
-	props: {
-		color: {
-			type: String,
-			default: 'white',
-		},
-	},
-	computed: {
-		style() {
-			return `color: ${this.color}; stroke: ${this.color}; fill: ${this.color};`;
-		},
-	},
-	// mounted: {
-	// 	if (window.innerWidth < 768) {
-	//
-	// 	}
-	// },
 	methods: {
 		showMenu: event => {
 			const icon = document.querySelector('.menu-icon');
+			const bars = document.querySelectorAll('.menu-icon span');
 			const menu = document.querySelector('.nav--list');
-			const bar1 = document.querySelector('.bar1');
-			const bar2 = document.querySelector('.bar2');
-			const bar3 = document.querySelector('.bar3');
 			const navBar = document.querySelector('.nav');
 			navBar.classList.toggle('white');
 			menu.classList.toggle('showing');
-			bar1.classList.toggle('animate1');
-			bar2.classList.toggle('disappear');
-			bar3.classList.toggle('animate2');
 			icon.classList.toggle('fixed');
+			bars.forEach(b => b.classList.toggle('open'));
 		},
 	},
 };
@@ -70,7 +44,16 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/_variables';
-
+// selectors matching only the nav menu on the projects page
+.projects .nav a,
+.projects .nav svg {
+	color: $dark-purple;
+	stroke: $dark-purple;
+}
+.projects .nav .menu-icon span {
+	background-color: $dark-purple;
+}
+// general styling
 .nav {
 	z-index: 1;
 	position: absolute;
@@ -95,6 +78,7 @@ export default {
 		letter-spacing: 2px;
 		font-weight: bold;
 		text-decoration: none;
+		color: white;
 		position: relative;
 		display: flex;
 		justify-content: center;
@@ -109,20 +93,62 @@ export default {
 		&:hover svg {
 			stroke-dashoffset: 0;
 		}
+		svg {
+			stroke: white;
+			@media (max-width: 768px) {
+				stroke: $dark-purple;
+			}
+		}
 	}
 	.menu-icon {
-		height: 27px;
+		width: 36px;
+		height: 28px;
 		z-index: 2;
 		display: none;
-		position: relative;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: flex-end;
 		cursor: pointer;
 		@media (max-width: 768px) {
-			display: flex;
+			display: block;
 			position: absolute;
-			padding: 30px 30px 0 30px;
+			margin: 30px 30px 0 -30px;
+		}
+		span {
+			display: block;
+			position: absolute;
+			height: 3px;
+			width: 100%;
+			background: white;
+			border-radius: 2px;
+			left: 0;
+			transform-origin: right center;
+			@include short-transition(0.1s);
+			&.open {
+				background-color: $dark-purple;
+			}
+			&:nth-child(1) {
+				top: 0px;
+				&.open {
+					transform: rotate(-45deg);
+					left: 6px;
+				}
+			}
+			&:nth-child(2) {
+				width: 75%;
+				right: 0;
+				left: unset;
+				top: 12px;
+				&.open {
+					width: 0%;
+					opacity: 0;
+				}
+			}
+			&:nth-child(3) {
+				top: 25px;
+				&.open {
+					transform: rotate(45deg);
+					top: 25px;
+					left: 6px;
+				}
+			}
 		}
 		&.fixed {
 			position: fixed;
@@ -131,9 +157,6 @@ export default {
 			@media (max-width: 768px) {
 				fill: $dark-purple;
 			}
-		}
-		svg {
-			@include short-transition;
 		}
 	}
 	.nav--list {

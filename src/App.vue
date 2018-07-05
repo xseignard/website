@@ -8,7 +8,7 @@
 			@before-enter="beforeEnter"
 			@enter="enter"
 			@after-enter="afterEnter"
-			:mode="toProjectTransition ? 'out-in' : undefined"
+			mode="out-in"
 			v-else
 		>
 			<router-view :key="$route.path" ref="page"/>
