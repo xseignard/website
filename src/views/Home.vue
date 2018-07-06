@@ -28,7 +28,7 @@
 			<div class="home--content--projects">
 				<h2> &#151; Newest projects</h2>
 					<div class="home--content--projects--list" v-scroll="{class: 'visible', threshold: 0}">
-						<router-link :to="`/project/${project1.id}`" class="project">
+						<router-link :to="`/project/${project1.id}`" @click.native="saveClickedProject" class="project">
 							<div :style="project1.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project1)}`"></div>
 								<div class="hover" v-scroll="{class: 'visible', threshold: 0.01}">
@@ -47,7 +47,7 @@
 							</div>
 							<p class="intro" v-html="project1.title" />
 						</router-link>
-						<router-link :to="`/project/${project2.id}`" class="project">
+						<router-link :to="`/project/${project2.id}`" @click.native="saveClickedProject" class="project">
 							<div :style="project2.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project2)}`"></div>
 								<div class="hover" v-scroll="{class: 'visible', threshold: 0.01}">
@@ -119,6 +119,11 @@ export default {
 			about: state => state.about,
 		}),
 		...mapGetters(['getProjectColor']),
+	},
+	methods: {
+		saveClickedProject(evt) {
+			this.$store.commit('SET_CLICKED_PROJECT', evt.path.filter(e => e.tagName === 'A')[0]);
+		},
 	},
 };
 </script>

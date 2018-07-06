@@ -3,19 +3,19 @@
 		<NavStyle />
 		<div class="color" :style="`background-color:${getProjectColor(project)}`" />
 		</svg>
-		<div class="project--title">
+		<div class="project--title" v-scroll="{class: 'visible', threshold: 0.2}">
 			<h1 v-html="project.title" />
 			<p class="baseline" v-html="'– ' + project.baseline" />
 		</div>
 		<div class="project--top">
 			<div class="project--presentation">
-				<div class="heroimage--container">
+				<div class="heroimage--container" v-scroll="{class: 'visible', threshold: 0.2}">
 					<div class="img heroimage" :style="getBgImage(project.featured_image.sizes.large)" />
 					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: #F88429`"/>
 				</div>
 				<div class="details">
 					<p v-scroll="{class: 'visible', threshold: 0.2}" class="type" v-for="type in project.type"> {{type}}</p>
-					<p v-scroll="{class: 'visible', threshold: 0.2}" v-html="'– ' + project.type_of_client"></p>
+					<p v-scroll="{class: 'visible', threshold: 0.2}" v-html="`– ${project.type_of_client}`"></p>
 					<p v-scroll="{class: 'visible', threshold: 0.2}" v-html ="project.date"></p>
 					<p class="technologies">
 						<ul class="technologies">
@@ -130,6 +130,11 @@ export default {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
+		opacity: 0;
+		@include long-transition(0.3s);
+		&.visible {
+			opacity: 1;
+		}
 		@media (max-width: 768px) {
 			margin: 0;
 			width: 100%;
@@ -180,7 +185,7 @@ export default {
 			*:not(.technologies) {
 				transform: translateX(4vh);
 				opacity: 0;
-				@include long-transition(0.2s);
+				@include long-transition(0.3s);
 			}
 			*.visible {
 				transform: translateX(0);
@@ -236,6 +241,13 @@ export default {
 		.heroimage--container {
 			position: relative;
 			overflow: hidden;
+			opacity: 0;
+			transform: translateX(-4vh);
+			@include long-transition(0.3s);
+			&.visible {
+				opacity: 1;
+				transform: translateX(0);
+			}
 			@media (max-width: 768px) {
 				margin-bottom: 3vh;
 			}

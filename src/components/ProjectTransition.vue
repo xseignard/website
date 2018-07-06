@@ -16,7 +16,7 @@ import anime from 'animejs';
 import { mapGetters, mapState } from 'vuex';
 import { getRandomColor } from '@/utils';
 
-const duration = 500;
+const duration = 450;
 
 export default {
 	props: {
@@ -60,14 +60,14 @@ export default {
 				width: '100%',
 				round: 1,
 				easing: 'easeInOutQuart',
-				duration: 500,
+				duration: duration,
 			})
 				// fade out the unecessary elements (e.g. the current page)
 				.add({
 					targets: el,
 					opacity: 0,
 					easing: 'easeInOutQuart',
-					duration: 700,
+					duration: duration * 0.8,
 				})
 				// put the ribbon on top
 				.add({
@@ -76,8 +76,8 @@ export default {
 					y: 0,
 					round: 1,
 					easing: 'easeInOutQuart',
-					duration: 500,
-					offset: '-=500',
+					duration: duration,
+					offset: `-=${duration}`,
 				})
 				// grow its height up to 55% of the viewport
 				.add({
@@ -85,7 +85,7 @@ export default {
 					height: window.innerHeight * 0.55,
 					round: 1,
 					easing: 'easeInOutQuart',
-					duration: 500,
+					duration: duration,
 					complete: () => done && done(),
 				});
 		},

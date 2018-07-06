@@ -14,7 +14,7 @@
 import anime from 'animejs';
 import { getRandomColor } from '@/utils';
 
-const duration = 500;
+const duration = 450;
 
 export default {
 	data() {
