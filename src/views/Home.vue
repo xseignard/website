@@ -221,7 +221,6 @@ export default {
 	.main-button {
 		min-width: 180px;
 		max-width: 40%;
-		padding: 0 7% 0 7%;
 		border: 2px solid $purple;
 		border-radius: 3px;
 		background-color: transparent;
