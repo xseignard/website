@@ -1,7 +1,7 @@
 <template>
 	<div class="page projects">
 		<NavStyle />
-		<svg class="color" width="100%" height="55%">
+		<svg id="white-layer" class="color" width="100%" height="55%">
 			<rect width="100%" height="100%" fill="white"/>
 		</svg>
 		<h1>Projects</h1>

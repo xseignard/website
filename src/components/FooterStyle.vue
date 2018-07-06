@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="mentions">
-			<p>{{new Date().getFullYear()}}| designed by <a href="#">Anaïs A.</a> | integrated by Anaïs A. &#38; Xavier S.</p>
+			<p>{{new Date().getFullYear()}}| designed by <a href="#">Anaïs A.</a> | integrated by <a href="#">Anaïs A.</a> &#38; <router-link to="/">Xavier S.</router-link></p>
 		</div>
 	</div>
 </template>

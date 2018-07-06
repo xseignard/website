@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-		<h2 v-html="project.title" />
+		<h2 v-html="project.title"/>
 	</router-link>
 </template>
 
@@ -35,9 +35,26 @@ export default {
 		saveClickedProject(evt) {
 			this.$store.commit('SET_CLICKED_PROJECT', this.$el);
 		},
+		reverseTitleColor() {
+			console.log('test');
+			const title = this.$el.querySelector('h2');
+			const top = title.getBoundingClientRect().top;
+			if (top <= window.innerHeight * 0.54) title.classList.add('purple');
+			else title.classList.remove('purple');
+		},
 	},
 	computed: {
 		...mapGetters(['getProjectColor']),
+	},
+	mounted() {
+		document
+			.querySelector('#app')
+			.addEventListener('scroll', this.reverseTitleColor);
+	},
+	destroyed() {
+		document
+			.querySelector('#app')
+			.removeEventListener('scroll', this.reverseTitleColor);
 	},
 };
 </script>
@@ -53,6 +70,10 @@ export default {
 	h2 {
 		text-transform: uppercase;
 		font-size: 1.15rem;
+		@include short-transition;
+		&.purple {
+			color: $dark-purple;
+		}
 	}
 	.itemID {
 		height: 30vh;
@@ -117,7 +138,7 @@ export default {
 				.type {
 					text-transform: uppercase;
 					font-weight: bold;
-					&:nth-child(2) {
+					&:nth-of-type(3) {
 						margin: 0;
 					}
 				}
