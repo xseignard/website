@@ -1,8 +1,7 @@
 <template>
 	<div class="page project">
 		<NavStyle />
-		<div class="color" :style="`background-color:${getProjectColor(project)}`" />
-		</svg>
+		<div class="color" :style="`background-color:${getProjectColor(project)}; height: ${h}px`" />
 		<div class="project--title" v-scroll="{class: 'visible', threshold: 0.2}">
 			<h1 v-html="project.title" />
 			<p class="baseline" v-html="'– ' + project.baseline" />
@@ -70,6 +69,14 @@ export default {
 		FooterStyle,
 		NavStyle,
 	},
+	data() {
+		return {
+			h: 0,
+		};
+	},
+	mounted() {
+		this.h = window.innerHeight * 0.55;
+	},
 	computed: {
 		...mapState({
 			projects: state => state.projects,
@@ -121,7 +128,6 @@ export default {
 		position: absolute;
 		z-index: -1;
 		width: 100%;
-		height: 55vh;
 	}
 	&--title {
 		margin-left: 15%;

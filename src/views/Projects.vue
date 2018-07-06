@@ -1,7 +1,7 @@
 <template>
 	<div class="page projects">
 		<NavStyle />
-		<div id="white-layer" class="color" />
+		<div id="white-layer" class="color" :style="`height: ${h}px`" />
 		<h1>Projects</h1>
 		<div class="projects--content">
 			<ProjectListItem v-scroll="{class: 'visible', threshold: 0.3}" :project="project"  v-for="project in projects"/>
@@ -20,6 +20,14 @@ export default {
 		FooterStyle,
 		ProjectListItem,
 		NavStyle,
+	},
+	data() {
+		return {
+			h: 0,
+		};
+	},
+	mounted() {
+		this.h = window.innerHeight * 0.55;
 	},
 	computed: {
 		...mapState({
@@ -40,7 +48,6 @@ export default {
 		position: fixed;
 		z-index: -1;
 		width: 100%;
-		height: 55vh;
 		background-color: white;
 	}
 	&--content {

@@ -133,7 +133,6 @@ export default {
 					target = target.parentElement;
 				}
 			}
-			console.log(target);
 			this.$store.commit('SET_CLICKED_PROJECT', target);
 		},
 	},
