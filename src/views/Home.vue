@@ -18,7 +18,7 @@
 		<div class="home--content">
 			<div class="home--content--about">
 				<h2> &#151; Hello, I'm Xavier</h2>
-				<p class="bio"  v-scroll="{class: 'visible', threshold: 0.1}" v-html="about.home_intro" />
+				<p class="bio"  v-scroll="{class: 'visible', threshold: 0.01}" v-html="about.home_intro" />
 				<router-link to="/about">
 					<button type="button" class="secondary-button">
 						<p>MORE ABOUT ME</p>
@@ -27,8 +27,8 @@
 			</div>
 			<div class="home--content--projects">
 				<h2> &#151; Newest projects</h2>
-					<div class="home--content--projects--list" v-scroll="{class: 'visible', threshold: 0.05}">
-						<router-link :to="`/project/${project1.id}`" @click.native="saveClickedProject" class="project">
+					<div class="home--content--projects--list" v-scroll="{class: 'visible', threshold: 0}">
+						<router-link :to="`/project/${project1.id}`" class="project">
 							<div :style="project1.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project1)}`"></div>
 								<div class="hover" v-scroll="{class: 'visible', threshold: 0.01}">
@@ -47,7 +47,7 @@
 							</div>
 							<p class="intro" v-html="project1.title" />
 						</router-link>
-						<router-link :to="`/project/${project2.id}`" @click.native="saveClickedProject" class="project">
+						<router-link :to="`/project/${project2.id}`" class="project">
 							<div :style="project2.style" class="img">
 								<div class="color" :style="`background-color: ${getProjectColor(project2)}`"></div>
 								<div class="hover" v-scroll="{class: 'visible', threshold: 0.01}">
@@ -119,11 +119,6 @@ export default {
 			about: state => state.about,
 		}),
 		...mapGetters(['getProjectColor']),
-	},
-	methods: {
-		saveClickedProject(evt) {
-			this.$store.commit('SET_CLICKED_PROJECT', evt.path.filter(e => e.tagName === 'A')[0]);
-		},
 	},
 };
 </script>
@@ -206,6 +201,7 @@ export default {
 					font-size: 1.35rem;
 					transform: translateX(-7vh);
 					opacity: 0;
+					align-self: flex-end;
 					@include short-transition;
 					@media (max-width: 768px) {
 						transform: translateX(7vh);
@@ -265,7 +261,7 @@ export default {
 				margin-top: -1em;
 				transform: translateY(4vh);
 				opacity: 0;
-				@include short-transition(0.15s);
+				@include short-transition(0.25s);
 				&.visible {
 					opacity: 1;
 					transform: translateY(0);
@@ -285,7 +281,7 @@ export default {
 				justify-content: space-between;
 				transform: translateY(4vh);
 				opacity: 0;
-				@include short-transition(0.3s);
+				@include short-transition(0.4s);
 				@media (max-width: 768px) {
 					flex-direction: column;
 				}
@@ -306,14 +302,11 @@ export default {
 				justify-content: flex-end;
 				position: relative;
 				width: 45%;
+				min-height: 30vh;
 
 				@media (max-width: 768px) {
 					width: 100%;
 					margin-bottom: 4vh;
-				}
-
-				p {
-					margin-bottom: 0;
 				}
 				.intro {
 					text-transform: uppercase;
@@ -327,6 +320,9 @@ export default {
 					@media (max-width: 768px) {
 						min-height: 33vh;
 					}
+				}
+				p {
+					margin-bottom: 0;
 				}
 				.color {
 					width: 100%;
@@ -352,6 +348,7 @@ export default {
 						transform: translateX(-10%);
 						opacity: 0;
 						padding: 5%;
+						max-height: 100%;
 						box-sizing: border-box;
 						position: relative;
 						z-index: 1;
@@ -387,7 +384,7 @@ export default {
 					.type {
 						text-transform: uppercase;
 						font-weight: bold;
-						&:nth-child(2) {
+						&:nth-child(3) {
 							margin: 0;
 						}
 					}
