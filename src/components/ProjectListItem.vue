@@ -28,6 +28,12 @@ export default {
 	props: {
 		project: Object,
 	},
+	mounted() {
+		document.querySelector('#app').addEventListener('scroll', this.handleScroll);
+	},
+	destroyed() {
+		document.querySelector('#app').removeEventListener('scroll', this.handleScroll);
+	},
 	methods: {
 		getBgImage(img) {
 			return `background-image: url(${img.url})`;
@@ -35,8 +41,7 @@ export default {
 		saveClickedProject(evt) {
 			this.$store.commit('SET_CLICKED_PROJECT', this.$el);
 		},
-		reverseTitleColor() {
-			console.log('test');
+		handleScroll() {
 			const title = this.$el.querySelector('h2');
 			const top = title.getBoundingClientRect().top;
 			if (top <= window.innerHeight * 0.54) title.classList.add('purple');
@@ -45,16 +50,6 @@ export default {
 	},
 	computed: {
 		...mapGetters(['getProjectColor']),
-	},
-	mounted() {
-		document
-			.querySelector('#app')
-			.addEventListener('scroll', this.reverseTitleColor);
-	},
-	destroyed() {
-		document
-			.querySelector('#app')
-			.removeEventListener('scroll', this.reverseTitleColor);
 	},
 };
 </script>
