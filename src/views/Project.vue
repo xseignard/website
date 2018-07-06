@@ -1,8 +1,7 @@
 <template>
 	<div class="page project">
 		<NavStyle />
-		<svg class="color" width="100%" :height="height">
-			<rect width="100%" height="100%" :style="`fill:${getProjectColor(project)}`"/>
+		<div class="color" :style="`background-color:${getProjectColor(project)}`" />
 		</svg>
 		<div class="project--title">
 			<h1 v-html="project.title" />
@@ -89,9 +88,6 @@ export default {
 			},
 		}),
 		...mapGetters(['getProjectColor']),
-		height() {
-			return window.innerHeight * 0.55;
-		},
 	},
 	methods: {
 		getBgImage(img) {
@@ -122,9 +118,10 @@ export default {
 	}
 	/* NOTE: PROJECT TOP *******************************************/
 	.color {
-		height: 55vh;
 		position: absolute;
 		z-index: -1;
+		width: 100%;
+		height: 55vh;
 	}
 	&--title {
 		margin-left: 15%;

@@ -53,9 +53,6 @@ export default {
 		},
 		leave(el, done) {
 			this.visible = true;
-			const current = this.clickedProject.querySelector('div');
-			const elements = [...el.parentElement.querySelectorAll('.projectItem *:not(.rect)')];
-			const filtered = elements.filter(e => e !== this.$el);
 			const tl = anime.timeline();
 			// sets the ribbon to a 100% width
 			tl.add({
@@ -65,9 +62,9 @@ export default {
 				easing: 'easeInOutQuart',
 				duration: 500,
 			})
-				// fade out the unecessary elements
+				// fade out the unecessary elements (e.g. the current page)
 				.add({
-					targets: filtered,
+					targets: el,
 					opacity: 0,
 					easing: 'easeInOutQuart',
 					duration: 700,
