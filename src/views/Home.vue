@@ -122,7 +122,19 @@ export default {
 	},
 	methods: {
 		saveClickedProject(evt) {
-			this.$store.commit('SET_CLICKED_PROJECT', evt.path.filter(e => e.tagName === 'A')[0]);
+			let target;
+			if (evt.path) {
+				// chrome compatible
+				target = evt.path.filter(e => e.tagName === 'A')[0];
+			} else {
+				// fallback for navigator without evt.path
+				target = evt.target;
+				while (target.tagName !== 'A') {
+					target = target.parentElement;
+				}
+			}
+			console.log(target);
+			this.$store.commit('SET_CLICKED_PROJECT', target);
 		},
 	},
 };
