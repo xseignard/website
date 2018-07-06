@@ -1,9 +1,7 @@
 <template>
 	<div class="page projects">
 		<NavStyle />
-		<svg id="white-layer" class="color" width="100%" height="55%">
-			<rect width="100%" height="100%" fill="white"/>
-		</svg>
+		<div id="white-layer" class="color" />
 		<h1>Projects</h1>
 		<div class="projects--content">
 			<ProjectListItem v-scroll="{class: 'visible', threshold: 0.3}" :project="project"  v-for="project in projects"/>
@@ -41,6 +39,9 @@ export default {
 	.color {
 		position: fixed;
 		z-index: -1;
+		width: 100%;
+		height: 55vh;
+		background-color: white;
 	}
 	&--content {
 		padding: $padding-desktop;

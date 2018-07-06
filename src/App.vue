@@ -41,7 +41,7 @@ export default {
 	},
 	watch: {
 		$route(to, from) {
-			this.toProjectTransition = to.name === 'project' && from.name === 'projects';
+			this.toProjectTransition = to.name === 'project';
 		},
 	},
 	methods: {
