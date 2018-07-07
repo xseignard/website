@@ -5,6 +5,7 @@ import router from './router';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import 'intersection-observer';
+import 'whatwg-fetch';
 
 import '@/directives/scroll';
 import 'normalize.css';

@@ -395,7 +395,8 @@ export default {
 					}
 					.baseline {
 						margin-bottom: 5%;
-						font-family: 'Open Sans Light';
+						font-family: 'Open Sans';
+						font-weight: lighter;
 					}
 					.type {
 						text-transform: uppercase;

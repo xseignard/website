@@ -128,7 +128,8 @@ export default {
 					font-size: 0.9rem;
 				}
 				.baseline {
-					font-family: 'Open Sans Light';
+					font-family: 'Open Sans';
+					font-weight: lighter;
 				}
 				.type {
 					text-transform: uppercase;
