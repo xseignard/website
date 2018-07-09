@@ -29,6 +29,7 @@
 		"not ie <= 8"
 	],
 	"dependencies": {
+		"bowser": "^1.9.4",
 		"whatwg-fetch": "^2.0.4"
 	}
 }

@@ -55,7 +55,7 @@ export default {
 			el.style.opacity = 0;
 			// scroll to the top of the #app container
 			anime({
-				targets: '#app',
+				targets: ['#app', 'html'],
 				scrollTop: 0,
 				easing: 'linear',
 				duration: duration / 5,
