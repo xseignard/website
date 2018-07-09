@@ -4,9 +4,11 @@
 	</div>
 </template>
 <script>
+import { getRandomColor } from '@/utils';
+
 export default {
 	mounted() {
-		const ctx = this.initCanvas();
+		const { canvas, ctx } = this.initCanvas();
 
 		const first = {
 			amplitude: 150,
@@ -37,7 +39,10 @@ export default {
 		ctx.beginPath();
 		const draw = () => {
 			ctx.save();
-			ctx.translate(window.innerWidth / 2, (window.innerHeight * 0.83) / 2);
+			ctx.translate(
+				canvas.parentElement.clientWidth / 2,
+				canvas.parentElement.clientHeight / 2
+			);
 			const x =
 				first.amplitude *
 					Math.sin(first.frequency * t + Math.PI * first.phase) *
@@ -73,8 +78,8 @@ export default {
 			const ctx = canvas.getContext('2d');
 			ctx.lineWidth = 0.01;
 			ctx.fillStyle = '#000';
-			ctx.strokeStyle = '#fff';
-			return ctx;
+			ctx.strokeStyle = getRandomColor();
+			return { canvas, ctx };
 		},
 	},
 };
