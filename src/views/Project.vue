@@ -195,7 +195,7 @@ export default {
 	&--presentation {
 		display: flex;
 		box-sizing: border-box;
-		padding: 0 15% 2% 35%;
+		padding: 0 15% 2% 33%;
 		@media (max-width: 768px) {
 			flex-direction: column;
 			padding: $padding-mobile;
@@ -333,13 +333,13 @@ export default {
 			}
 			&:first-of-type.description {
 				justify-content: center;
-				margin-bottom: 2.5vh;
+				margin-bottom: 100px;
 				@media (max-width: 768px) {
 					margin: 0;
 				}
 			}
 			&:not(:last-of-type) {
-				margin-bottom: 10vh;
+				margin-bottom: 130px;
 				@media (max-width: 768px) {
 					margin: 0;
 				}
