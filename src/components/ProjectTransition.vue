@@ -1,8 +1,8 @@
 <template>
 	<svg width="100%" height="100%" :style="style">
 		<rect
-			:x="x"
-			:y="y"
+			:x="`${x}px`"
+			:y="`${y}px`"
 			:width="width"
 			:height="height"
 			:fill="fill"
@@ -47,8 +47,8 @@ export default {
 	methods: {
 		beforeLeave(el) {
 			const boundaries = this.clickedProject.querySelector('.hover').getBoundingClientRect();
-			this.x = boundaries.x;
-			this.y = boundaries.y;
+			this.x = boundaries.x || boundaries.left;
+			this.y = boundaries.y || boundaries.top;
 			this.height = Math.ceil(boundaries.height);
 		},
 		leave(el, done) {
@@ -94,7 +94,7 @@ export default {
 		},
 		beforeEnter(el) {
 			anime({
-				targets: '#app',
+				targets: ['#app', 'html'],
 				scrollTop: 0,
 				easing: 'linear',
 				duration: duration / 5,

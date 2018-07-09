@@ -60,13 +60,12 @@
 			</div>
 		</div>
 		<div class="content--next">
-			<router-link :to="`/project/${this.nextProject.id}`" class="next--project">
+			<router-link :to="`/project/${nextProject.id}`" class="next--project">
 				<p>– next project</p>
-				<div class="project--img img">
-					<img :src="this.nextProject.featured_image.url" :alt="this.nextProject.title">
-					<div class="project--color" :style="`background-color: ${getProjectColor(this.nextProject)}`"></div>
+				<div class="project--img img" :style="getBgImage(nextProject.featured_image.sizes.large)">
+					<div class="project--color" :style="`background-color: ${getProjectColor(nextProject)}`"></div>
 				</div>
-				<p class="name" v-html="this.nextProject.title"></p>
+				<p class="name" v-html="nextProject.title"></p>
 			</router-link>
 		</div>
 		<FooterStyle ref="footer" />
@@ -321,14 +320,15 @@ export default {
 				margin-right: 0;
 			}
 			* {
+				margin: 0 15px;
 				@media (max-width: 768px) {
 					margin-bottom: 6vh;
 				}
 			}
-			&:nth-child(2n):not(.description) {
+			&:nth-child(2n) {
 				margin-left: 3vw;
 			}
-			&:nth-child(2n + 1) {
+			&:nth-child(2n + 1):not(.description) {
 				margin-right: 3vw;
 			}
 			&:first-of-type.description {
@@ -416,32 +416,23 @@ export default {
 			@media (max-width: 768px) {
 				min-width: 50%;
 			}
-			&:hover img {
-				transform: scale(1.1);
-			}
 			.project--img {
 				max-width: 17vw;
 				width: 95%;
 				height: 20vh;
 				position: relative;
 				overflow: hidden;
-				display: flex;
-				justify-content: center;
 				@media (max-width: 768px) {
 					max-width: 50vw;
+				}
+				@include short-transition;
+				&:hover {
+					transform: scale(1.05);
 				}
 				.project--color {
 					width: 100%;
 					height: 100%;
-					position: absolute;
-					bottom: 0;
 					opacity: 0.6;
-				}
-				img {
-					min-height: 100%;
-					min-width: 100%;
-					object-fit: cover;
-					@include short-transition;
 				}
 			}
 		}

@@ -184,9 +184,10 @@ export default {
 		background-size: cover;
 		background-position: center;
 		z-index: -1;
+		position: absolute;
+		top: 0px;
 	}
 	&--top {
-		position: absolute;
 		background-color: rgba(36, 0, 59, 0.6);
 		display: flex;
 		align-items: flex-end;
@@ -267,12 +268,12 @@ export default {
 			margin-bottom: 0;
 		}
 		&--about {
-			width:33%;
+			width: 33%;
 			padding-right: 7%;
 			display: flex;
 			flex-direction: column;
-			@media(max-width: 768px){
-				width:100%;
+			@media (max-width: 768px) {
+				width: 100%;
 			}
 			p.bio {
 				margin-top: -1em;
@@ -286,7 +287,7 @@ export default {
 			}
 		}
 		&--projects {
-			flex-grow:1;
+			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
 			position: relative;

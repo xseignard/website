@@ -36,7 +36,7 @@ export default {
 			navBar.classList.toggle('white');
 			menu.classList.toggle('showing');
 			icon.classList.toggle('fixed');
-			bars.forEach(b => b.classList.toggle('open'));
+			Array.from(bars).forEach(b => b.classList.toggle('open'));
 		},
 	},
 };
@@ -190,7 +190,6 @@ export default {
 			stroke-dasharray: 100 100;
 			stroke-dashoffset: 100;
 			@include short-transition;
-			stroke-linecap: round;
 			top: 0;
 			left: 0;
 		}
