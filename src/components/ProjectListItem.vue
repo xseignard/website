@@ -74,7 +74,6 @@ export default {
 		height: 30vh;
 		width: 27vw;
 		position: relative;
-		margin-right: 0;
 		@media (max-width: 768px) {
 			width: 70vw;
 			min-height: 33vh;

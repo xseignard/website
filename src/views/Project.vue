@@ -30,19 +30,33 @@
 			</div>
 		</div>
 		<div class="project--content">
-			<div class="content--description">
-				<p v-html="project.description"></p>
+			<div class="project--content--portion description">
+				<div class="content--description">
+					<p v-html="project.description"></p>
+				</div>
 			</div>
-			<div v-scroll="{class: 'visible', threshold: 0.2}" v-for="image in project.gallery" class="content--img img">
-				<img :src="image.url" :alt="image.title">
+			<div class="project--content--portion focus1">
+				<div v-scroll="{class: 'visible', threshold: 0.6}" class="content--focus focus1">
+					<h2 v-html="project.focus_1.title"></h2>
+					<p v-html="project.focus_1.content"></p>
+				</div>
+				<div v-scroll="{class: 'visible', threshold: 0.2}" class="content--img img">
+					<img :src="getImage(0).url" :alt="getImage(0).title">
+				</div>
 			</div>
-			<div v-scroll="{class: 'visible', threshold: 0.6}" class="content--focus focus1">
-				<h2 v-html="`${project.focus_1.title}`"></h2>
-				<p v-html="project.focus_1.content"></p>
+			<div class="project--content--portion focus2">
+				<div v-scroll="{class: 'visible', threshold: 0.6}" class="content--focus focus2">
+					<h2 v-html="project.focus_2.title"></h2>
+					<p v-html="project.focus_2.content"></p>
+				</div>
+				<div v-scroll="{class: 'visible', threshold: 0.2}" class="content--img img">
+					<img :src="getImage(1).url" :alt="getImage(1).title">
+				</div>
 			</div>
-			<div v-scroll="{class: 'visible', threshold: 0.6}" class="content--focus focus2">
-				<h2 v-html="project.focus_2.title"></h2>
-				<p v-html="project.focus_2.content"></p>
+			<div class="project--content--portion images">
+				<div v-scroll="{class: 'visible', threshold: 0.2}" v-for="image in getOtherImages()" class="content--img img">
+					<img :src="image.url" :alt="image.title">
+				</div>
 			</div>
 		</div>
 		<div class="content--next">
@@ -99,6 +113,12 @@ export default {
 	methods: {
 		getBgImage(img) {
 			return `background-image: url(${img})`;
+		},
+		getImage(index) {
+			return this.project.gallery[index];
+		},
+		getOtherImages() {
+			return this.project.gallery.slice(2);
 		},
 	},
 };
@@ -176,7 +196,7 @@ export default {
 	&--presentation {
 		display: flex;
 		box-sizing: border-box;
-		padding: 0 15% 2% 27%;
+		padding: 0 15% 2% 35%;
 		@media (max-width: 768px) {
 			flex-direction: column;
 			padding: $padding-mobile;
@@ -280,38 +300,73 @@ export default {
 	}
 	/* NOTE: PROJECT CONTENT ************************************************/
 	.project--content {
-		max-width: 100%;
-		margin-top: 17vh;
+		width: 100%;
+		display: flex;
+		margin-top: 1vh;
+		flex-direction: column;
 		padding: $padding-desktop;
 		box-sizing: border-box;
 		position: relative;
-		display: grid;
-		justify-content: space-between;
-		justify-items: start;
-		grid-gap: 17vh 2vh;
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: auto;
-		grid-template-areas: 'description description image_1';
 		@media (max-width: 768px) {
-			grid-template-areas: 'description';
-			grid-template-columns: 1fr;
-			grid-gap: 10vh 2vh;
 			margin-top: 2vh;
 			padding: $padding-mobile;
 		}
-		div:not(.content--description) {
-			transform: translateY(4vh);
-			opacity: 0;
-			@include long-transition;
-		}
-		div.visible {
-			transform: translateY(0);
-			opacity: 1;
+		&--portion {
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+			@media (max-width: 768px) {
+				flex-direction: column-reverse;
+				margin-left: 0;
+				margin-right: 0;
+			}
+			* {
+				@media (max-width: 768px) {
+					margin-bottom: 6vh;
+				}
+			}
+			&:nth-child(2n):not(.description) {
+				margin-left: 3vw;
+			}
+			&:nth-child(2n + 1) {
+				margin-right: 3vw;
+			}
+			&:first-of-type.description {
+				justify-content: center;
+				margin-bottom: 2.5vh;
+				@media (max-width: 768px) {
+					margin: 0;
+				}
+			}
+			&:not(:last-of-type) {
+				margin-bottom: 10vh;
+				@media (max-width: 768px) {
+					margin: 0;
+				}
+			}
+			&.focus2,
+			&.images {
+				text-align: right;
+				flex-direction: row-reverse;
+			}
+			&.focus2 {
+				@media (max-width: 768px) {
+					flex-direction: column-reverse;
+				}
+			}
+
+			div:not(.content--description) {
+				transform: translateY(4vh);
+				opacity: 0;
+				@include long-transition;
+			}
+			div.visible {
+				transform: translateY(0);
+				opacity: 1;
+			}
 		}
 		.content--description {
-			grid-area: description;
-			margin-top: -4%;
-			max-width: 40vw;
+			max-width: 65%;
 			@media (max-width: 768px) {
 				max-width: 100%;
 			}
@@ -323,39 +378,7 @@ export default {
 				max-width: 100%;
 			}
 		}
-		.focus1 {
-			grid-area: 2 / 1 / 3 / 3;
-			justify-self: start;
-			@media (max-width: 768px) {
-				grid-area: 3 / 1 / 4 / 2;
-			}
-		}
-		.focus2 {
-			grid-area: 3 / 2 / 4 / 4;
-			text-align: right;
-			@media (max-width: 768px) {
-				grid-area: 5 / 1 / 6 /2;
-			}
-		}
 		.content--img {
-			@media (max-width: 768px) {
-				justify-self: start;
-			}
-			&:nth-child(2) {
-				justify-self: end;
-			}
-			&:nth-of-type(3) {
-				margin-right: 4vw;
-			}
-			&:nth-of-type(4) {
-				margin-left: 4vw;
-			}
-			&:nth-of-type(5) {
-				grid-area: 4 / 3 / 5 / 4;
-				@media (max-width: 768px) {
-					grid-column: 1 / 2;
-				}
-			}
 			img {
 				max-width: 450px;
 				max-height: 400px;
@@ -373,7 +396,7 @@ export default {
 		justify-content: center;
 		align-items: center;
 		margin-bottom: $margin-bottom;
-		margin-top: 25vh;
+		margin-top: 17vh;
 		@media (max-width: 768px) {
 			margin-top: 23%;
 			margin-bottom: 0;

@@ -52,17 +52,16 @@ export default {
 	}
 	&--content {
 		padding: $padding-desktop;
-		margin-top: 42vh;
-		display: grid;
-		grid-column-gap: 5vh;
-		justify-content: center;
-		justify-items: center;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: auto;
+		margin-top: 33vh;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 		margin-bottom: $margin-bottom;
 		@media (max-width: 768px) {
+			margin-top: 42vh;
 			padding: 0;
-			grid-template-columns: 1fr;
+			flex-direction: column;
+			justify-content: center;
 			margin-bottom: 0;
 		}
 		a {
@@ -72,9 +71,10 @@ export default {
 			&.visible {
 				transform: translateY(0);
 				opacity: 1;
+				margin: auto;
 			}
 			&:nth-child(2n) {
-				margin-top: 10vh;
+				margin-top: 15vh;
 				transition-delay: 0.2s;
 				@media (max-width: 768px) {
 					margin-top: 0;

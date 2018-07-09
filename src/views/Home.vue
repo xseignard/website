@@ -258,10 +258,7 @@ export default {
 	&--content {
 		margin-top: 1vh;
 		margin-bottom: $margin-bottom;
-		display: inline-grid;
-		grid-template-columns: 1fr 2fr;
-		grid-template-areas: 'about projects';
-		grid-gap: 7%;
+		display: flex;
 		padding: $padding-desktop;
 		box-sizing: border-box;
 		@media (max-width: 768px) {
@@ -270,9 +267,13 @@ export default {
 			margin-bottom: 0;
 		}
 		&--about {
-			grid-area: about;
+			width:33%;
+			padding-right: 7%;
 			display: flex;
 			flex-direction: column;
+			@media(max-width: 768px){
+				width:100%;
+			}
 			p.bio {
 				margin-top: -1em;
 				transform: translateY(4vh);
@@ -285,7 +286,7 @@ export default {
 			}
 		}
 		&--projects {
-			grid-area: projects;
+			flex-grow:1;
 			display: flex;
 			flex-direction: column;
 			position: relative;
