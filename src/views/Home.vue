@@ -1,7 +1,7 @@
 <template>
 	<div class="page home">
 		<NavStyle />
-		<div :style ="{backgroundImage : activeBackground}"class="home--background"></div>
+		<Canvas />
 		<div class="home--top">
 			<div class="home--top--content">
 				<div class="home--top--content--title">
@@ -82,17 +82,13 @@
 import { mapGetters, mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
-import activeBackground from '@/assets/images/BackgroundTemplate.jpg';
+import Canvas from '@/components/Canvas.vue';
 
 export default {
 	components: {
 		FooterStyle,
 		NavStyle,
-	},
-	data() {
-		return {
-			activeBackground: `url(${activeBackground})`,
-		};
+		Canvas,
 	},
 	computed: {
 		...mapState({
@@ -172,20 +168,12 @@ export default {
 	}
 
 	/* NOTE: TOP LAYOUT ***********************************/
-	&--background,
 	&--top {
 		min-height: 83vh;
 		width: 100vw;
 		@media (max-width: 768px) {
 			min-height: 75vh;
 		}
-	}
-	&--background {
-		background-size: cover;
-		background-position: center;
-		z-index: -1;
-		position: absolute;
-		top: 0px;
 	}
 	&--top {
 		background-color: rgba(36, 0, 59, 0.6);
