@@ -43,7 +43,7 @@ export default {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
-				height: '100%',
+				height: '110%',
 				round: 1,
 				easing: 'easeInOutQuart',
 				duration: duration,
