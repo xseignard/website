@@ -38,7 +38,6 @@ import { mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
 import { colors } from '@/utils';
-import { getDelay } from '@/utils';
 
 export default {
 	components: {
@@ -60,7 +59,6 @@ export default {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	flex-grow: 1;
 	h1 {
 		text-transform: uppercase;
 		@media (max-width: 768px) {
@@ -81,7 +79,6 @@ export default {
 	}
 	&--content--left {
 		max-width: 40%;
-		flex-grow: 1;
 		@media (max-width: 768px) {
 			max-width: 100%;
 		}
@@ -97,7 +94,6 @@ export default {
 	&--content--right {
 		display: flex;
 		justify-content: flex-end;
-		flex-grow: 2;
 		align-items: center;
 		@media (max-width: 768px) {
 			flex-direction: column-reverse;
