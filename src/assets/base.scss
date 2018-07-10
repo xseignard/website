@@ -27,6 +27,8 @@ a {
 	font-family: 'Open Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-overflow-scrolling: touch;
+	-webkit-text-size-adjust: none;
 	color: white;
 	position: relative;
 	height: 100vh;

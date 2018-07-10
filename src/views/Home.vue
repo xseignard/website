@@ -145,8 +145,8 @@ export default {
 		letter-spacing: 6px;
 		position: static;
 		@media (max-width: 768px) {
-			font-size: 2.8rem;
-			letter-spacing: 4px;
+			font-size: 2.4rem;
+			letter-spacing: 3px;
 		}
 	}
 	h2 {

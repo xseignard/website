@@ -6,13 +6,11 @@
 				<div class="layer" :style="`background-color:${getProjectColor(project)}`"/>
 				<div class="hover--details">
 					<p v-html="project.baseline" class="baseline"></p>
-					<p v-html="project.type[0]"class="type"></p>
-					<p class="type">–</p>
-					<p>
-						<ul>
-							<li v-for ="t in project.technologies">{{t.name}}</li>
-						</ul>
-					</p>
+					<p v-html="project.type[0]" class="type"></p>
+					<p class="separator">–</p>
+					<ul>
+						<li v-for ="t in project.technologies">{{t.name}}</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -136,7 +134,12 @@ export default {
 				.type {
 					text-transform: uppercase;
 					font-weight: bold;
-					&:nth-of-type(3) {
+					@media (max-width: 768px) {
+						margin-bottom: 0;
+					}
+				}
+				.separator {
+					@media (max-width: 768px) {
 						margin: 0;
 					}
 				}
