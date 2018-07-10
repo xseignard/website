@@ -24,7 +24,7 @@ new Vue({
 		await this.$store.dispatch('getData');
 	},
 	mounted() {
-		if ((window.innerWidth > 768 || !bowser.mobile || !bowser.tablet) && !bowser.msie) {
+		if (window.innerWidth > 768 && !bowser.mobile && !bowser.tablet && !bowser.msie) {
 			this.ps = new PerfectScrollbar('#app', {
 				suppressScrollX: true,
 			});

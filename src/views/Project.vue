@@ -322,14 +322,20 @@ export default {
 			* {
 				margin: 0 15px;
 				@media (max-width: 768px) {
-					margin-bottom: 6vh;
+					margin: 0 0 6vh 0;
 				}
 			}
 			&:nth-child(2n) {
 				margin-left: 3vw;
+				@media (max-width: 768px) {
+					margin-left: 0;
+				}
 			}
 			&:nth-child(2n + 1):not(.description) {
 				margin-right: 3vw;
+				@media (max-width: 768px) {
+					margin-right: 0;
+				}
 			}
 			&:first-of-type.description {
 				justify-content: center;
