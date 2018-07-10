@@ -62,8 +62,10 @@
 		<div class="content--next">
 			<router-link :to="`/project/${nextProject.id}`" class="next--project">
 				<p>– next project</p>
-				<div class="project--img img" :style="getBgImage(nextProject.featured_image.sizes.large)">
-					<div class="project--color" :style="`background-color: ${getProjectColor(nextProject)}`"></div>
+				<div class="next--project--container">
+					<div class="project--img img" :style="getBgImage(nextProject.featured_image.sizes.large)">
+						<div class="project--color" :style="`background-color: ${getProjectColor(nextProject)}`"></div>
+					</div>
 				</div>
 				<p class="name" v-html="nextProject.title"></p>
 			</router-link>
@@ -422,23 +424,27 @@ export default {
 			@media (max-width: 768px) {
 				min-width: 50%;
 			}
-			.project--img {
+			&--container {
+				overflow: hidden;
 				max-width: 17vw;
 				width: 95%;
-				height: 20vh;
-				position: relative;
-				overflow: hidden;
 				@media (max-width: 768px) {
 					max-width: 50vw;
 				}
-				@include short-transition;
-				&:hover {
-					transform: scale(1.05);
-				}
-				.project--color {
+				.project--img {
 					width: 100%;
-					height: 100%;
-					opacity: 0.6;
+					height: 20vh;
+					position: relative;
+					overflow: hidden;
+					@include short-transition;
+					&:hover {
+						transform: scale(1.05);
+					}
+					.project--color {
+						width: 100%;
+						height: 100%;
+						opacity: 0.6;
+					}
 				}
 			}
 		}
