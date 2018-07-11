@@ -55,6 +55,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/_variables';
+
 .about {
 	display: flex;
 	flex-direction: column;
@@ -78,9 +79,10 @@ export default {
 		}
 	}
 	&--content--left {
-		max-width: 40%;
+		max-height: 50vh;
+		margin-right: 40px;
 		@media (max-width: 768px) {
-			max-width: 100%;
+			max-height: 100%;
 		}
 		div {
 			transform: translateY(4vh);
