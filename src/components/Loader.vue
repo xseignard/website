@@ -2,6 +2,9 @@
 	<div id="loader">
 		<svg width="17%" viewBox="0 0 283.59 241.98">
 			<defs>
+			<filter id="blur">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+			</filter>
 			<linearGradient id="Dégradé_sans_nom_61" x1="212.62" y1="121.59" x2="70.97" y2="121.59" gradientUnits="userSpaceOnUse">
 				<stop offset="0" stop-color="#f88429"/>
 				<stop offset="0.26" stop-color="#f88429"/>
@@ -74,10 +77,16 @@ export default {
 				offset: '-=400',
 			})
 			.add({
+				targets: 'feGaussianBlur',
+				stdDeviation: 0.1,
+				duration: 700,
+			})
+			.add({
 				targets: '#x',
 				rotateZ: 360,
 				easing: 'easeOutSine',
 				duration: 700,
+				offset: '-=700',
 			})
 			.add({
 				targets: ['#balise-left', '#balise-right'],
@@ -106,6 +115,37 @@ export default {
 				duration: 500,
 				offset: '-=600',
 				elasticity: 100,
+			})
+			.add({
+				targets: ['#slash', '#balise-left', '#balise-right'],
+				opacity: 0,
+				duration: 500,
+				easing: 'easeOutSine',
+			})
+			.add({
+				targets: ['#balise-left', '#balise-right'],
+				opacity: 0,
+				translateY: -5,
+				duration: 400,
+			})
+			.add({
+				targets: '#slash',
+				opacity: 0,
+				translateX: -70,
+				rotateZ: -20,
+				offset: '-=400',
+			})
+			.add({
+				targets: '#balise-left',
+				translateX: 100,
+				duration: 400,
+				offset: '-=400',
+			})
+			.add({
+				targets: '#balise-right',
+				translateX: -150,
+				duration: 400,
+				offset: '-=400',
 			});
 	},
 };
@@ -147,9 +187,11 @@ export default {
 }
 #x {
 	transform-origin: 120px 120px;
+	filter: url(#blur);
 }
 #slash {
 	transform-origin: 170px 120px;
+	opacity: 0;
 }
 #loader {
 	z-index: 1;
