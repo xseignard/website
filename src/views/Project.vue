@@ -8,7 +8,8 @@
 		</div>
 		<div class="project--top">
 			<div class="project--presentation">
-				<div class="heroimage img" v-scroll="{class: 'visible', threshold: 0.2}" :style="getBgImage(project.featured_image.sizes.large)">
+				<div class="heroimage--container" v-scroll="{class: 'visible', threshold: 0.2}">
+					<div class="img heroimage" :style="getBgImage(project.featured_image.sizes.large)" />
 					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: #F88429`"/>
 				</div>
 				<div class="details">
@@ -264,29 +265,33 @@ export default {
 				}
 			}
 		}
-		.heroimage {
+		.heroimage--container {
 			position: relative;
 			overflow: hidden;
 			opacity: 0;
 			transform: translateX(-4vh);
-			width: 40vw;
-			height: 45vh;
 			@include long-transition(0.3s);
 			&.visible {
 				opacity: 1;
 				transform: translateX(0);
 			}
 			@media (max-width: 768px) {
-				width: 100%;
-				height: 33vh;
 				margin-bottom: 3vh;
+			}
+			.heroimage {
+				width: 40vw;
+				height: 45vh;
+				@media (max-width: 768px) {
+					width: 100%;
+					height: 33vh;
+				}
 			}
 			.layer {
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 100%;
+				height: 101%;
 				@include short-transition(0.6s);
 				&.reveal {
 					transform: translateY(101%);
