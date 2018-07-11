@@ -118,12 +118,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 svg {
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1;
 	overflow: hidden;
+	rect {
+		will-change: x, y, width, height;
+	}
 }
 </style>

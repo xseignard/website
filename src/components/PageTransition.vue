@@ -1,5 +1,5 @@
 <template>
-	<svg width="100%" height="100%" :style="style">
+	<svg width="100%" height="120%" :style="style">
 		<rect
 			x="0"
 			:y="y"
@@ -43,7 +43,7 @@ export default {
 			const tl = anime.timeline();
 			tl.add({
 				targets: this,
-				height: '110%',
+				height: '100%',
 				round: 1,
 				easing: 'easeInOutQuart',
 				duration: duration,
@@ -85,12 +85,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 svg {
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1;
 	overflow: hidden;
+	rect {
+		will-change: y, height;
+	}
 }
 </style>
