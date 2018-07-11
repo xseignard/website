@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
-		<Loader v-if="loading" />
+		<Loader />
+		<!-- <Loader v-if="loading" />
 		<transition
 			@before-leave="beforeLeave"
 			@leave="leave"
@@ -14,7 +15,7 @@
 			<router-view :key="$route.path" ref="page"/>
 		</transition>
 		<ProjectTransition ref="transition" :projectId="$route.params.id" v-if="toProjectTransition"/>
-		<PageTransition ref="transition" v-else/>
+		<PageTransition ref="transition" v-else/> -->
 	</div>
 </template>
 
