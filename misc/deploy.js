@@ -10,7 +10,7 @@ const config = {
 	host: process.env.FTP_HOST,
 	port: parseInt(process.env.FTP_PORT, 10),
 	localRoot: __dirname + '/../dist',
-	remoteRoot: '/beta',
+	remoteRoot: '/www',
 	include: ['*.*'],
 };
 
