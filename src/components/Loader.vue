@@ -110,15 +110,15 @@ export default {
 		@media (max-width: 768px) {
 			width: 45%;
 		}
-		#d {
+		#d,
+		#x {
 			fill: #f88429;
 			stroke: #f88429;
-			stroke-width: 1px;
+			stroke-width: 1.5px;
 		}
 		#x {
 			transform-origin: 120px 120px;
 			filter: url(#blur);
-			fill: #f88429;
 		}
 		#balise-left,
 		#balise-right {
