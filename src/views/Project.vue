@@ -321,7 +321,7 @@ export default {
 				margin-left: 0;
 				margin-right: 0;
 			}
-			* {
+			& > * {
 				margin: 0 15px;
 				@media (max-width: 768px) {
 					margin: 0 0 6vh 0;
@@ -360,6 +360,12 @@ export default {
 			&.focus2 {
 				@media (max-width: 768px) {
 					flex-direction: column-reverse;
+				}
+			}
+			&.images {
+				margin: 0;
+				@media (max-width: 768px) {
+					flex-direction: column;
 				}
 			}
 
