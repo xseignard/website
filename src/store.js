@@ -82,7 +82,7 @@ export default new Vuex.Store({
 		async getData({ commit }) {
 			commit('SET_LOADING', true);
 			await Promise.all([this.dispatch('getProjects'), this.dispatch('getAbout')]);
-			setTimeout(() => commit('SET_LOADING', false), 1000);
+			setTimeout(() => commit('SET_LOADING', false), 2500);
 		},
 	},
 });

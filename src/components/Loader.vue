@@ -54,12 +54,6 @@ export default {
 
 		loading
 			.add({
-				targets: ['#balise-left', '#balise-right'],
-				opacity: 0,
-				translateY: -5,
-				duration: 400,
-			})
-			.add({
 				targets: '#slash',
 				opacity: 0,
 				translateX: -70,
@@ -123,31 +117,6 @@ export default {
 				opacity: 0,
 				duration: 500,
 				easing: 'easeOutSine',
-			})
-			.add({
-				targets: ['#balise-left', '#balise-right'],
-				opacity: 0,
-				translateY: -5,
-				duration: 400,
-			})
-			.add({
-				targets: '#slash',
-				opacity: 0,
-				translateX: -70,
-				rotateZ: -20,
-				offset: '-=400',
-			})
-			.add({
-				targets: '#balise-left',
-				translateX: 100,
-				duration: 400,
-				offset: '-=400',
-			})
-			.add({
-				targets: '#balise-right',
-				translateX: -150,
-				duration: 400,
-				offset: '-=400',
 			});
 	},
 };
@@ -176,6 +145,10 @@ export default {
 .cls-2 {
 	stroke: url(#Dégradé_sans_nom_88);
 }
+.cls-3 {
+	opacity: 0;
+	transform: translateY(-5px);
+}
 .cls-4 {
 	stroke: url(#Dégradé_sans_nom_12);
 }
@@ -198,6 +171,7 @@ export default {
 #slash {
 	transform-origin: 170px 120px;
 	opacity: 0;
+	transform: translateX(-70px) rotateZ(-20deg);
 }
 #loader {
 	z-index: 1;
