@@ -94,8 +94,12 @@ export default {
 		},
 		beforeEnter(el) {
 			// scroll to the top of the #app (and html for ie11) container
-			document.querySelector('html').scrollTop = 0;
-			document.querySelector('#app').scrollTop = 0;
+			anime({
+				targets: ['#app', 'html'],
+				scrollTop: 0,
+				easing: 'linear',
+				duration: 0,
+			});
 		},
 		enter(el, done) {
 			const tl = anime.timeline();
