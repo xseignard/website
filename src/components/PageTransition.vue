@@ -53,13 +53,9 @@ export default {
 		beforeEnter(el) {
 			// sets the opacity to 0 of the entering element
 			el.style.opacity = 0;
-			// scroll to the top of the #app container
-			anime({
-				targets: ['#app', 'html'],
-				scrollTop: 0,
-				easing: 'linear',
-				duration: duration / 5,
-			});
+			// scroll to the top of the #app (and html for ie11) container
+			document.querySelector('html').scrollTop = 0;
+			document.querySelector('#app').scrollTop = 0;
 		},
 		enter(el, done) {
 			const tl = anime.timeline();
