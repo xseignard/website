@@ -48,7 +48,9 @@ import anime from 'animejs';
 
 export default {
 	mounted() {
-		const loading = anime.timeline({ loop: true });
+		const loading = anime.timeline({
+			loop: true,
+		});
 
 		loading
 			.add({
@@ -188,6 +190,10 @@ export default {
 #x {
 	transform-origin: 120px 120px;
 	filter: url(#blur);
+}
+#balise-left,
+#balise-right {
+	opacity: 0;
 }
 #slash {
 	transform-origin: 170px 120px;
