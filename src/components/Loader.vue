@@ -95,6 +95,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/_variables';
+
 #loader {
 	z-index: 1;
 	position: absolute;
@@ -112,22 +114,24 @@ export default {
 		}
 		#d,
 		#x {
-			fill: #f88429;
-			stroke: #f88429;
+			fill: $orange;
+			stroke: $orange;
 			stroke-width: 1.5px;
 		}
 		#x {
 			transform-origin: 120px 120px;
-			filter: url(#blur);
+			@media (max-width: 768px) {
+				filter: none;
+			}
 		}
 		#balise-left,
 		#balise-right {
 			opacity: 0;
-			fill: #49d6a7;
+			fill: $green;
 			transform: translateY(-5px);
 		}
 		#slash {
-			fill: #8b73cf;
+			fill: $purple;
 			transform-origin: 170px 120px;
 			opacity: 0;
 			transform: translateX(-70px) rotateZ(-20deg);

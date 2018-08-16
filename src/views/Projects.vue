@@ -41,6 +41,7 @@ export default {
 <style scoped lang="scss">
 @import '../assets/_variables';
 .projects {
+	transform: none !important;
 	h1 {
 		color: $dark-purple;
 	}

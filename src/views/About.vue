@@ -22,7 +22,7 @@
 						<line x1="1" y1="1" x2="13" y2="1" :stroke="`${colors[2]}`"/>
 					</svg>
 				</div>
-				<div class="about--content--right--img">
+				<div class="about--content--right--img" :style="`background-image: url(${about.picture.url})`">
 					<svg v-scroll="{class: 'reveal', threshold: 0.4}" width="100%" height="100%">
 						<rect x="0" y="0" width="100%" height="100%" fill="#F88429" />
 					</svg>
@@ -148,9 +148,9 @@ export default {
 		}
 	}
 	&--content--right--img {
-		background-image: url(../assets/images/ImgTemplate.jpg);
-		background-size: cover;
+		background-size: contain;
 		background-position: center;
+		background-repeat: no-repeat;
 		min-width: 250px;
 		width: 22vw;
 		height: 25vh;
