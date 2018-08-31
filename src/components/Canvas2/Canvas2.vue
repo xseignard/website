@@ -32,7 +32,7 @@ export default {
 				p.stroke(139, 115, 207, agentAlpha);
 				for (let i = 0; i < agentCount; i++) {
 					if (drawMode == 1) agents[i].update1(noiseScale, noiseStrength, strokeWidth);
-					else agents[i].update2(noiseScale, noiseStrength, strokeWidth);
+					else agents[i].update2(noiseScale, noiseStrength, strokeWidth * 3);
 				}
 			};
 			p.windowResized = () => {
