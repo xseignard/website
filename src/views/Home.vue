@@ -1,7 +1,7 @@
 <template>
 	<div class="page home">
 		<NavStyle />
-		<Canvas />
+		<Canvas2 />
 		<div class="home--top">
 			<div class="home--top--content">
 				<div class="home--top--content--title">
@@ -82,13 +82,13 @@
 import { mapGetters, mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
-import Canvas from '@/components/Canvas.vue';
+import Canvas2 from '@/components/Canvas2/Canvas2.vue';
 
 export default {
 	components: {
 		FooterStyle,
 		NavStyle,
-		Canvas,
+		Canvas2,
 	},
 	computed: {
 		...mapState({
@@ -176,7 +176,7 @@ export default {
 		}
 	}
 	&--top {
-		background-color: rgba(36, 0, 59, 0.6);
+		// background-color: rgba(36, 0, 59, 0.7);
 		display: flex;
 		align-items: flex-end;
 		&--content {
