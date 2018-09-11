@@ -25,6 +25,16 @@ export default new Vuex.Store({
 					return colors[2];
 			}
 		},
+		getLayerColor: state => project => {
+			switch (project.type[0]) {
+				case 'web':
+					return colors[1];
+				case 'installation':
+					return colors[2];
+				default:
+					return colors[0];
+			}
+		},
 	},
 	mutations: {
 		GET_PROJECTS(state, projects) {

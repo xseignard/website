@@ -10,7 +10,7 @@
 			<div class="project--presentation">
 				<div class="heroimage--container" v-scroll="{class: 'visible', threshold: 0.2}">
 					<div class="img heroimage" :style="getBgImage(project.featured_image.sizes.large)" />
-					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: #F88429`"/>
+					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: ${getLayerColor(project)}`"/>
 				</div>
 				<div class="details">
 					<p v-scroll="{class: 'visible', threshold: 0.2}" class="type" v-for="type in project.type"> {{type}}</p>
@@ -109,7 +109,7 @@ export default {
 				}
 			},
 		}),
-		...mapGetters(['getProjectColor']),
+		...mapGetters(['getProjectColor', 'getLayerColor']),
 	},
 	methods: {
 		getBgImage(img) {
