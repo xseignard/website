@@ -53,7 +53,10 @@
 					<img :src="getImage(1).url" :alt="getImage(1).title">
 				</div>
 			</div>
-			<div class="project--content--portion images">
+			<div v-if="project.video" class="project--content--portion video">
+				<iframe :src="project.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			</div>
+			<div v-else class="project--content--portion images">
 				<div v-scroll="{class: 'visible', threshold: 0.2}" v-for="image in getOtherImages()" class="content--img img">
 					<img :src="image.url" :alt="image.title">
 				</div>
@@ -90,6 +93,7 @@ export default {
 		};
 	},
 	mounted() {
+		console.log(this.project);
 		this.h = window.innerHeight * 0.55;
 	},
 	computed: {
@@ -366,6 +370,19 @@ export default {
 				margin: 0;
 				@media (max-width: 768px) {
 					flex-direction: column;
+				}
+			}
+			&.video {
+				justify-content: center;
+				margin-left: 0;
+				iframe {
+					width: 40vw;
+					height: 45vh;
+					object-fit: cover;
+					@media (max-width: 768px) {
+						width: 100%;
+						height: 35vh;
+					}
 				}
 			}
 
