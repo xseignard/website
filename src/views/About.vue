@@ -80,9 +80,10 @@ export default {
 	}
 	&--content--left {
 		max-height: 50vh;
-		margin-right: 40px;
+		margin-right: 130px;
 		@media (max-width: 768px) {
 			max-height: 100%;
+			margin-right: 0px;
 		}
 		div {
 			transform: translateY(4vh);
@@ -152,7 +153,7 @@ export default {
 		background-position: center;
 		background-repeat: no-repeat;
 		min-width: 250px;
-		width: 22vw;
+		// width: 22vw;
 		height: 25vh;
 		overflow: hidden;
 		@media (max-width: 768px) {

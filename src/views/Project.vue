@@ -347,7 +347,7 @@ export default {
 				}
 			}
 			&:not(:last-of-type) {
-				margin-bottom: 130px;
+				margin-bottom: 110px;
 				@media (max-width: 768px) {
 					margin: 0;
 				}
@@ -394,11 +394,12 @@ export default {
 		}
 		.content--img {
 			img {
-				max-width: 450px;
-				max-height: 400px;
+				width: 35vw;
+				height: 40vh;
 				object-fit: cover;
 				@media (max-width: 768px) {
-					max-width: 100%;
+					width: 100%;
+					height: 33vh;
 				}
 			}
 		}
@@ -410,7 +411,7 @@ export default {
 		justify-content: center;
 		align-items: center;
 		margin-bottom: $margin-bottom;
-		margin-top: 17vh;
+		margin-top: 90px;
 		@media (max-width: 768px) {
 			margin-top: 23%;
 			margin-bottom: 0;
