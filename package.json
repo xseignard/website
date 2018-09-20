@@ -1,30 +1,38 @@
 {
-	"name": "website",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
-		"deploy": "node misc/deploy"
-	},
-	"devDependencies": {
-		"@vue/cli-plugin-babel": "^3.0.0-beta.15",
-		"@vue/cli-service": "^3.0.0-beta.15",
-		"animejs": "^2.2.0",
-		"dotenv": "^6.0.0",
-		"ftp-deploy": "^1.2.2",
-		"intersection-observer": "^0.5.0",
-		"node-sass": "^4.9.0",
-		"normalize.css": "^8.0.0",
-		"perfect-scrollbar": "^1.4.0",
-		"sass-loader": "^7.0.3",
-		"vue": "^2.5.16",
-		"vue-router": "^3.0.1",
-		"vue-template-compiler": "^2.5.16",
-		"vuex": "^3.0.1",
-		"bowser": "^1.9.4",
-		"p5": "^0.7.1",
-		"whatwg-fetch": "^2.0.4"
-	},
-	"browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "deploy": "node misc/deploy"
+  },
+  "dependencies": {
+    "register-service-worker": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-pwa": "^3.0.3",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "animejs": "^2.2.0",
+    "bowser": "^1.9.4",
+    "dotenv": "^6.0.0",
+    "ftp-deploy": "^1.2.2",
+    "intersection-observer": "^0.5.0",
+    "node-sass": "^4.9.0",
+    "normalize.css": "^8.0.0",
+    "p5": "^0.7.1",
+    "perfect-scrollbar": "^1.4.0",
+    "sass-loader": "^7.0.3",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.16",
+    "vuex": "^3.0.1",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
