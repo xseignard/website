@@ -84,6 +84,11 @@ import Player from '@/components/Player.vue';
 import { mapGetters, mapState } from 'vuex';
 
 export default {
+	metaInfo() {
+		return {
+			title: this.project.title,
+		};
+	},
 	components: {
 		FooterStyle,
 		NavStyle,

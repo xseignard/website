@@ -16,6 +16,9 @@ import ProjectListItem from '@/components/ProjectListItem.vue';
 import { mapGetters, mapState } from 'vuex';
 
 export default {
+	metaInfo: {
+		title: 'Projects',
+	},
 	components: {
 		FooterStyle,
 		ProjectListItem,

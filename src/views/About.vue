@@ -40,6 +40,9 @@ import NavStyle from '@/components/NavStyle.vue';
 import { colors } from '@/utils';
 
 export default {
+	metaInfo: {
+		title: 'About',
+	},
 	components: {
 		FooterStyle,
 		NavStyle,

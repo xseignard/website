@@ -24,6 +24,10 @@ import ProjectTransition from './components/ProjectTransition.vue';
 import Loader from '@/components/Loader.vue';
 
 export default {
+	metaInfo: {
+		title: 'Home',
+		titleTemplate: '%s | drangies.fr',
+	},
 	components: {
 		PageTransition,
 		ProjectTransition,

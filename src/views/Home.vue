@@ -85,6 +85,9 @@ import NavStyle from '@/components/NavStyle.vue';
 import Canvas2 from '@/components/Canvas2/Canvas2.vue';
 
 export default {
+	metaInfo: {
+		title: 'Home',
+	},
 	components: {
 		FooterStyle,
 		NavStyle,

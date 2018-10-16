@@ -8,7 +8,8 @@
     "deploy": "node misc/deploy"
   },
   "dependencies": {
-    "register-service-worker": "^1.0.0"
+    "register-service-worker": "^1.0.0",
+    "vue-meta": "^1.5.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
