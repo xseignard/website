@@ -1,25 +1,59 @@
-const dotenv = require('dotenv');
-const FtpDeploy = require('ftp-deploy');
-const ftpDeploy = new FtpDeploy();
+const path = require('path');
+const Client = require('ssh2-sftp-client');
+const recursive = require('recursive-readdir');
+const uniq = require('lodash/uniq');
+const sftp = new Client();
 
-dotenv.config();
+require('dotenv').config();
 
-const config = {
-	username: process.env.FTP_USERNAME,
-	password: process.env.FTP_PASSWORD,
-	host: process.env.FTP_HOST,
-	port: parseInt(process.env.FTP_PORT, 10),
-	localRoot: __dirname + '/../dist',
-	remoteRoot: '/www',
-	include: ['*.*'],
+const dirRegExp = /\/(.*\/|)(.*)$/g;
+
+let i = 0;
+const putDir = (localDir, remoteDir, sftp) => {
+	return new Promise((resolve, reject) => {
+		recursive(localDir, ['.DS_Store'])
+			.then(files =>
+				files
+					.map(file => file.replace(localDir, ''))
+					.map(file => file.replace(dirRegExp, `$1`))
+					.filter(Boolean)
+			)
+			.then(uniq)
+			.then(dirs => Promise.all(dirs.map(dir => sftp.mkdir(`${remoteDir}/${dir}`, true))))
+			.then(() => recursive(localDir, ['.DS_Store']))
+			.then(files =>
+				files
+					.map(file => file.replace(localDir, ''))
+					.map(file => file.replace(dirRegExp, `$1`) + file.replace(dirRegExp, `$2`))
+			)
+			.then(files =>
+				Promise.all(
+					files.map(file => {
+						i++;
+						console.log(`${i}/${files.length}`);
+						return sftp.put(`${localDir}/${file}`, `${remoteDir}/${file}`);
+					})
+				)
+			)
+			.then(resolve)
+			.catch(err => reject(Error(err)));
+	});
 };
 
-ftpDeploy.on('uploading', data => {
-	console.log(`${data.transferredFileCount}/${data.totalFileCount}`);
-	console.log(data.filename);
-});
-
-ftpDeploy.deploy(config, err => {
-	if (err) console.log(err);
-	else console.log('finished');
+sftp.connect({
+	host: process.env.FTP_HOST,
+	port: process.env.FTP_PORT,
+	username: process.env.FTP_USER,
+	password: process.env.FTP_PASSWORD,
+}).then(() => {
+	console.log('Connected');
+	putDir(path.join(__dirname, '../dist'), 'www', sftp)
+		.then(() => {
+			console.log('Done');
+			process.exit(0);
+		})
+		.catch(err => {
+			console.log(err);
+			process.exit(1);
+		});
 });

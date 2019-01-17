@@ -1,7 +1,7 @@
 <template>
 	<div class="page home">
 		<NavStyle />
-		<Canvas2 />
+		<Canvas />
 		<div class="home--top">
 			<div class="home--top--content">
 				<div class="home--top--content--title">
@@ -82,7 +82,7 @@
 import { mapGetters, mapState } from 'vuex';
 import FooterStyle from '@/components/FooterStyle.vue';
 import NavStyle from '@/components/NavStyle.vue';
-import Canvas2 from '@/components/Canvas2/Canvas2.vue';
+import Canvas from '@/components/Canvas.vue';
 
 export default {
 	metaInfo: {
@@ -91,7 +91,7 @@ export default {
 	components: {
 		FooterStyle,
 		NavStyle,
-		Canvas2,
+		Canvas,
 	},
 	computed: {
 		...mapState({

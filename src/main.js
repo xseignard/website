@@ -11,7 +11,6 @@ import 'whatwg-fetch';
 import '@/directives/scroll';
 import 'normalize.css';
 import '@/assets/base.scss';
-import './registerServiceWorker'
 
 new Vue({
 	el: '#app',

@@ -1,85 +1,113 @@
 <template>
-	<div class="canvas--container">
-		<canvas ref="canvas" />
+	<div ref="canvas" class="canvas--container">
 	</div>
 </template>
 <script>
+import {
+	Clock,
+	Color,
+	DoubleSide,
+	Geometry,
+	Mesh,
+	PerspectiveCamera,
+	Scene,
+	SplineCurve,
+	Vector3,
+	WebGLRenderer,
+} from 'three';
+import { MeshLine, MeshLineMaterial } from 'three.meshline';
 import { getRandomColor } from '@/utils';
 
 export default {
+	data: () => ({ lines: [] }),
 	mounted() {
-		const { canvas, ctx } = this.initCanvas();
+		this.initThree();
 
-		const first = {
-			amplitude: 150,
-			frequency: 2,
-			phase: 0,
-			delta: 0.0085,
-		};
-		const second = {
-			amplitude: 150,
-			frequency: 3,
-			phase: (Math.PI * 7) / 16,
-			delta: 0,
-		};
-		const third = {
-			amplitude: 150,
-			frequency: 3,
-			phase: 0,
-			delta: 0.065,
-		};
-		const fourth = {
-			amplitude: 150,
-			frequency: 2,
-			phase: 0,
-			delta: 0,
-		};
+		this.createLines();
 
-		let t = 0;
-		ctx.beginPath();
 		const draw = () => {
-			ctx.save();
-			ctx.translate(
-				canvas.parentElement.clientWidth / 2,
-				canvas.parentElement.clientHeight / 2
-			);
-			const x =
-				first.amplitude *
-					Math.sin(first.frequency * t + Math.PI * first.phase) *
-					Math.exp(-first.delta * t) +
-				second.amplitude *
-					Math.sin(second.frequency * t + Math.PI * second.phase) *
-					Math.exp(-second.delta * t);
-			const y =
-				third.amplitude *
-					Math.sin(third.frequency * t + Math.PI * third.phase) *
-					Math.exp(-third.delta * t) +
-				fourth.amplitude *
-					Math.sin(fourth.frequency * t + Math.PI * fourth.phase) *
-					Math.exp(-fourth.delta * t);
-			ctx.lineTo(x, y);
-			ctx.stroke();
-			ctx.restore();
-			t += 0.02;
 			this.raf = window.requestAnimationFrame(draw);
+			const delta = this.clock.getDelta();
+			this.lines.forEach(l => {
+				l.material.uniforms.dashOffset.value -= l.userData.offset;
+			});
+			this.renderer.render(this.scene, this.camera);
 		};
 		draw();
-		window.addEventListener('resize', this.initCanvas);
+		window.addEventListener('resize', () => {
+			this.initThree();
+			this.lines = [];
+			this.createLines();
+		});
 	},
 	destroyed() {
 		window.cancelAnimationFrame(this.raf);
-		window.removeEventListener('resize', this.initCanvas);
+		window.removeEventListener('resize', this.initThree);
 	},
 	methods: {
-		initCanvas() {
+		initThree() {
 			const canvas = this.$refs.canvas;
-			canvas.width = canvas.parentElement.clientWidth;
-			canvas.height = canvas.parentElement.clientHeight;
-			const ctx = canvas.getContext('2d');
-			ctx.lineWidth = 0.01;
-			ctx.fillStyle = '#000';
-			ctx.strokeStyle = getRandomColor();
-			return { canvas, ctx };
+			this.W = canvas.clientWidth;
+			this.H = canvas.clientHeight;
+
+			this.clock = new Clock();
+
+			this.scene = new Scene();
+			this.camera = new PerspectiveCamera(50, this.W / this.H, 1, 1000);
+			this.camera.position.set(0, 0, 10);
+
+			this.renderer = new WebGLRenderer({ antialias: true, alpha: true });
+			const devicePixelRatio = window.devicePixelRatio
+				? Math.min(1.6, window.devicePixelRatio)
+				: 1;
+			this.renderer.setPixelRatio(devicePixelRatio);
+			this.renderer.setSize(this.W, this.H);
+			this.renderer.setClearColor(new Color('#24003b'));
+			if (canvas.firstChild) canvas.firstChild.remove();
+			canvas.appendChild(this.renderer.domElement);
+		},
+		createLine() {
+			const points = [];
+			const turbulence = 1;
+			for (let i = 0; i < 10; i++) {
+				points.push(
+					new Vector3(
+						i * 1.2,
+						Math.random() * (turbulence * 2) - turbulence,
+						Math.random() * (turbulence * 2) - turbulence
+					)
+				);
+			}
+			const spline = new SplineCurve(points);
+			const linePoints = new Geometry().setFromPoints(spline.getPoints(100));
+			const line = new MeshLine();
+			line.setGeometry(linePoints, p => 1 - p);
+			const material = new MeshLineMaterial({
+				color: new Color(getRandomColor()),
+				lineWidth: 0.1,
+				dashArray: 0.6,
+				dashOffset: 0,
+				dashRatio: 0.5,
+				depthWrite: false,
+				transparent: true,
+				opacity: 0.5,
+			});
+
+			const m = new Mesh(line.geometry, material);
+			this.lines.push(m);
+			const min = -6;
+			const max = -5;
+			m.position.x = Math.floor(Math.random() * (max - min + 1) + min);
+			m.position.y = -4 + Math.random() * 8;
+			m.position.z = Math.random() * 5;
+			m.userData.offset = 0.001 + Math.random() * 0.004;
+			return m;
+		},
+		createLines() {
+			for (let i = 0; i < 10; i++) {
+				const l = this.createLine();
+				this.scene.add(l);
+			}
 		},
 	},
 };
