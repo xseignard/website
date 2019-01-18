@@ -9,7 +9,7 @@
 		<div class="project--top">
 			<div class="project--presentation">
 				<div class="heroimage--container" v-scroll="{class: 'visible', threshold: 0.2}">
-					<div class="img heroimage" :style="getBgImage(project.featured_image.sizes.large)" />
+					<div class="img heroimage" :style="getBgImage(project.featured_image.url)" />
 					<div class="layer" v-scroll="{class: 'reveal', threshold: 0.4}" :style="`background-color: ${getLayerColor(project)}`"/>
 				</div>
 				<div class="details">
@@ -66,7 +66,7 @@
 			<router-link :to="`/project/${nextProject.id}`" class="next--project">
 				<p>– next project</p>
 				<div class="next--project--container">
-					<div class="project--img img" :style="getBgImage(nextProject.featured_image.sizes.large)">
+					<div class="project--img img" :style="getBgImage(nextProject.featured_image.sizes.medium)">
 						<div class="project--color" :style="`background-color: ${getProjectColor(nextProject)}`"></div>
 					</div>
 				</div>

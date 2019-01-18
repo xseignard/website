@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import imagesloaded from 'imagesloaded';
 
 import { colors } from '@/utils';
 
@@ -92,7 +93,25 @@ export default new Vuex.Store({
 		async getData({ commit }) {
 			commit('SET_LOADING', true);
 			await Promise.all([this.dispatch('getProjects'), this.dispatch('getAbout')]);
-			setTimeout(() => commit('SET_LOADING', false), 2500);
+			const imagesToLoad = [];
+			this.state.projects.forEach(p => {
+				const fImg = new Image();
+				fImg.src = p.featured_image.url;
+				imagesToLoad.push(fImg);
+				const mImg = new Image();
+				mImg.src = p.featured_image.sizes.medium;
+				imagesToLoad.push(mImg);
+				imagesToLoad.concat(
+					p.gallery.map(g => {
+						const gImg = new Image();
+						gImg.url = g.url;
+						return gImg;
+					})
+				);
+			});
+			imagesloaded(imagesToLoad, () => {
+				commit('SET_LOADING', false);
+			});
 		},
 	},
 });
