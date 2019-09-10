@@ -55,7 +55,6 @@ export default {
 }
 // general styling
 .nav {
-	z-index: 1;
 	position: absolute;
 	top: 0;
 	padding: 50px;
@@ -103,7 +102,7 @@ export default {
 	.menu-icon {
 		width: 36px;
 		height: 28px;
-		z-index: 2;
+		z-index: 3;
 		display: none;
 		cursor: pointer;
 		@media (max-width: 768px) {
@@ -160,6 +159,7 @@ export default {
 		}
 	}
 	.nav--list {
+		z-index: 2;
 		display: flex;
 		overflow: hidden;
 		@include long-transition;

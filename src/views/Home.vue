@@ -160,6 +160,7 @@ export default {
 	a {
 		align-self: flex-end;
 		margin-top: 50px;
+		z-index: 2;
 		@media (max-width: 768px) {
 			margin-top: 7%;
 		}
@@ -199,6 +200,7 @@ export default {
 				display: flex;
 				flex-direction: column;
 				align-items: flex-end;
+				z-index: 2;
 				@media (max-width: 768px) {
 					align-items: flex-start;
 				}

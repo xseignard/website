@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/xseignard
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://drangies.fr
+  * I am xseignard (https://keybase.io/xseignard) on keybase.
+  * I have a public key ASAdzQ7T6S04weXngAmPbpgIntjMn9G6lUr4ld8096lxVQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01018254046767c388d358c9e71035701577e71123ce0bd71d59dae84c12d77ba1040a",
+      "host": "keybase.io",
+      "kid": "01201dcd0ed3e92d38c1e5e780098f6e98089ed8cc9fd1ba954af895df34f7a971550a",
+      "uid": "aa140a5c4508250fbf5f4e5078d78b19",
+      "username": "xseignard"
+    },
+    "merkle_root": {
+      "ctime": 1556111324,
+      "hash": "981a411deee79701f37c1c83b4608512bd959c37da1aa98d132cf75d7360b26c620d1f1dbe726f126854872c33887f663acb1e4bf54f40f4a1e183101efbc8cf",
+      "hash_meta": "bc48e2977319b6a4ea24a00e0198ba687dbd9600ea54dd1c88aa06e53e364882",
+      "seqno": 5232267
+    },
+    "service": {
+      "entropy": "iSBRg1ctxgQ9GmXHbd1j9rBt",
+      "hostname": "drangies.fr",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.2.2"
+  },
+  "ctime": 1556111351,
+  "expire_in": 504576000,
+  "prev": "58d6df9d8c7a26b39e3d2afa632836122ed121da44625b62409defe95349da4a",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgHc0O0+ktOMHl54AJj26YCJ7YzJ/RupVK+JXfNPepcVUKp3BheWxvYWTESpcCB8QgWNbfnYx6JrOePSr6Yyg2Ei7RIdpEYltiQJ3v6VNJ2krEIKorzQ349uslsWstHURXyqmzXcIU4+jXY0WlmT1uJ+sPAgHCo3NpZ8RAxlNcEFZyQ9euV0CQWx3+JGA/6g4Nn6rGKNKpljNK2g9iMROe2HhdRRyJttoV9NuEzkldT41wiZC/ZnyEbebaAqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIIYZ7q6KerSf6sk5pRYnO4EtpZB5SZxzoHtz0qVu2SLIo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/xseignard
+
+==================================================================

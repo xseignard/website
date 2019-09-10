@@ -3,6 +3,7 @@
 	</div>
 </template>
 <script>
+import anime from 'animejs';
 import {
 	Clock,
 	Color,
@@ -16,7 +17,7 @@ import {
 	WebGLRenderer,
 } from 'three';
 import { MeshLine, MeshLineMaterial } from 'three.meshline';
-import { getRandomColor } from '@/utils';
+import { getRandomColor, throttle } from '@/utils';
 
 export default {
 	data: () => ({ lines: [] }),
@@ -39,6 +40,16 @@ export default {
 			this.lines = [];
 			this.createLines();
 		});
+		this.$refs.canvas.addEventListener('mousemove', e => {
+			const x = (e.clientX / this.W) * 2 - 1;
+			const y = -((e.clientY / this.H) * 2 - 1);
+			anime({
+				targets: this.mousePos,
+				x: x * 0.75,
+				y: y * 0.75,
+				update: () => this.camera.lookAt(this.mousePos),
+			});
+		});
 	},
 	destroyed() {
 		window.cancelAnimationFrame(this.raf);
@@ -55,7 +66,7 @@ export default {
 			this.scene = new Scene();
 			this.camera = new PerspectiveCamera(50, this.W / this.H, 1, 1000);
 			this.camera.position.set(0, 0, 10);
-
+			this.mousePos = new Vector3();
 			this.renderer = new WebGLRenderer({ antialias: true, alpha: true });
 			const devicePixelRatio = window.devicePixelRatio
 				? Math.min(1.6, window.devicePixelRatio)
@@ -117,9 +128,9 @@ export default {
 .canvas--container {
 	position: absolute;
 	top: 0px;
-	z-index: -1;
 	min-height: 83vh;
 	width: 100vw;
+	z-index: 1;
 	@media (max-width: 768px) {
 		min-height: 75vh;
 	}
