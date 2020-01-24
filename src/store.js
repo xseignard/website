@@ -110,7 +110,9 @@ export default new Vuex.Store({
 				);
 			});
 			imagesloaded(imagesToLoad, () => {
-				commit('SET_LOADING', false);
+				setTimeout(() => {
+					commit('SET_LOADING', false);
+				}, 2500);
 			});
 		},
 	},
