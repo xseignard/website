@@ -17,7 +17,7 @@
 		</div>
 		<div class="home--content">
 			<div class="home--content--about">
-				<h2> &#151; Hello, I'm Xavier</h2>
+				<h2> — Hello, I'm Xavier</h2>
 				<p class="bio"  v-scroll="{class: 'visible', threshold: 0.01}" v-html="about.home_intro" />
 				<router-link to="/about">
 					<button type="button" class="secondary-button">
@@ -26,7 +26,7 @@
 				</router-link>
 			</div>
 			<div class="home--content--projects">
-				<h2> &#151; Newest projects</h2>
+				<h2> — Newest projects</h2>
 					<div class="home--content--projects--list" v-scroll="{class: 'visible', threshold: 0}">
 						<router-link :to="`/project/${project1.id}`" @click.native="saveClickedProject" class="project">
 							<div :style="project1.style" class="img">
@@ -35,11 +35,11 @@
 									<div class="layer" :style="`background-color:${getProjectColor(project1)}`"/>
 									<div class="hover--details">
 										<p v-html="project1.baseline" class="baseline"></p>
-										<p v-html="project1.type[0]"class="type"></p>
+										<p v-html="project1.type[0]" class="type"></p>
 										<p class="type">–</p>
 										<p>
 											<ul>
-												<li v-for ="t in project1.technologies">{{t.name}}</li>
+												<li v-for ="t in project1.technologies" :key="t.name">{{t.name}}</li>
 											</ul>
 										</p>
 									</div>
@@ -54,11 +54,11 @@
 									<div class="layer" :style="`background-color:${getProjectColor(project2)}`"/>
 									<div class="hover--details">
 										<p v-html="project2.baseline" class="baseline"></p>
-										<p v-html="project2.type[0]"class="type"></p>
+										<p v-html="project2.type[0]" class="type"></p>
 										<p class="type">–</p>
 										<p>
 											<ul>
-												<li v-for ="t in project2.technologies">{{t.name}}</li>
+												<li v-for ="t in project2.technologies" :key="t.name">{{t.name}}</li>
 											</ul>
 										</p>
 									</div>

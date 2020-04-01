@@ -4,7 +4,12 @@
 		<div id="white-layer" class="color" :style="`height: ${h}px`" />
 		<h1>Projects</h1>
 		<div class="projects--content">
-			<ProjectListItem v-scroll="{class: 'visible', threshold: 0.3}" :project="project"  v-for="project in projects"/>
+			<ProjectListItem
+				v-scroll="{ class: 'visible', threshold: 0.3 }"
+				:project="project"
+				:key="project.id"
+				v-for="project in projects"
+			/>
 		</div>
 		<FooterStyle ref="footer" />
 	</div>

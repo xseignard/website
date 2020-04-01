@@ -1,23 +1,26 @@
 <template>
-	<router-link :to="`/project/${project.id}`" @click.native="saveClickedProject" class="projectItem">
+	<router-link
+		:to="`/project/${project.id}`"
+		@click.native="saveClickedProject"
+		class="projectItem"
+	>
 		<div class="itemID img" :style="`${getBgImage(project.featured_image)}`">
 			<div class="color" :style="`background-color: ${getProjectColor(project)}`"></div>
-			<div class="hover" v-scroll="{class: 'visible', threshold: 1}">
-				<div class="layer" :style="`background-color:${getProjectColor(project)}`"/>
+			<div class="hover" v-scroll="{ class: 'visible', threshold: 1 }">
+				<div class="layer" :style="`background-color:${getProjectColor(project)}`" />
 				<div class="hover--details">
 					<p v-html="project.baseline" class="baseline"></p>
 					<p v-html="project.type[0]" class="type"></p>
 					<p class="separator">–</p>
 					<ul>
-						<li v-for ="t in project.technologies">{{t.name}}</li>
+						<li v-for="t in project.technologies" :key="t.name">{{ t.name }}</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<h2 v-html="project.title"/>
+		<h2 v-html="project.title" />
 	</router-link>
 </template>
-
 
 <script>
 import { mapGetters } from 'vuex';
