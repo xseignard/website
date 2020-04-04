@@ -75,8 +75,8 @@ export default {
 		}
 	}
 	.itemID {
-		height: 30vh;
-		width: 27vw;
+		height: 40vh;
+		width: 30vw;
 		position: relative;
 		@media (max-width: 768px) {
 			width: 70vw;

@@ -80,7 +80,9 @@ export default {
 			&.visible {
 				transform: translateY(0);
 				opacity: 1;
-				margin: auto;
+				@media (max-width: 768px) {
+					margin: auto;
+				}
 			}
 			&:nth-child(2n) {
 				margin-top: 15vh;
