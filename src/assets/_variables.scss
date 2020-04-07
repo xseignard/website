@@ -6,8 +6,8 @@ $purple: #8b73cf;
 $orange: #f88429;
 $dark-purple: #24003b;
 @mixin short-transition($delay: 0s) {
-	transition: 0.25s $delay ease-out;
+  transition: 0.25s $delay ease-out;
 }
 @mixin long-transition($delay: 0s) {
-	transition: 0.5s $delay ease-out;
+  transition: 0.5s $delay ease-out;
 }
