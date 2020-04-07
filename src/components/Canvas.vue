@@ -1,10 +1,8 @@
 <template>
-	<div ref="canvas" class="canvas--container"></div>
+  <div ref="canvas" class="canvas--container"></div>
 </template>
 <script>
-import anime from 'animejs';
-import * as THREE from 'three';
-import { getRandomColor, throttle } from '@/utils';
+import * as THREE from 'three'
 
 const vertexShader = `
   precision mediump float;
@@ -69,7 +67,7 @@ const vertexShader = `
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
   }
-`;
+`
 
 const fragmentShader = `
   precision mediump float;
@@ -113,124 +111,126 @@ const fragmentShader = `
 
     gl_FragColor = vec4(iQolor, 1.);
   }
-`;
+`
 
 export default {
-	data: () => ({ lines: [] }),
-	mounted() {
-		this.initThree();
+  data: () => ({ lines: [] }),
+  mounted() {
+    this.initThree()
 
-		this.createLines();
+    this.createLines()
 
-		const draw = () => {
-			this.raf = window.requestAnimationFrame(draw);
-			this.material.uniforms.uTime.value = this.clock.getElapsedTime();
-			this.renderer.render(this.scene, this.camera);
-		};
-		draw();
-		window.addEventListener('resize', () => {
-			this.initThree();
-			this.createLines();
-		});
-	},
-	destroyed() {
-		window.cancelAnimationFrame(this.raf);
-		window.removeEventListener('resize', this.initThree);
-	},
-	methods: {
-		initThree() {
-			const canvas = this.$refs.canvas;
-			this.W = canvas.clientWidth;
-			this.H = canvas.clientHeight;
+    const draw = () => {
+      this.raf = window.requestAnimationFrame(draw)
+      this.material.uniforms.uTime.value = this.clock.getElapsedTime()
+      this.renderer.render(this.scene, this.camera)
+    }
+    draw()
+    window.addEventListener('resize', () => {
+      this.initThree()
+      this.createLines()
+    })
+  },
+  destroyed() {
+    window.cancelAnimationFrame(this.raf)
+    window.removeEventListener('resize', this.initThree)
+  },
+  methods: {
+    initThree() {
+      const canvas = this.$refs.canvas
+      this.W = canvas.clientWidth
+      this.H = canvas.clientHeight
 
-			this.clock = new THREE.Clock();
+      this.clock = new THREE.Clock()
 
-			this.scene = new THREE.Scene();
-			this.camera = new THREE.PerspectiveCamera(50, this.W / this.H, 1, 1000);
-			this.camera.position.set(0, 0, 10);
-			this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-			const devicePixelRatio = window.devicePixelRatio
-				? Math.min(1.6, window.devicePixelRatio)
-				: 1;
-			this.renderer.setPixelRatio(devicePixelRatio);
-			this.renderer.setSize(this.W, this.H);
-			this.renderer.setClearColor(new THREE.Color('#24003b'));
-			if (canvas.firstChild) canvas.firstChild.remove();
-			canvas.appendChild(this.renderer.domElement);
-		},
-		createLines() {
-			// Base Geometry
-			const baseGeometry = new THREE.PlaneBufferGeometry(3, 0.1, 1000, 1);
+      this.scene = new THREE.Scene()
+      this.camera = new THREE.PerspectiveCamera(50, this.W / this.H, 1, 1000)
+      this.camera.position.set(0, 0, 10)
+      this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+      const devicePixelRatio = window.devicePixelRatio
+        ? Math.min(1.6, window.devicePixelRatio)
+        : 1
+      this.renderer.setPixelRatio(devicePixelRatio)
+      this.renderer.setSize(this.W, this.H)
+      this.renderer.setClearColor(new THREE.Color('#24003b'))
+      if (canvas.firstChild) canvas.firstChild.remove()
+      canvas.appendChild(this.renderer.domElement)
+    },
+    createLines() {
+      // Base Geometry
+      const baseGeometry = new THREE.PlaneBufferGeometry(3, 0.1, 1000, 1)
 
-			// Material
-			this.material = new THREE.ShaderMaterial({
-				vertexShader,
-				fragmentShader,
-				uniforms: {
-					uTime: new THREE.Uniform(null),
-				},
-				side: THREE.DoubleSide,
-			});
+      // Material
+      this.material = new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+        uniforms: {
+          uTime: new THREE.Uniform(null),
+        },
+        side: THREE.DoubleSide,
+      })
 
-			// Instance Geometry
-			const instanceCount = 500;
-			const instancedGeometry = new THREE.InstancedBufferGeometry().copy(baseGeometry);
-			instancedGeometry.maxInstancedCount = instanceCount;
+      // Instance Geometry
+      const instanceCount = 500
+      const instancedGeometry = new THREE.InstancedBufferGeometry().copy(
+        baseGeometry
+      )
+      instancedGeometry.maxInstancedCount = instanceCount
 
-			// Instance Buffer Attributes
-			const aPosition = [];
-			const aRotationAngle = [];
-			const aRotationAxis = [];
-			for (let i = 0; i < instanceCount; i++) {
-				aPosition.push(
-					2 * (Math.random() - 0.5),
-					2 * (Math.random() - 0.5),
-					2 * (Math.random() - 0.5)
-				);
+      // Instance Buffer Attributes
+      const aPosition = []
+      const aRotationAngle = []
+      const aRotationAxis = []
+      for (let i = 0; i < instanceCount; i++) {
+        aPosition.push(
+          2 * (Math.random() - 0.5),
+          2 * (Math.random() - 0.5),
+          2 * (Math.random() - 0.5)
+        )
 
-				aRotationAxis.push(
-					2 * (Math.random() - 0.5),
-					2 * (Math.random() - 0.5),
-					2 * (Math.random() - 0.5)
-				);
+        aRotationAxis.push(
+          2 * (Math.random() - 0.5),
+          2 * (Math.random() - 0.5),
+          2 * (Math.random() - 0.5)
+        )
 
-				aRotationAngle.push(Math.random());
-			}
+        aRotationAngle.push(Math.random())
+      }
 
-			const aPositionFloat32 = new Float32Array(aPosition);
-			const aRotationAngleFloat32 = new Float32Array(aRotationAngle);
-			const aRotationAxisFloat32 = new Float32Array(aRotationAxis);
+      const aPositionFloat32 = new Float32Array(aPosition)
+      const aRotationAngleFloat32 = new Float32Array(aRotationAngle)
+      const aRotationAxisFloat32 = new Float32Array(aRotationAxis)
 
-			instancedGeometry.setAttribute(
-				'aPosition',
-				new THREE.InstancedBufferAttribute(aPositionFloat32, 3, false)
-			);
-			instancedGeometry.setAttribute(
-				'aRotationAxis',
-				new THREE.InstancedBufferAttribute(aRotationAxisFloat32, 3, false)
-			);
-			instancedGeometry.setAttribute(
-				'aRotationAngle',
-				new THREE.InstancedBufferAttribute(aRotationAngleFloat32, 1, false)
-			);
+      instancedGeometry.setAttribute(
+        'aPosition',
+        new THREE.InstancedBufferAttribute(aPositionFloat32, 3, false)
+      )
+      instancedGeometry.setAttribute(
+        'aRotationAxis',
+        new THREE.InstancedBufferAttribute(aRotationAxisFloat32, 3, false)
+      )
+      instancedGeometry.setAttribute(
+        'aRotationAngle',
+        new THREE.InstancedBufferAttribute(aRotationAngleFloat32, 1, false)
+      )
 
-			// Mesh
-			const mesh = new THREE.Mesh(instancedGeometry, this.material);
-			this.scene.add(mesh);
-		},
-	},
-};
+      // Mesh
+      const mesh = new THREE.Mesh(instancedGeometry, this.material)
+      this.scene.add(mesh)
+    },
+  },
+}
 </script>
 
 <style scoped lang="scss">
 .canvas--container {
-	position: absolute;
-	top: 0px;
-	min-height: 83vh;
-	width: 100vw;
-	z-index: 1;
-	@media (max-width: 768px) {
-		min-height: 75vh;
-	}
+  position: absolute;
+  top: 0px;
+  min-height: 83vh;
+  width: 100vw;
+  z-index: 1;
+  @media (max-width: 768px) {
+    min-height: 75vh;
+  }
 }
 </style>
