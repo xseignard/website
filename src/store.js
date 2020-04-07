@@ -120,7 +120,7 @@ export default new Vuex.Store({
       })
       imagesloaded(imagesToLoad, () => {
         setTimeout(() => {
-          // commit('SET_LOADING', false)
+          commit('SET_LOADING', false)
         }, 2500)
       })
     },

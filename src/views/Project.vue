@@ -29,8 +29,8 @@
           <p
             v-scroll="{ class: 'visible', threshold: 0.2 }"
             class="type"
-            v-for="type in project.type"
-            :key="type"
+            v-for="(type, i) in project.type"
+            :key="i"
           >
             {{ type }}
           </p>
@@ -45,8 +45,8 @@
           <ul class="technologies">
             <li
               v-scroll="{ class: 'visible', threshold: 0.2 }"
-              v-for="t in project.technologies"
-              :key="t"
+              v-for="(t, i) in project.technologies"
+              :key="i"
             >
               {{ t.name }}
             </li>
@@ -105,9 +105,9 @@
       <div v-else class="project--content--portion images">
         <div
           v-scroll="{ class: 'visible', threshold: 0.2 }"
-          v-for="image in getOtherImages()"
+          v-for="(image, i) in getOtherImages()"
           class="content--img img"
-          :key="image.title"
+          :key="i"
         >
           <img :src="image.url" :alt="image.title" />
         </div>
