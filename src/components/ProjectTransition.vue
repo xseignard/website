@@ -45,24 +45,38 @@ export default {
   },
   methods: {
     beforeLeave() {
-      const boundaries = this.clickedProject
-        .querySelector('.hover')
-        .getBoundingClientRect()
+      const boundaries = this.clickedProject.getBoundingClientRect()
+      // assign new values
       this.x = boundaries.x || boundaries.left
       this.y = boundaries.y || boundaries.top
       this.height = Math.ceil(boundaries.height)
+      // reset values
+      this.width = '0%'
+      this.h = 0
+      this.visible = false
     },
     leave(el, done) {
       this.visible = true
       const tl = anime.timeline()
-      // sets the ribbon to a 100% width
-      tl.add({
-        targets: this,
-        width: '100%',
-        round: 1,
-        easing: 'easeInOutQuart',
-        duration: duration,
-      })
+      tl
+        // sets the ribbon to a 100% width
+        .add({
+          targets: this,
+          width: '100%',
+          round: 1,
+          easing: 'easeInOutQuart',
+          duration: duration,
+        })
+        // opacity to 1
+        .add(
+          {
+            targets: this.$el,
+            opacity: 1,
+            easing: 'linear',
+            duration: duration,
+          },
+          `-=${duration}`
+        )
         // fade out the unecessary elements (e.g. the current page)
         .add({
           targets: el,
@@ -71,15 +85,17 @@ export default {
           duration: duration * 0.8,
         })
         // put the ribbon on top
-        .add({
-          targets: this,
-          x: 0,
-          y: 0,
-          round: 1,
-          easing: 'easeInOutQuart',
-          duration: duration,
-          offset: `-=${duration}`,
-        })
+        .add(
+          {
+            targets: this,
+            x: 0,
+            y: 0,
+            round: 1,
+            easing: 'easeInOutQuart',
+            duration: duration,
+          },
+          `-=${duration}`
+        )
         // grow its height up to 55% of the viewport
         .add({
           targets: this,
@@ -109,7 +125,7 @@ export default {
         opacity: 0,
         easing: 'linear',
         duration: duration * 0.3,
-        delay: 100,
+        // delay: 100,
         complete: () => {
           this.visible = false
           done()

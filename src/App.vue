@@ -11,7 +11,7 @@
       mode="out-in"
       v-else
     >
-      <router-view :key="$route.path" ref="page" />
+      <router-view :key="$route.params.id || $route.path" ref="page" />
     </transition>
     <ProjectTransition
       ref="transition"
@@ -48,9 +48,8 @@ export default {
     },
   },
   watch: {
-    $route(to, from) {
-      this.toProjectTransition =
-        to.name === 'project' && from.name !== 'project'
+    $route(to) {
+      this.toProjectTransition = to.name === 'project'
     },
   },
   methods: {

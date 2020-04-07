@@ -114,9 +114,9 @@
       </div>
     </div>
     <div class="content--next">
-      <router-link :to="`/project/${nextProject.id}`" class="next--project">
+      <a @click="saveClickedProject" class="next--project">
         <p>– next project</p>
-        <div class="next--project--container">
+        <div class="next--project--container" ref="next">
           <div
             class="project--img img"
             :style="getBgImage(nextProject.featured_image.sizes.medium)"
@@ -128,7 +128,7 @@
           </div>
         </div>
         <p class="name" v-html="nextProject.title"></p>
-      </router-link>
+      </a>
     </div>
     <FooterStyle ref="footer" />
   </div>
@@ -187,6 +187,10 @@ export default {
     },
     getOtherImages() {
       return this.project.gallery.slice(2)
+    },
+    saveClickedProject() {
+      this.$store.commit('SET_CLICKED_PROJECT', this.$refs.next)
+      this.$router.push(`/project/${this.nextProject.id}`)
     },
   },
 }

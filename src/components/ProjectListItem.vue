@@ -1,9 +1,5 @@
 <template>
-  <router-link
-    :to="`/project/${project.id}`"
-    @click.native="saveClickedProject"
-    class="projectItem"
-  >
+  <a @click="saveClickedProject" class="projectItem">
     <div class="itemID img" :style="`${getBgImage(project.featured_image)}`">
       <div
         class="color"
@@ -27,7 +23,7 @@
       </div>
     </div>
     <h2 v-html="project.title" />
-  </router-link>
+  </a>
 </template>
 
 <script>
@@ -51,7 +47,11 @@ export default {
       return `background-image: url(${img.url})`
     },
     saveClickedProject() {
-      this.$store.commit('SET_CLICKED_PROJECT', this.$el)
+      this.$store.commit(
+        'SET_CLICKED_PROJECT',
+        this.$el.querySelector('.hover')
+      )
+      this.$router.push(`/project/${this.project.id}`)
     },
     handleScroll() {
       const title = this.$el.querySelector('h2')

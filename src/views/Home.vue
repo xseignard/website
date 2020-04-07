@@ -38,11 +38,7 @@
           class="home--content--projects--list"
           v-scroll="{ class: 'visible', threshold: 0 }"
         >
-          <router-link
-            :to="`/project/${project1.id}`"
-            @click.native="saveClickedProject"
-            class="project"
-          >
+          <a @click="() => saveClickedProject(1)" class="project">
             <div :style="project1.style" class="img">
               <div
                 class="color"
@@ -50,6 +46,7 @@
               />
               <div
                 class="hover"
+                ref="first"
                 v-scroll="{ class: 'visible', threshold: 0.01 }"
               >
                 <div
@@ -69,12 +66,8 @@
               </div>
             </div>
             <p class="intro" v-html="project1.title" />
-          </router-link>
-          <router-link
-            :to="`/project/${project2.id}`"
-            @click.native="saveClickedProject"
-            class="project"
-          >
+          </a>
+          <a @click="() => saveClickedProject(2)" class="project">
             <div :style="project2.style" class="img">
               <div
                 class="color"
@@ -82,6 +75,7 @@
               />
               <div
                 class="hover"
+                ref="second"
                 v-scroll="{ class: 'visible', threshold: 0.01 }"
               >
                 <div
@@ -101,7 +95,7 @@
               </div>
             </div>
             <p class="intro" v-html="project2.title" />
-          </router-link>
+          </a>
         </div>
         <router-link to="/projects">
           <button type="button" class="secondary-button">
@@ -156,19 +150,18 @@ export default {
     ...mapGetters(['getProjectColor']),
   },
   methods: {
-    saveClickedProject(evt) {
-      let target
-      if (evt.path) {
-        // chrome compatible
-        target = evt.path.filter(e => e.tagName === 'A')[0]
+    saveClickedProject(id) {
+      let el
+      let route
+      if (id === 1) {
+        el = this.$refs.first
+        route = `/project/${this.project1.id}`
       } else {
-        // fallback for navigator without evt.path
-        target = evt.target
-        while (target.tagName !== 'A') {
-          target = target.parentElement
-        }
+        el = this.$refs.second
+        route = `/project/${this.project2.id}`
       }
-      this.$store.commit('SET_CLICKED_PROJECT', target)
+      this.$store.commit('SET_CLICKED_PROJECT', el)
+      this.$router.push(route)
     },
   },
 }

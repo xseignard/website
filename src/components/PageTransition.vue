@@ -67,13 +67,15 @@ export default {
           this.visible = false
           done()
         },
-      }).add({
-        targets: el,
-        opacity: 1,
-        easing: 'linear',
-        duration: duration * 1.7,
-        offset: `-=${duration * 1.2}`,
-      })
+      }).add(
+        {
+          targets: el,
+          opacity: 1,
+          easing: 'linear',
+          duration: duration * 1.7,
+        },
+        `-=${duration * 1.2}`
+      )
     },
   },
 }
