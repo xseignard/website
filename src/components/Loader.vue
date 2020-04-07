@@ -40,65 +40,79 @@ export default {
     })
 
     loading
-      .add({
-        targets: '#slash',
-        opacity: 0,
-        translateX: -70,
-        rotateZ: -20,
-        offset: '-=400',
-      })
-      .add({
-        targets: '#balise-left',
-        translateX: 100,
-        duration: 400,
-        offset: '-=400',
-      })
-      .add({
-        targets: '#balise-right',
-        translateX: -150,
-        duration: 400,
-        offset: '-=400',
-      })
+      .add(
+        {
+          targets: '#slash',
+          opacity: 0,
+          translateX: -70,
+          rotateZ: -20,
+        },
+        '-=400'
+      )
+      .add(
+        {
+          targets: '#balise-left',
+          translateX: 100,
+          duration: 400,
+        },
+        '-=400'
+      )
+      .add(
+        {
+          targets: '#balise-right',
+          translateX: -150,
+          duration: 400,
+        },
+        '-=400'
+      )
       .add({
         targets: 'feGaussianBlur',
         stdDeviation: 0.3,
         duration: 700,
       })
-      .add({
-        targets: '#x',
-        rotateZ: 360,
-        easing: 'easeOutSine',
-        duration: 700,
-        offset: '-=700',
-      })
-      .add({
-        targets: ['#balise-left', '#balise-right'],
-        opacity: 1,
-        easing: 'easeOutSine',
-        offset: '-=600',
-      })
-      .add({
-        targets: ['#balise-left', '#balise-right'],
-        translateX: 0,
-        easing: 'easeOutSine',
-        offset: '-=1000',
-      })
+      .add(
+        {
+          targets: '#x',
+          rotateZ: 360,
+          easing: 'easeOutSine',
+          duration: 700,
+        },
+        '-=700'
+      )
+      .add(
+        {
+          targets: ['#balise-left', '#balise-right'],
+          opacity: 1,
+          easing: 'easeOutSine',
+        },
+        '-=600'
+      )
+      .add(
+        {
+          targets: ['#balise-left', '#balise-right'],
+          translateX: 0,
+          easing: 'easeOutSine',
+        },
+        '-=1000'
+      )
       .add({
         targets: '#x',
         rotateZ: 720,
         easing: 'easeOutSine',
         duration: 700,
       })
-      .add({
-        targets: '#slash',
-        opacity: 1,
-        translateX: 0,
-        rotateZ: 0,
-        easing: 'easeOutSine',
-        duration: 500,
-        offset: '-=600',
-        elasticity: 100,
-      })
+      .add(
+        {
+          targets: '#slash',
+          opacity: 1,
+          translateX: 0,
+          rotateZ: 0,
+          easing: 'easeOutSine',
+          duration: 500,
+          elasticity: 100,
+        },
+        '-=600'
+      )
       .add({
         targets: ['#slash', '#balise-left', '#balise-right'],
         opacity: 0,
