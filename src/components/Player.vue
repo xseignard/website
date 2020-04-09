@@ -6,7 +6,7 @@
         project.video.id +
         '?color=' +
         getProjectColor(project).replace('#', '') +
-        '&title=0&byline=0&portrait=0'
+        '&title=0&byline=0&portrait=0&dnt=1'
     "
     frameborder="0"
     webkitallowfullscreen
@@ -18,7 +18,7 @@
     :src="
       'https://www.youtube-nocookie.com/embed/' +
         project.video.id +
-        '?rel=0&amp;showinfo=0'
+        '?rel=0&modestbranding=1&iv_load_policy=3&showinfo=0'
     "
     frameborder="0"
     allow="autoplay; encrypted-media"
