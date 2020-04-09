@@ -28,19 +28,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import bowser from 'bowser'
 
 export default {
   props: {
     project: Object,
   },
   mounted() {
-    const target = bowser.msie ? window : document.querySelector('#app')
-    target.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
-    const target = bowser.msie ? window : document.querySelector('#app')
-    target.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     getBgImage(img) {

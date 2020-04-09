@@ -9,8 +9,20 @@
 
 @import './_variables';
 /** COMMON **/
+body::-webkit-scrollbar {
+  width: 8px;
+}
 body {
-  background-color: $dark-purple;
+  scrollbar-width: thin;
+  scrollbar-color: transparent #aaaaaa99;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa99;
+  border-radius: 6px;
+  border: 3px solid transparent;
 }
 h1 {
   font-family: 'Qontra', sans-serif;
@@ -25,14 +37,14 @@ a {
   color: white;
 }
 #app {
+  background-color: $dark-purple;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
   color: white;
   position: relative;
-  height: 100vh;
-  overflow-x: hidden;
+  min-height: 100vh;
   @media (min-width: 768px) {
     overflow: hidden;
   }
