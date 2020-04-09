@@ -11,21 +11,28 @@
         <a :href="about.phone.value">{{ about.phone.displayed }}</a>
       </div>
       <div class="contacts--social">
-        <a :href="about.github" target="_blank">
-          <img src="@/assets/images/github.svg" alt="" />
+        <a :href="about.github" target="_blank" rel="noopener">
+          <img src="@/assets/images/github.svg" alt="github" />
         </a>
-        <a :href="about.twitter" target="_blank">
-          <img src="@/assets/images/twitter.svg" alt="" />
+        <a :href="about.twitter" target="_blank" rel="noopener">
+          <img src="@/assets/images/twitter.svg" alt="twitter" />
         </a>
-        <a :href="about.linkedin" target="_blank">
-          <img src="@/assets/images/linkedin.svg" alt="" />
+        <a :href="about.linkedin" target="_blank" rel="noopener">
+          <img src="@/assets/images/linkedin.svg" alt="linkedin" />
         </a>
       </div>
     </div>
     <div class="mentions">
       <p>
-        {{ new Date().getFullYear() }}| design: <a href="#">Anaïs A.</a> |
-        integration: <a href="#">Anaïs A.</a> &#38;
+        {{ new Date().getFullYear() }} | design:
+        <a href="https://anaisag.fr/" target="_blank" rel="noopener">
+          Anaïs A.
+        </a>
+        | integration:
+        <a href="https://anaisag.fr/" target="_blank" rel="noopener">
+          Anaïs A.
+        </a>
+        &
         <router-link to="/">Xavier S.</router-link>
       </p>
     </div>

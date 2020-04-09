@@ -68,6 +68,7 @@ export default {
 .projectItem {
   color: white;
   text-decoration: none;
+  cursor: pointer;
   svg {
     position: absolute;
   }
