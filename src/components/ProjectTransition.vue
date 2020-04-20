@@ -110,13 +110,16 @@ export default {
       this.h = '45%'
     },
     beforeEnter() {
-      // scroll to the top of the #app (and html for ie11) container
+      // scroll to the top of the #app (and html for ie11, body for iOS) container
       anime({
-        targets: ['#app', 'html'],
+        targets: ['#app', 'html', 'body'],
         scrollTop: 0,
         easing: 'linear',
         duration: 0,
       })
+      // force scrolltop iOS
+      document.body.scrollTop = 0
+      document.scrollTop = 0
     },
     enter(el, done) {
       const tl = anime.timeline()

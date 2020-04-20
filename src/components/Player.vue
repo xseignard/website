@@ -44,7 +44,7 @@ export default {
 iframe {
   width: 40vw;
   height: 45vh;
-  object-fit: cover;
+  object-fit: unset !important;
   @media (max-width: 768px) {
     width: 100%;
     height: 35vh;

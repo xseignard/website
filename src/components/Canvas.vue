@@ -171,7 +171,7 @@ export default {
       })
 
       // Instance Geometry
-      const instanceCount = 500
+      const instanceCount = 300
       const instancedGeometry = new THREE.InstancedBufferGeometry().copy(
         baseGeometry
       )
