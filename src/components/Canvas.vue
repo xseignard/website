@@ -57,7 +57,6 @@ export default {
     createCurve() {
       const points = []
       for (let i = 0; i < 5; i += 1) {
-        console.log((Math.random() * 10).toFixed(0))
         points.push(new THREE.Vector3(0, 0, 2.5 * (i / 4)))
       }
       points[4].y = -0.1
