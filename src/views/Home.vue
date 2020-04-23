@@ -182,7 +182,7 @@ export default {
     }
   }
   h2 {
-    font-family: 'Qontra', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 2rem;
     margin-bottom: 37px;
   }
@@ -234,7 +234,7 @@ export default {
           align-items: flex-start;
         }
         p {
-          font-family: 'Qontra';
+          font-family: 'Oswald';
           font-weight: lighter;
           text-transform: lowercase;
           font-size: 1.35rem;

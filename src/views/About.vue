@@ -141,7 +141,7 @@ export default {
     align-items: flex-end;
     justify-content: space-between;
     text-align: right;
-    font-family: 'Qontra';
+    font-family: 'Oswald';
     font-size: 1.25rem;
     padding-right: 5%;
     @media (max-width: 768px) {

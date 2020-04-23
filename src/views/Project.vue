@@ -210,7 +210,7 @@ export default {
   }
   h2 {
     text-transform: uppercase;
-    font-family: 'Qontra';
+    font-family: 'Oswald';
     &::before {
       content: '– ';
     }
@@ -492,7 +492,7 @@ export default {
       margin-bottom: 0;
     }
     p {
-      font-family: 'Qontra';
+      font-family: 'Oswald';
       &:nth-of-type(2) {
         font-size: 1.3rem;
         font-weight: bold;

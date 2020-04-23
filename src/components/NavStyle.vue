@@ -76,7 +76,7 @@ export default {
   }
   a {
     padding: 0 15px 0 15px;
-    font-family: 'Qontra';
+    font-family: 'Oswald';
     letter-spacing: 2px;
     font-weight: bold;
     text-decoration: none;
