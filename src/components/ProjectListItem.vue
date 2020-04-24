@@ -44,10 +44,10 @@ export default {
       return `background-image: url(${img.url})`
     },
     saveClickedProject() {
-      this.$store.commit(
-        'SET_CLICKED_PROJECT',
-        this.$el.querySelector('.hover')
-      )
+      const el = this.$el.querySelector('.hover')
+      el.querySelector('.layer').style.transform = 'translateX(0)'
+      el.querySelector('.hover--details').style.transform = 'translateX(0)'
+      this.$store.commit('SET_CLICKED_PROJECT', el)
       this.$router.push(`/project/${this.project.id}`)
     },
     handleScroll() {

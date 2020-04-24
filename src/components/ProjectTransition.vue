@@ -78,12 +78,15 @@ export default {
           `-=${duration}`
         )
         // fade out the unecessary elements (e.g. the current page)
-        .add({
-          targets: el,
-          opacity: 0,
-          easing: 'easeInOutQuart',
-          duration: duration * 0.8,
-        })
+        .add(
+          {
+            targets: el,
+            opacity: 0,
+            easing: 'easeInOutQuart',
+            duration: duration * 0.8,
+          },
+          `-=${duration / 2}`
+        )
         // put the ribbon on top
         .add(
           {
@@ -94,7 +97,7 @@ export default {
             easing: 'easeInOutQuart',
             duration: duration,
           },
-          `-=${duration}`
+          `-=${duration / 2}`
         )
         // grow its height up to 55% of the viewport
         .add({
@@ -144,7 +147,7 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
   rect {
     will-change: x, y, width, height;

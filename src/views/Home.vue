@@ -160,6 +160,8 @@ export default {
         el = this.$refs.second
         route = `/project/${this.project2.id}`
       }
+      el.querySelector('.layer').style.transform = 'translateX(0)'
+      el.querySelector('.hover--details').style.transform = 'translateX(0)'
       this.$store.commit('SET_CLICKED_PROJECT', el)
       this.$router.push(route)
     },

@@ -189,6 +189,7 @@ export default {
       return this.project.gallery.slice(2)
     },
     saveClickedProject() {
+      this.$refs.next.querySelector('.img').style.transform = 'scale(1.05)'
       this.$store.commit('SET_CLICKED_PROJECT', this.$refs.next)
       this.$router.push(`/project/${this.nextProject.id}`)
     },
