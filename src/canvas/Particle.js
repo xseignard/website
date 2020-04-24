@@ -8,9 +8,9 @@ import mcu0 from '../assets/images/particles/mcu-0.png'
 import mcu1 from '../assets/images/particles/mcu-1.png'
 import mcu2 from '../assets/images/particles/mcu-2.png'
 
-import solder0 from '../assets/images/particles/solder-0.png'
-import solder1 from '../assets/images/particles/solder-1.png'
-import solder2 from '../assets/images/particles/solder-2.png'
+import solder0 from '../assets/images/particles/solder2-0.png'
+import solder1 from '../assets/images/particles/solder2-1.png'
+import solder2 from '../assets/images/particles/solder2-2.png'
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min)

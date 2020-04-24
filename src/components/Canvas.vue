@@ -52,13 +52,16 @@ export default {
       this.camera.rotation.y = Math.PI
       this.camera.position.z = 0.35
       this.scene = new THREE.Scene()
-      this.scene.fog = new THREE.Fog(0x000d25, 0.05, 1.6)
     },
     createCurve() {
       const points = []
       for (let i = 0; i < 5; i += 1) {
         points.push(new THREE.Vector3(0, 0, 2.5 * (i / 4)))
       }
+      points[2].x = 0.07
+      points[2].y = 0.01
+      points[3].x = -0.15
+      points[4].x = -0.05
       points[4].y = -0.1
       this.curve = new THREE.CatmullRomCurve3(points)
       this.curve.type = 'catmullrom'
