@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import PageTransition from './components/PageTransition.vue'
 import ProjectTransition from './components/ProjectTransition.vue'
 import Loader from '@/components/Loader.vue'
@@ -43,13 +45,14 @@ export default {
     }
   },
   computed: {
-    loading() {
-      return this.$store.state.loading
-    },
+    ...mapState({
+      loading: state => state.loading,
+      clickedProject: state => state.clickedProject,
+    }),
   },
   watch: {
     $route(to) {
-      this.toProjectTransition = to.name === 'project'
+      this.toProjectTransition = to.name === 'project' && this.clickedProject
     },
   },
   methods: {

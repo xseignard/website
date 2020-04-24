@@ -85,7 +85,7 @@ export default {
     width: 30vw;
     position: relative;
     @media (max-width: 768px) {
-      width: 70vw;
+      width: 100%;
       min-height: 33vh;
     }
     &:hover .hover--details,

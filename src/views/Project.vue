@@ -273,6 +273,7 @@ export default {
     @media (max-width: 768px) {
       flex-direction: column;
       padding: $padding-mobile;
+      width: 100%;
     }
     .details {
       margin-left: 4%;

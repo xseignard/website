@@ -43,7 +43,7 @@ export default {
 @import '../assets/_variables';
 iframe {
   width: 40vw;
-  height: 45vh;
+  height: calc(40vw * 9 / 16);
   object-fit: unset !important;
   @media (max-width: 768px) {
     width: 100%;

@@ -105,7 +105,7 @@ export default {
   .menu-icon {
     width: 36px;
     height: 28px;
-    z-index: 3;
+    z-index: 4;
     display: none;
     cursor: pointer;
     @media (max-width: 768px) {
@@ -162,10 +162,10 @@ export default {
     }
   }
   .nav--list {
-    z-index: 2;
+    z-index: 3;
     display: flex;
     overflow: hidden;
-    @include long-transition;
+    @include short-transition;
     @media (max-width: 768px) {
       height: 0;
       width: 100%;
@@ -175,15 +175,33 @@ export default {
       overflow: hidden;
       position: fixed;
     }
+    @media (max-width: 768px) {
+      a {
+        transform: translateX(-4vh);
+        opacity: 0;
+      }
+    }
     &.showing {
       @media (max-width: 768px) {
-        height: 40vh;
-        padding: 5% 0 5% 0;
+        box-sizing: border-box;
+        height: 100vh;
+        padding: 50% 0;
         background-color: white;
       }
       a {
+        transform: translateX(0);
+        opacity: 1;
+        @include long-transition(0.3s);
         @media (max-width: 768px) {
-          opacity: 1;
+          &:nth-child(2) {
+            transition-delay: 0.3s;
+          }
+          &:nth-child(2) {
+            transition-delay: 0.5s;
+          }
+          &:nth-child(3) {
+            transition-delay: 0.7s;
+          }
         }
       }
     }
@@ -197,15 +215,5 @@ export default {
       left: 0;
     }
   }
-}
-// NOTE: ANIMATION ////////////////////////////
-.animate1 {
-  transform: translateY(280%) rotate(-45deg);
-}
-.disappear {
-  opacity: 0;
-}
-.animate2 {
-  transform: translateY(-280%) rotate(45deg);
 }
 </style>

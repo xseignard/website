@@ -111,6 +111,7 @@ export default {
     },
     afterLeave() {
       this.h = '45%'
+      this.$store.commit('SET_CLICKED_PROJECT', null)
     },
     beforeEnter() {
       // scroll to the top of the #app (and html for ie11, body for iOS) container

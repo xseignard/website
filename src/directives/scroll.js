@@ -2,10 +2,7 @@ import Vue from 'vue'
 
 Vue.directive('scroll', {
   inserted: (el, binding) => {
-    const selector = binding.value.selector ? binding.value.selector : '#app'
-    const root = document.querySelector(selector)
     const options = {
-      root,
       threshold: binding.value.threshold,
     }
     // attach the observer to the el in order to have it accessible on the unbind method

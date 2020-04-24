@@ -67,7 +67,7 @@ export default {
     margin-bottom: $margin-bottom;
     @media (max-width: 768px) {
       margin-top: 42vh;
-      padding: 0;
+      padding: $padding-mobile;
       flex-direction: column;
       justify-content: center;
       margin-bottom: 0;
@@ -76,12 +76,12 @@ export default {
       transform: translateY(4vh);
       opacity: 0;
       @include short-transition;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
       &.visible {
         transform: translateY(0);
         opacity: 1;
-        @media (max-width: 768px) {
-          margin: auto;
-        }
       }
       &:nth-child(2n) {
         margin-top: 15vh;
