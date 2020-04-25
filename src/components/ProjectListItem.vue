@@ -1,18 +1,18 @@
 <template>
-  <a @click="saveClickedProject" class="projectItem">
+  <a class="projectItem" @click="saveClickedProject">
     <div class="itemID img" :style="`${getBgImage(project.featured_image)}`">
       <div
         class="color"
         :style="`background-color: ${getProjectColor(project)}`"
       />
-      <div class="hover" v-scroll="{ class: 'visible', threshold: 1 }">
+      <div v-scroll="{ class: 'visible', threshold: 1 }" class="hover">
         <div
           class="layer"
           :style="`background-color:${getProjectColor(project)}`"
         />
         <div class="hover--details">
-          <p v-html="project.baseline" class="baseline"></p>
-          <p v-html="project.type[0]" class="type"></p>
+          <p class="baseline" v-html="project.baseline"></p>
+          <p class="type" v-html="project.type[0]"></p>
           <p class="separator">–</p>
           <ul>
             <li v-for="t in project.technologies" :key="t.name">
@@ -31,7 +31,13 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    project: Object,
+    project: {
+      type: Object,
+      default() {},
+    },
+  },
+  computed: {
+    ...mapGetters(['getProjectColor']),
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
@@ -56,9 +62,6 @@ export default {
       if (top <= window.innerHeight * 0.54) title.classList.add('purple')
       else title.classList.remove('purple')
     },
-  },
-  computed: {
-    ...mapGetters(['getProjectColor']),
   },
 }
 </script>
@@ -93,6 +96,11 @@ export default {
       opacity: 1;
       transform: translateX(0);
     }
+    &:hover .layer {
+      @media (max-width: 768px) {
+        opacity: 0.6;
+      }
+    }
     .layer {
       position: absolute;
       top: 0;
@@ -117,10 +125,15 @@ export default {
       height: 100%;
       position: absolute;
       overflow: hidden;
-      &.visible .hover--details,
-      &.visible .layer {
+      &.visible .hover--details {
         @media (max-width: 768px) {
           opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      &.visible .layer {
+        @media (max-width: 768px) {
+          opacity: 0.6;
           transform: translateX(0);
         }
       }

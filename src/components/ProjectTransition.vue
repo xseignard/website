@@ -19,7 +19,10 @@ const duration = 450
 
 export default {
   props: {
-    projectId: String,
+    projectId: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {

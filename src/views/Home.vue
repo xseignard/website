@@ -22,8 +22,8 @@
       <div class="home--content--about">
         <h2>— Hello, I'm Xavier</h2>
         <p
-          class="bio"
           v-scroll="{ class: 'visible', threshold: 0.01 }"
+          class="bio"
           v-html="about.home_intro"
         />
         <router-link to="/about">
@@ -35,27 +35,27 @@
       <div class="home--content--projects">
         <h2>— Newest projects</h2>
         <div
-          class="home--content--projects--list"
           v-scroll="{ class: 'visible', threshold: 0 }"
+          class="home--content--projects--list"
         >
-          <a @click="() => saveClickedProject(1)" class="project">
+          <a class="project" @click="() => saveClickedProject(1)">
             <div :style="project1.style" class="img">
               <div
                 class="color"
                 :style="`background-color: ${getProjectColor(project1)}`"
               />
               <div
-                class="hover"
                 ref="first"
                 v-scroll="{ class: 'visible', threshold: 0.01 }"
+                class="hover"
               >
                 <div
                   class="layer"
                   :style="`background-color:${getProjectColor(project1)}`"
                 />
                 <div class="hover--details">
-                  <p v-html="project1.baseline" class="baseline"></p>
-                  <p v-html="project1.type[0]" class="type"></p>
+                  <p class="baseline" v-html="project1.baseline"></p>
+                  <p class="type" v-html="project1.type[0]"></p>
                   <p class="type">–</p>
                   <ul>
                     <li v-for="t in project1.technologies" :key="t.name">
@@ -67,24 +67,24 @@
             </div>
             <p class="intro" v-html="project1.title" />
           </a>
-          <a @click="() => saveClickedProject(2)" class="project">
+          <a class="project" @click="() => saveClickedProject(2)">
             <div :style="project2.style" class="img">
               <div
                 class="color"
                 :style="`background-color: ${getProjectColor(project2)}`"
               />
               <div
-                class="hover"
                 ref="second"
                 v-scroll="{ class: 'visible', threshold: 0.01 }"
+                class="hover"
               >
                 <div
                   class="layer"
                   :style="`background-color:${getProjectColor(project2)}`"
                 />
                 <div class="hover--details">
-                  <p v-html="project2.baseline" class="baseline"></p>
-                  <p v-html="project2.type[0]" class="type"></p>
+                  <p class="baseline" v-html="project2.baseline"></p>
+                  <p class="type" v-html="project2.type[0]"></p>
                   <p class="type">–</p>
                   <ul>
                     <li v-for="t in project2.technologies" :key="t.name">
@@ -379,10 +379,15 @@ export default {
           height: 100%;
           position: absolute;
           overflow: hidden;
-          &.visible .hover--details,
-          &.visible .layer {
+          &.visible .hover--details {
             @media (max-width: 768px) {
               opacity: 1;
+              transform: translateX(0);
+            }
+          }
+          &.visible .layer {
+            @media (max-width: 768px) {
+              opacity: 0.6;
               transform: translateX(0);
             }
           }
@@ -400,12 +405,15 @@ export default {
               font-size: 0.9rem;
             }
           }
-          &:hover .hover--details {
+          &:hover .hover--details,
+          &:hover .layer {
             opacity: 1;
             transform: translateX(0);
           }
           &:hover .layer {
-            transform: translateX(0);
+            @media (max-width: 768px) {
+              opacity: 0.6;
+            }
           }
           .layer {
             position: absolute;

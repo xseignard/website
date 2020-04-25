@@ -31,7 +31,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    project: Object,
+    project: {
+      type: Object,
+      default() {},
+    },
   },
   computed: {
     ...mapGetters(['getProjectColor']),

@@ -12,8 +12,8 @@ import '@/assets/base.scss'
 new Vue({
   router,
   store,
-  render: h => h(App),
   async created() {
     await this.$store.dispatch('getData')
   },
+  render: h => h(App),
 }).$mount('#app')

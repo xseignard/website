@@ -5,32 +5,32 @@
       class="color"
       :style="`background-color:${getProjectColor(project)}; height: ${h}px`"
     />
-    <div class="project--title" v-scroll="{ class: 'visible', threshold: 0.2 }">
+    <div v-scroll="{ class: 'visible', threshold: 0.2 }" class="project--title">
       <h1 v-html="project.title" />
       <p class="baseline" v-html="'– ' + project.baseline" />
     </div>
     <div class="project--top">
       <div class="project--presentation">
         <div
-          class="heroimage--container"
           v-scroll="{ class: 'visible', threshold: 0.2 }"
+          class="heroimage--container"
         >
           <div
             class="img heroimage"
             :style="getBgImage(project.featured_image.url)"
           />
           <div
-            class="layer"
             v-scroll="{ class: 'reveal', threshold: 0.4 }"
+            class="layer"
             :style="`background-color: ${getLayerColor(project)}`"
           />
         </div>
         <div class="details">
           <p
-            v-scroll="{ class: 'visible', threshold: 0.2 }"
-            class="type"
             v-for="(type, i) in project.type"
             :key="i"
+            v-scroll="{ class: 'visible', threshold: 0.2 }"
+            class="type"
           >
             {{ type }}
           </p>
@@ -44,9 +44,9 @@
           />
           <ul class="technologies">
             <li
-              v-scroll="{ class: 'visible', threshold: 0.2 }"
               v-for="(t, i) in project.technologies"
               :key="i"
+              v-scroll="{ class: 'visible', threshold: 0.2 }"
             >
               {{ t.name }}
             </li>
@@ -104,19 +104,19 @@
       </div>
       <div v-else class="project--content--portion images">
         <div
-          v-scroll="{ class: 'visible', threshold: 0.2 }"
           v-for="(image, i) in getOtherImages()"
-          class="content--img img"
           :key="i"
+          v-scroll="{ class: 'visible', threshold: 0.2 }"
+          class="content--img img"
         >
           <img :src="image.url" :alt="image.title" />
         </div>
       </div>
     </div>
     <div class="content--next">
-      <a @click="saveClickedProject" class="next--project">
+      <a class="next--project" @click="saveClickedProject">
         <p>– next project</p>
-        <div class="next--project--container" ref="next">
+        <div ref="next" class="next--project--container">
           <div
             class="project--img img"
             :style="getBgImage(nextProject.featured_image.sizes.medium)"
@@ -156,9 +156,6 @@ export default {
       h: 0,
     }
   },
-  mounted() {
-    this.h = window.innerHeight * 0.55
-  },
   computed: {
     ...mapState({
       projects: state => state.projects,
@@ -177,6 +174,9 @@ export default {
       },
     }),
     ...mapGetters(['getProjectColor', 'getLayerColor']),
+  },
+  mounted() {
+    this.h = window.innerHeight * 0.55
   },
   methods: {
     getBgImage(img) {

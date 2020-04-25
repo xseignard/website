@@ -5,10 +5,10 @@
     <h1>Projects</h1>
     <div class="projects--content">
       <ProjectListItem
+        v-for="project in projects"
+        :key="project.id"
         v-scroll="{ class: 'visible', threshold: 0.3 }"
         :project="project"
-        :key="project.id"
-        v-for="project in projects"
       />
     </div>
     <FooterStyle ref="footer" />
@@ -34,14 +34,14 @@ export default {
       h: 0,
     }
   },
-  mounted() {
-    this.h = window.innerHeight * 0.55
-  },
   computed: {
     ...mapState({
       projects: state => state.projects,
     }),
     ...mapGetters(['getProjectColor']),
+  },
+  mounted() {
+    this.h = window.innerHeight * 0.55
   },
 }
 </script>

@@ -2,23 +2,23 @@
   <div id="app">
     <Loader v-if="loading" />
     <transition
+      v-else
+      mode="out-in"
       @before-leave="beforeLeave"
       @leave="leave"
       @after-leave="afterLeave"
       @before-enter="beforeEnter"
       @enter="enter"
       @after-enter="afterEnter"
-      mode="out-in"
-      v-else
     >
       <router-view :key="$route.params.id || $route.path" ref="page" />
     </transition>
     <ProjectTransition
-      ref="transition"
-      :projectId="$route.params.id"
       v-if="toProjectTransition"
+      ref="transition"
+      :project-id="$route.params.id"
     />
-    <PageTransition ref="transition" v-else />
+    <PageTransition v-else ref="transition" />
   </div>
 </template>
 
