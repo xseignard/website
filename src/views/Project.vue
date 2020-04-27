@@ -502,6 +502,7 @@ export default {
       }
     }
     .next--project {
+      cursor: pointer;
       min-width: 20%;
       color: white;
       text-decoration: none;
