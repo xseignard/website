@@ -30,3 +30,5 @@ FTP_PORT
 Then
 
 `npm run deploy`
+
+Thank you for reading info.
